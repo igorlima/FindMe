@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="ratchet.css">
 
     <!-- Include the compiled Ratchet JS -->
+    <script src="jquery-1.7.2.min.js"></script>
     <script src="ratchet.js"></script>
 
     <!-- Intro paragraph styles. Delete once you start using this page -->
@@ -32,40 +33,65 @@
 
   </head>
   <body>
-
+  
   <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
-    <h1 class="title">Ratchet</h1>
+    <a href="#myPopover">
+      <h1 class="title">Lanches Online</h1>
+    </a>
   </header>
+  <div id="myPopover" class="popover">
+    <header class="popover-header">
+      <a class="button" href="#">
+        Left
+      </a>
+      <h3 class="title">Popover title</h3>
+      <a class="button" href="#">
+        Right
+      </a>
+    </header>
+    <ul class="list">
+      <li>Item1</li>
+      <li>Item2</li>
+      <li>Item3</li>
+      <li>Item4</li>
+    </ul>
+  </div>
 
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content">
     <div class="content-padded">
-      <p class="welcome">Thanks for downloading Ratchet. This is an example HTML page that's linked up to compiled Ratchet CSS and JS, has the proper meta tags and the HTML structure. Need some more help before you start filling this with your own content? Check out some Ratchet resorces:</p>
+      <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços. </p>
     </div>
 
     <ul class="list inset">
       <li>
-        <a href="two.html">
-          <strong>Ratchet documentation</strong>
-          <span class="chevron"></span>
+        <a href="cardapio.html" data-transition="fade" data-selector=".content">
+          <strong>Cardápio</strong>
         </a>
+        <span class="chevron"></span>
       </li>
       <li>
         <a href="http://www.github.com/maker/ratchet/">
-          <strong>Ratchet on Github</strong>
+          <strong>Encontre nossa(s) loja(s)</strong>
           <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="https://groups.google.com/forum/#!forum/goratchet">
-          <strong>Ratchet Google group</strong>
+          <strong>Promoções</strong>
           <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="http://www.twitter.com/GoRatchet">
-          <strong>Ratchet on Twitter</strong>
+          <strong>Rastrear minha compra</strong>
+          <span class="chevron"></span>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.twitter.com/GoRatchet">
+          <strong>Logar usando facebook</strong>
           <span class="chevron"></span>
         </a>
       </li>
