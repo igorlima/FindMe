@@ -3,3 +3,12 @@ http://maker.github.com/ratchet/
 
 Github
 https://github.com/maker/ratchet
+
+HeadJS
+http://headjs.com/
+
+Zepto
+http://zeptojs.com/
+
+Online YUI Compressor
+http://refresh-sf.com/yui/
