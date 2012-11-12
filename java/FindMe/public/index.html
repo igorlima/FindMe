@@ -87,10 +87,16 @@
   <script>
     head
     .js("javascripts/ratchet.min.js")
-    //.js("javascripts/zepto.min.js")
-    //.js("javascripts/fingerblast.min.js")
     .ready(function(){
-      //$(window).on('load', function () { new FingerBlast('.content'); });
+      head
+      .js("javascripts/zepto.min.js")
+      //script para que um navegador desktop simule eventos touch screen
+      /*
+      .js("javascripts/fingerblast.min.js", function(){
+        $(window).on('load', function () { new FingerBlast('.content'); });
+      })
+      */
+      ;
     })
     ;
   </script>
