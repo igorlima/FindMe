@@ -87,6 +87,12 @@
   <script>
     head
     .js("javascripts/ratchet.min.js")
+    .js("javascripts/_index.js", function(){
+      window.addEventListener('push', function(event){
+        var page = Lanche.Util.page(event);
+        if (page=="index") Lanche.Index.load();
+      })
+    })
     .ready(function(){
       head
       .js("javascripts/zepto.min.js")
