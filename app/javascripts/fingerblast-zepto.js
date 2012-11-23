@@ -35,15 +35,11 @@ FingerBlast.prototype = {
       }
     }
 
-    this.element.on('mouseover', function (e) {
+    this.element.on('tap', function (e) {
       var target = e.relatedTarget;
       if (target != this && !contains(target, this)) activate();
     });
 
-    this.element.on("mouseout", function (e) {
-      var target = e.relatedTarget;
-      if (target != this && !contains(target, this)) deactivate(e);
-    });
   },
 
   activate: function () {

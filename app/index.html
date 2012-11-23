@@ -94,7 +94,7 @@
   <script>
     head
     .js("javascripts/ratchet.min.js")
-    .js("javascripts/fingerblast.min.js", function(){
+    .js("javascripts/fingerblast-zepto.js", function(){
       //script para que um simule eventos touch screen, caso este não seja
       var is_touch_device = !!('ontouchstart' in window);
       (!is_touch_device) && new FingerBlast('html');
