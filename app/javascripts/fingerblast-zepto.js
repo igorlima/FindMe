@@ -35,10 +35,8 @@ FingerBlast.prototype = {
       }
     }
 
-    this.element.addEventListener('tap', function (e) {
-      var target = e.relatedTarget;
-      if (target != this && !contains(target, this)) activate();
-    });
+    var target = e.relatedTarget;
+    if (target != this && !contains(target, this)) activate();
 
   },
 
