@@ -1,48 +1,47 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Lanche online</title>
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+<head>
+  <meta charset="utf-8">
+  <title>Lanche online</title>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 
-    <!-- Sets initial viewport load and disables zooming  -->
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- Sets initial viewport load and disables zooming  -->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- Set Apple icons for when prototype is saved to home screen -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-touch-icon-57x57.png">
+  <!-- Set Apple icons for when prototype is saved to home screen -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-touch-icon-57x57.png">
 
-    <!-- Include the compiled Ratchet CSS -->
-    <link rel="stylesheet" href="stylesheets/ratchet.min.css">
-    <!-- Intro paragraph styles. Delete once you start using this page -->
-    <style type="text/css">
-        .welcome {
-          line-height: 1.5;
-          color: #555;
-        }
-        
-        .detail-lanche {
-          font-size: 0.8em;
-        }
-        
-        .list.compra li {
-          padding-right: 100px;
-        }
-    </style>
+  <!-- Include the compiled Ratchet CSS -->
+  <link rel="stylesheet" href="stylesheets/ratchet.min.css">
+  <!-- Intro paragraph styles. Delete once you start using this page -->
+  <style type="text/css">
+      .welcome {
+        line-height: 1.5;
+        color: #555;
+      }
+      
+      .detail-lanche {
+        font-size: 0.8em;
+      }
+      
+      .list.compra li {
+        padding-right: 100px;
+      }
+  </style>
 
-  </head>
-  <body>
-  
+</head>
+<body>
   <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
     <h1 class="title">Lanches Online</h1>
   </header>
-  
+
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content">
     <div class="content-padded">
@@ -89,29 +88,28 @@
     </ul>
     
   </div>
-  
+
   <!-- Include the compiled Ratchet JS -->
   <script src="javascripts/head.load.min.js"></script>
   <script>
     head
     .js("javascripts/ratchet.min.js")
-    .js("javascripts/zepto.min.js")
+    .js("javascripts/fingerblast.min.js", function(){
+      //script para que um simule eventos touch screen, caso este não seja
+      var is_touch_device = !!('ontouchstart' in window);
+      (!is_touch_device) && new FingerBlast('html');
+    })
     .js("javascripts/_index.js", function(){
       window.addEventListener('push', function(event){  
         var page = Lanche.Util.page(event);
         if (page=="index") Lanche.Index.load();
       });
     })
+    .js("javascripts/zepto.min.js")
     .ready(function(){
-      //script para que um navegador desktop simule eventos touch screen
-      /*
-      head
-      .js("javascripts/fingerblast.min.js", function(){
-        $(window).on('load', function () { new FingerBlast('.content'); });
-      });
-      */
+      
     })
     ;
   </script>
-  </body>
+</body>
 </html>
