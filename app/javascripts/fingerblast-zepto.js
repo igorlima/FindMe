@@ -35,7 +35,7 @@ FingerBlast.prototype = {
       }
     }
 
-    this.element.on('tap', function (e) {
+    this.element.addEventListener('tap', function (e) {
       var target = e.relatedTarget;
       if (target != this && !contains(target, this)) activate();
     });
@@ -44,20 +44,20 @@ FingerBlast.prototype = {
 
   activate: function () {
     if (this.active) return;
-    this.element.on('mousedown', (this.touchStart = this.touchStart.bind(this)), true);
-    this.element.on('mousemove', (this.touchMove  = this.touchMove.bind(this)),  true);
-    this.element.on('mouseup',   (this.touchEnd   = this.touchEnd.bind(this)),   true);
-    this.element.on('click',     (this.click      = this.click.bind(this)),      true);
+    this.element.addEventListener('mousedown', (this.touchStart = this.touchStart.bind(this)), true);
+    this.element.addEventListener('mousemove', (this.touchMove  = this.touchMove.bind(this)),  true);
+    this.element.addEventListener('mouseup',   (this.touchEnd   = this.touchEnd.bind(this)),   true);
+    this.element.addEventListener('click',     (this.click      = this.click.bind(this)),      true);
     this.active = true;
   },
 
   deactivate: function (e) {
     this.active = false;
     if (this.mouseIsDown) this.touchEnd(e);
-    this.element.off('mousedown', this.touchStart, true);
-    this.element.off('mousemove', this.touchMove,  true);
-    this.element.off('mouseup',   this.touchEnd,   true);
-    this.element.off('click',     this.click,      true);
+    this.element.removeEventListener('mousedown', this.touchStart, true);
+    this.element.removeEventListener('mousemove', this.touchMove,  true);
+    this.element.removeEventListener('mouseup',   this.touchEnd,   true);
+    this.element.removeEventListener('click',     this.click,      true);
   },
 
   click: function (e) {
@@ -117,14 +117,14 @@ FingerBlast.prototype = {
 
     if (onEventName in this.target) {
       console.warn('Converting `' + onEventName + '` property to event listener.', this.target);
-      this.target.on(eventName, this.target[onEventName], false);
+      this.target.addEventListener(eventName, this.target[onEventName], false);
       delete this.target[onEventName];
     }
 
     if (this.target.hasAttribute(onEventName)) {
       console.warn('Converting `' + onEventName + '` attribute to event listener.', this.target);
       var handler = new GLOBAL.Function('event', this.target.getAttribute(onEventName));
-      this.target.on(eventName, handler, false);
+      this.target.addEventListener(eventName, handler, false);
       this.target.removeAttribute(onEventName);
     }
 
