@@ -35,8 +35,19 @@ FingerBlast.prototype = {
       }
     }
 
+    /*
     var target = e.relatedTarget;
     if (target != this && !contains(target, this)) activate();
+    */
+    this.element.addEventListener('mouseover', function (e) {
+      var target = e.relatedTarget;
+      if (target != this && !contains(target, this)) activate();
+    });
+
+    this.element.addEventListener("mouseout", function (e) {
+      var target = e.relatedTarget;
+      if (target != this && !contains(target, this)) deactivate(e);
+    });
 
   },
 
