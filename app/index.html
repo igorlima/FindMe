@@ -48,7 +48,7 @@
         float: right;
       }
 
-      .map { 
+      .all-screen { 
         height: 100%; 
       }
   </style>
@@ -64,7 +64,7 @@
   </header>
 
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-  <div class="content" data-bind="visible: showHomeContent">
+  <div class="content all-screen" data-bind="visible: showHomeContent">
     <div class="content-padded">
       <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços.</p>
     </div>
@@ -111,8 +111,8 @@
   </div>
 
   <div id="phone-app" class="content" data-bind="visible: !showHomeContent()"></div>
-  <div class="map" data-bind="visible: showMap() ">
-    <div id="map" class="map"></div>
+  <div class="all-screen" data-bind="visible: showMap() ">
+    <div id="map" class="all-screen"></div>
   </div>
 
   <!-- Include the compiled Ratchet JS -->
