@@ -31,6 +31,38 @@
           maxZoom: 18,
           styleId: 997
       }).addTo(map);
+
+      /************
+      * Localização
+      *************/
+      map.on('locationfound', function(e){
+        var radius = e.accuracy / 2;
+
+        //Adicionando um Marker com a localização
+        L.marker(e.latlng)
+        .addTo(map)
+        .bindPopup("Você está em um raio de " + radius + " metros desse ponto")
+        .openPopup()
+        .on('click', function(e){
+          var latlng = e.target.getLatLng();
+          console.log(latlng.toLocaleString());
+        });
+
+        L.circle(e.latlng, radius) //criando raio de localização
+        .addTo(map) //Adicionando o raio de localizacao
+        .bringToBack(); //movendo o raio de localização para ficar atrás da camada de Locais
+        map.setView(e.latlng, 15); //alterando view no mapa
+      });
+
+      map.on('locationerror', function onLocationError(e) {
+        map.setView([-21.244722,-45.000429], 15);
+        console.error(e.message);
+      });
+
+      map.locate({setView: true, maxZoom: 18});
+      /************
+      * FIM Localização
+      *************/
     };
 
   };
