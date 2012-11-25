@@ -14,6 +14,7 @@
     viewModel.url_voltar('#cardapio');
     viewModel.showBtnVoltar(true);
     viewModel.showHomeContent(false);
+    viewModel.showMap(false);
 
     createHtml();
     applyBindings();

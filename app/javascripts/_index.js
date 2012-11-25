@@ -1,4 +1,4 @@
-;(function(Lanche, ko, viewModel) {
+;(function(Lanche, $, ko, viewModel) {
 
   var Util = Lanche.Util = function() {};
   Util.url = function(event) {
@@ -18,6 +18,7 @@
     viewModel.url_voltar('#home');
     viewModel.showBtnVoltar(false);
     viewModel.showHomeContent(true);
+    viewModel.showMap(false);
   };
 
   //ViewModel
@@ -26,6 +27,7 @@
     viewModel.url_voltar = ko.observable();
     viewModel.showBtnVoltar = ko.observable();
     viewModel.showHomeContent = ko.observable();
+    viewModel.showMap = ko.observable();
     ko.applyBindings(viewModel);
   }();
   
@@ -51,4 +53,4 @@
     Path.listen();
   }();
   
-})(window.Lanche, ko, Lanche.viewModel);
+})(window.Lanche, Zepto, ko, Lanche.viewModel);

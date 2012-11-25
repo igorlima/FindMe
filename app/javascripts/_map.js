@@ -6,6 +6,7 @@
     viewModel.url_voltar('#home');
     viewModel.showBtnVoltar(true);
     viewModel.showHomeContent(false);
+    viewModel.showMap(true);
 
     createHtml();
     applyBindings();
