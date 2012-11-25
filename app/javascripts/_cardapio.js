@@ -1,7 +1,7 @@
 ;(function(window, $, ko, viewModel) {
   var cardapios = [
     {
-      url: '#cardapio_hamburguer',
+      url: '#cardapio/hamburguer',
       description: 'Hamburguer'
     }
   ];
@@ -13,11 +13,11 @@
     viewModel.showBtnVoltar(true);
     viewModel.showHomeContent(false);
 
-    Cardapio.createHtml();
-    Cardapio.applyBindings();
+    createHtml();
+    applyBindings();
   };
 
-  Cardapio.createHtml = function() {
+  var createHtml = function() {
     var app = $('#phone-app');
     app.empty();
     app.append(""+
@@ -37,16 +37,16 @@
     );
   };
 
-  Cardapio.applyBindings = function() {
+  var applyBindings = function() {
     viewModel.cardapios = cardapios;
     ko.applyBindings(viewModel);
   };
 
   // Routes
   !function () {
-    Path.map("#/cardapio/hamburguer").to(function(){
+    Path.map("#cardapio/hamburguer").to(function(){
       head.js("javascripts/_cardapio_hamburguer.js", function(){
-        Lanche.Cardapio.Hamburguer.load();
+        Cardapio.Hamburguer.load();
       });
     }).enter(Lanche.Util.clearPanel);
 
