@@ -61,6 +61,11 @@
     });
 
     map.on('locationerror', function onLocationError(e) {
+      L.marker([-21.244722,-45.000429])
+      .addTo(map)
+      .bindPopup("Nossa loja")
+      .openPopup();
+
       map.setView([-21.244722,-45.000429], 15);
       console.error(e.message);
     });
