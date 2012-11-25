@@ -67,7 +67,7 @@
       .openPopup();
 
       map.setView([-21.244722,-45.000429], 15);
-      console.error(e.message);
+      console.warn(e.message);
     });
 
     map.locate({setView: true, maxZoom: 18});
