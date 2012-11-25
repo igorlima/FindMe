@@ -93,13 +93,15 @@
   <script src="javascripts/head.load.min.js"></script>
   <script>
     head
-    .js("javascripts/zepto.js")
-    .js("javascripts/ratchet.js")
+    //.js("javascripts/ratchet.js")
+    /*
     .js("javascripts/fingerblast.js", function(){
       //script para que o browser simule eventos touch screen, caso este não seja
       var is_touch_device = !!('ontouchstart' in window);
       (!is_touch_device) && new FingerBlast('html');
     })
+    */
+    .js("javascripts/knockout-2.2.0.js")
     .js("javascripts/_index.js", function(){
       window.addEventListener('push', function(event){  
         var page = Lanche.Util.page(event);
