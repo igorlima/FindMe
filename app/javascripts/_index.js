@@ -1,23 +1,44 @@
-;(function(window){
-  var Lanche = window.Lanche = function() {};
+;(function(Lanche) {
+  var viewModel = Lanche.viewModel;
+
   var Util = Lanche.Util = function() {};
   Util.url = function(event) {
     return event.detail.state.url;
-  }
+  };
   Util.page = function(event) {
     var url = Util.url(event);
     return url.match("[a-zA-Z_0-9]+[.]html")[0].replace(".html", "");
-  }
+  };
+  Util.clearPanel = function(){
+    // You can put some code in here to do fancy DOM transitions, such as fade-out or slide-in.
+  };
+
   var Index = Lanche.Index = function() {};
   Index.load = function() {
-    
+    viewModel.title('Lanche Online');
+    viewModel.url_voltar('#home');
+    viewModel.showBtnVoltar(false);
+    viewModel.showHomeContent(true);
   };
+
+  //ViewModel
+  !function () {
+    viewModel.title = ko.observable();
+    viewModel.url_voltar = ko.observable();
+    viewModel.showBtnVoltar = ko.observable();
+    viewModel.showHomeContent = ko.observable();
+    ko.applyBindings(viewModel);
+  }();
   
-  window.addEventListener('push', function(event){
-    var page = Lanche.Util.page(event);
-    if (page=="cardapio") 
-      head.js("javascripts/_cardapio.js", function(){
+  // Routes
+  !function () {
+    Path.map("#cardapio").to(function(){
+      head.js("javascripts/_cardapio.js", function() {
         Lanche.Cardapio.load();
       });
-  });
-})(window);
+    }).enter(Lanche.Util.clearPanel);
+
+    Path.listen();
+  }();
+  
+})(window.Lanche);

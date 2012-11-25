@@ -25,7 +25,7 @@
         line-height: 1.5;
         color: #555;
       }
-      
+
       .detail-lanche {
         font-size: 0.8em;
       }
@@ -39,21 +39,24 @@
 <body>
   <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
-    <h1 class="title">Lanches Online</h1>
+    <a class="button-prev" data-bind="attr: {href: url_voltar}, visible: showBtnVoltar">
+      Voltar
+    </a>
+    <h1 class="title" data-bind="text: title"></h1>
   </header>
 
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-  <div class="content">
+  <div class="content" data-bind="visible: showHomeContent">
     <div class="content-padded">
-      <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços. </p>
+      <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços.</p>
     </div>
 
     <ul class="list inset">
       <li>
-        <a href="cardapio.html" data-transition="fade" data-selector=".content">
+        <a href="#cardapio">
           <strong>Cardápio</strong>
+          <span class="chevron"></span>
         </a>
-        <span class="chevron"></span>
       </li>
       <li>
         <a href="#">
@@ -89,27 +92,37 @@
     
   </div>
 
+  <div id="phone-app" class="content" data-bind="visible: !showHomeContent()">
+    <div class="content-padded">
+      <p class="welcome">Aprecie nosso cardárpio.</p>
+    </div>
+  </div>
+
   <!-- Include the compiled Ratchet JS -->
   <script src="javascripts/head.load.min.js"></script>
   <script>
     head
-    //.js("javascripts/ratchet.js")
-    /*
-    .js("javascripts/fingerblast.js", function(){
-      //script para que o browser simule eventos touch screen, caso este não seja
-      var is_touch_device = !!('ontouchstart' in window);
-      (!is_touch_device) && new FingerBlast('html');
-    })
-    */
+    .js("javascripts/path.min.js")
+    .js("javascripts/zepto.min.js")
     .js("javascripts/knockout-2.2.0.js")
-    .js("javascripts/_index.js", function(){
-      window.addEventListener('push', function(event){  
-        var page = Lanche.Util.page(event);
-        if (page=="index") Lanche.Index.load();
-      });
-    })
     .ready(function(){
-      
+
+      //ViewModel
+      var Lanche = window.Lanche = function() {};
+      var LancheViewModel = function () {};
+      Lanche.viewModel = new LancheViewModel();
+
+      //Routes
+      Path.map("#home").to(function(){
+        head.js("javascripts/_index.js", function() {
+          Lanche.Index.load();
+        });
+      });
+
+      location.hash = 'home';
+      Path.root("#home");
+      Path.listen();
+
     })
     ;
   </script>
