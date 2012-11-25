@@ -52,6 +52,15 @@
     .all-screen { 
       height: 100%; 
     }
+
+    .bottom-space {
+      height: 100px; 
+      margin-top: 50px;
+      margin-bottom: 50px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      display: inline-block;
+    }
   </style>
 
 </head>
@@ -66,7 +75,7 @@
   </header>
 
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-  <div class="content all-screen" data-bind="visible: showHomeContent">
+  <div class="content" data-bind="visible: showHomeContent">
     <div class="content-padded">
       <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços.</p>
     </div>
@@ -109,12 +118,16 @@
         </a>
       </li>
     </ul>  
+
+    <div class="bottom-space">ei</div>
   </div>
 
   <div id="phone-app" class="content" data-bind="visible: !showHomeContent()"></div>
   <div class="all-screen" data-bind="visible: showMap() ">
     <div id="map" class="all-screen"></div>
   </div>
+
+  
 
   <!-- Include the compiled Ratchet JS -->
   <script src="javascripts/head.load.min.js"></script>
