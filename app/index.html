@@ -62,8 +62,6 @@
     <h1 class="title" data-bind="text: title"></h1>
   </header>
 
-  <div id="map" data-bind="visible: !showHomeContent() && $('#phone-app')[0].children.length==0"></div>
-
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content" data-bind="visible: showHomeContent">
     <div class="content-padded">
@@ -112,7 +110,7 @@
   </div>
 
   <div id="phone-app" class="content" data-bind="visible: !showHomeContent()"></div>
-  
+  <div id="map"></div>
 
   <!-- Include the compiled Ratchet JS -->
   <script src="javascripts/head.load.min.js"></script>
