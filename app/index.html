@@ -19,6 +19,7 @@
 
   <!-- Include the compiled Ratchet CSS -->  
   <link rel="stylesheet" href="stylesheets/ratchet.min.css">
+  <link rel="stylesheet" href="stylesheets/leaflet.min.css">
   <!-- Intro paragraph styles. Delete once you start using this page -->
   <style type="text/css">
       .welcome {
@@ -110,7 +111,7 @@
   </div>
 
   <div id="phone-app" class="content" data-bind="visible: !showHomeContent()"></div>
-  <div class="map" data-bind="visible: showMap ">
+  <div class="map" data-bind="visible: showMap() ">
   </div>
     <div id="map" class="map"></div>
 

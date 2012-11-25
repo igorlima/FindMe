@@ -41,10 +41,9 @@
 
     Path.map("#map").to(function(){
       head
-      .load("stylesheets/leaflet.min.css", function(){ alert('css') } )
-      .js("javascripts/leaflet.min.js", function(){ alert('leaflet') } )
-      .js("javascripts/_map.js", function(){ alert('map') } )
-      .js("javascripts/_local.js", function(){ alert('local') } )
+      .js("javascripts/leaflet.min.js")
+      .js("javascripts/_map.js")
+      .js("javascripts/_local.js")
       .ready(function() {
         Lanche.Map.load();
       });
