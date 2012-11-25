@@ -23,11 +23,11 @@
 
   //ViewModel
   !function () {
-    viewModel.title = ko.observable();
-    viewModel.url_voltar = ko.observable();
-    viewModel.showBtnVoltar = ko.observable();
-    viewModel.showHomeContent = ko.observable();
-    viewModel.showMap = ko.observable();
+    viewModel.title = ko.observable('Lanche Online');
+    viewModel.url_voltar = ko.observable('#home');
+    viewModel.showBtnVoltar = ko.observable(false);
+    viewModel.showHomeContent = ko.observable(false);
+    viewModel.showMap = ko.observable(false);
     ko.applyBindings(viewModel);
   }();
   
