@@ -36,7 +36,7 @@
   };
 
   var applyBindings = function() {
-    
+    ko.applyBindings(viewModel);
   };
 
 })(window.Lanche, Zepto, ko, L, Lanche.viewModel);
