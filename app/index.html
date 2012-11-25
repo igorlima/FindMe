@@ -53,14 +53,6 @@
       height: 100%; 
     }
 
-    .bottom-space {
-      height: 100px; 
-      margin-top: 50px;
-      margin-bottom: 50px;
-      padding-top: 25px;
-      padding-bottom: 25px;
-      display: inline-block;
-    }
   </style>
 
 </head>
@@ -80,49 +72,47 @@
       <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços.</p>
     </div>
 
-    <ul class="list inset">
+    <ul class="list">
       <li>
         <a href="#cardapio">
           <strong>Cardápio</strong>
-          
+          <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="#">
           <strong>Encontre nossa(s) loja(s)</strong>
-          
+          <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="#">
           <strong>Promoções</strong>
-          
+          <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="#map">
           <strong>Rastrear minha compra</strong>
-          
+          <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="#">
           <strong>Histórico de compra</strong>
-          
+          <span class="chevron"></span>
         </a>
       </li>
       <li>
         <a href="#">
           <strong>Logar usando facebook</strong>
-          
+          <span class="chevron"></span>
         </a>
       </li>
-    </ul>  
-
-    <div class="bottom-space">ei</div>
+    </ul>
   </div>
 
-  <div id="phone-app" class="content" data-bind="visible: !showHomeContent()"></div>
+  <div id="phone-app" class="content" data-bind="visible: !showHomeContent() "></div>
   <div class="all-screen" data-bind="visible: showMap() ">
     <div id="map" class="all-screen"></div>
   </div>
