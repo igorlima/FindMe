@@ -93,10 +93,10 @@
   <script src="javascripts/head.load.min.js"></script>
   <script>
     head
-    //.js("javascripts/modernizr.custom.min.js")
+    .js("javascripts/zepto.js")
     .js("javascripts/ratchet.js")
     .js("javascripts/fingerblast.js", function(){
-      //script para que um simule eventos touch screen, caso este não seja
+      //script para que o browser simule eventos touch screen, caso este não seja
       var is_touch_device = !!('ontouchstart' in window);
       (!is_touch_device) && new FingerBlast('html');
     })
@@ -106,7 +106,6 @@
         if (page=="index") Lanche.Index.load();
       });
     })
-    .js("javascripts/zepto.js")
     .ready(function(){
       
     })
