@@ -2,18 +2,14 @@
 
   var Map = Lanche.Map = function() {};
   Map.load = function() {
-    alert(1);
     viewModel.title('Mapa');
     viewModel.url_voltar('#home');
     viewModel.showBtnVoltar(true);
     viewModel.showHomeContent(false);
     viewModel.showMap(true);
 
-    alert(2);
     createHtml();
-    alert(3);
     applyBindings();
-    alert(4);
   };
 
   var createHtml = function() {
