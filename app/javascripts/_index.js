@@ -42,6 +42,7 @@
       .load("stylesheets/leaflet.min.css")
       .js("javascripts/leaflet.min.js")
       .js("javascripts/_map.js")
+      .js("javascripts/_local.js")
       .ready(function() {
         Lanche.Map.load();
       });
