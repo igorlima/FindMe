@@ -37,6 +37,16 @@
       });
     }).enter(Lanche.Util.clearPanel);
 
+    Path.map("#map").to(function(){
+      head
+      .load("stylesheets/leaflet.min.css")
+      .js("javascripts/leaflet.min.js")
+      .js("javascripts/_map.js")
+      .ready(function() {
+        Lanche.Map.load();
+      });
+    }).enter(Lanche.Util.clearPanel);
+
     Path.listen();
   }();
   

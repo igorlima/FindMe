@@ -1,4 +1,4 @@
-;(function(window, $, ko, viewModel) {
+;(function(Lanche, $, ko, viewModel) {
   var cardapios = [
     {
       url: '#cardapio/hamburguer',
@@ -6,7 +6,7 @@
     }
   ];
 
-  var Cardapio = window.Lanche.Cardapio = function(){};
+  var Cardapio = Lanche.Cardapio = function(){};
   Cardapio.load = function() {
     viewModel.title('Cardápio');
     viewModel.url_voltar('#home');
@@ -53,4 +53,4 @@
     Path.listen();
   }();
   
-})(window, Zepto, ko, Lanche.viewModel);
+})(window.Lanche, Zepto, ko, Lanche.viewModel);

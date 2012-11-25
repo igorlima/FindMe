@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72x72.png">
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-touch-icon-57x57.png">
 
-  <!-- Include the compiled Ratchet CSS -->
+  <!-- Include the compiled Ratchet CSS -->  
   <link rel="stylesheet" href="stylesheets/ratchet.min.css">
   <!-- Intro paragraph styles. Delete once you start using this page -->
   <style type="text/css">
@@ -84,7 +84,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="#map">
           <strong>Rastrear minha compra</strong>
           <span class="chevron"></span>
         </a>
@@ -106,6 +106,7 @@
   </div>
 
   <div id="phone-app" class="content" data-bind="visible: !showHomeContent()"></div>
+  <div id="map"></div>
 
   <!-- Include the compiled Ratchet JS -->
   <script src="javascripts/head.load.min.js"></script>
@@ -115,7 +116,7 @@
     .js("javascripts/zepto.min.js")
     .js("javascripts/knockout-2.2.0.js")
     .ready(function(){
-
+      
       //ViewModel
       var Lanche = window.Lanche = function() {};
       var LancheViewModel = function () {};
