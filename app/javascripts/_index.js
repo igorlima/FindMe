@@ -1,5 +1,4 @@
-;(function(Lanche) {
-  var viewModel = Lanche.viewModel;
+;(function(Lanche, ko, viewModel) {
 
   var Util = Lanche.Util = function() {};
   Util.url = function(event) {
@@ -41,4 +40,4 @@
     Path.listen();
   }();
   
-})(window.Lanche);
+})(window.Lanche, ko, Lanche.viewModel);
