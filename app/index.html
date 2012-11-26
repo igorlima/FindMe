@@ -33,6 +33,14 @@
       font-size: 0.8em;
     }
     
+    .list {
+      margin-bottom: 60px;
+    }
+
+    .list.compra {
+      margin-bottom: 20px;
+    }
+
     .list.compra li {
       padding-right: 130px;
     }
@@ -52,6 +60,7 @@
     .all-screen { 
       height: 100%; 
     }
+
 
   </style>
 
@@ -80,7 +89,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="#map">
           <strong>Encontre nossa(s) loja(s)</strong>
           <span class="chevron"></span>
         </a>
@@ -88,18 +97,6 @@
       <li>
         <a href="#">
           <strong>Promoções</strong>
-          <span class="chevron"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#map">
-          <strong>Rastrear minha compra</strong>
-          <span class="chevron"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <strong>Histórico de compra</strong>
           <span class="chevron"></span>
         </a>
       </li>
@@ -116,6 +113,29 @@
   <div class="all-screen" data-bind="visible: showMap() ">
     <div id="map" class="all-screen"></div>
   </div>
+
+  <nav class="bar-tab" data-bind="visible: !showMap() ">
+    <ul class="tab-inner">
+      <li class="tab-item">
+        <a href="#home">
+          <img class="tab-icon" src="images/icon-home.png">
+          <div class="tab-label">Início</div>
+        </a>
+      </li>
+      <li class="tab-item">
+        <a href="#">
+          <img class="tab-icon" src="images/icon-messages.png">
+          <div class="tab-label">Contato</div>
+        </a>
+      </li>
+      <li class="tab-item">
+        <a href="#">
+          <img class="tab-icon" src="images/icon-hamburger.png">
+          <div class="tab-label">Meu pedido</div>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <!-- Include the compiled Ratchet JS -->
   <script src="javascripts/head.load.min.js"></script>

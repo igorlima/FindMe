@@ -1,10 +1,5 @@
 ;(function(Lanche, $, ko, viewModel) {
-  var cardapios = [
-    {
-      url: '#cardapio/hamburguer',
-      description: 'Hamburguer'
-    }
-  ];
+  var cardapios = null;
 
   var Cardapio = Lanche.Cardapio = function(){};
   Cardapio.load = function() {
@@ -14,8 +9,20 @@
     viewModel.showHomeContent(false);
     viewModel.showMap(false);
 
-    createHtml();
-    applyBindings();
+    if (!cardapios) {
+      loadCardapioFromServer();
+    } else {  
+      createHtml();
+      applyBindings();
+    }
+  };
+
+  var loadCardapioFromServer = function() {
+    $.getJSON('/cardapios.json', function(data) {
+      cardapios = data;
+      createHtml();
+      applyBindings();
+    });
   };
 
   var createHtml = function() {

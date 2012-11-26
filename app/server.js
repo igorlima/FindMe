@@ -9,6 +9,51 @@ app.get('/', function(req, res){
   res.json({ user: 'tobi' });
 });
 
+app.get('/cardapios.json', function(req, res){
+  res.json([
+    {
+      url: '#cardapio/hamburguer',
+      description: 'Hamburguer'
+    },
+    {
+      url: '#',
+      description: 'Filé de Lombo'
+    },
+    {
+      url: '#',
+      description: 'Filé de Frango'
+    },
+    {
+      url: '#',
+      description: 'Super Burguer'
+    },
+    {
+      url: '#',
+      description: 'Filé Mignon'
+    },
+    {
+      url: '#',
+      description: 'Lanches Especiais'
+    },
+    {
+      url: '#',
+      description: 'Ingredientes Adicionais'
+    },
+    {
+      url: '#',
+      description: 'Mini Porções'
+    },
+    {
+      url: '#',
+      description: 'Bebidas'
+    },
+    {
+      url: '#',
+      description: 'Pratos'
+    }
+  ]);
+});
+
 app.get('/teste', function(req, res){
   res.format({
     text: function(){
