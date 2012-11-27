@@ -5,7 +5,8 @@
   };
   Local.fn = Local.prototype;
 
-  var layer = Leaflet.geoJson().addTo(Map.map);
+  Local.layer = Leaflet.geoJson().addTo(Map.map);
+  Local.layer.addTo(Map.map);
 
   var styleFeaturePoint = {
     "color": "#dd0000",
@@ -48,7 +49,7 @@
         //utilizando filtro para alterar a visibilidade do ponto no mapa
         return feature.properties.show_on_map;
       }
-    }).addTo(Map.map);
+    }).addTo(Local.layer);
     return Local;
   };
 
