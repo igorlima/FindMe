@@ -9,10 +9,10 @@
   !function() {
     container = $("<div class='leaflet-control-layers leaflet-control'/>");
     container.on('tap', function() {
-      container.addClass('leaflet-control-layers-expanded');
-    });
-    Map.map.on('click', function() {
-      container.removeClass('leaflet-control-layers-expanded');
+      if (containet.hasClass('leaflet-control-layers-expanded'))
+        container.removeClass('leaflet-control-layers-expanded');
+      else
+        container.addClass('leaflet-control-layers-expanded');
     });
     container.on('mouseover', function() {
       container.addClass('leaflet-control-layers-expanded');
