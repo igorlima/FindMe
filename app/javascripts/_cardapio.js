@@ -53,7 +53,10 @@
   // Routes
   !function () {
     Path.map("#cardapio/hamburguer").to(function(){
-      head.js("javascripts/_cardapio_hamburguer.js", function(){
+      head
+      .js("javascripts/lawnchair-0.6.1.min.js")
+      .js("javascripts/_cardapio_hamburguer.js")
+      .ready(function(){
         Cardapio.Hamburguer.load();
       });
     }).enter(Lanche.Util.clearPanel);
