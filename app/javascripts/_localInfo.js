@@ -9,7 +9,7 @@
   !function() {
     container = $("<div class='leaflet-control-layers leaflet-control'/>");
     container.on('tap', function() {
-      if (containet.hasClass('leaflet-control-layers-expanded'))
+      if (container.hasClass('leaflet-control-layers-expanded'))
         container.removeClass('leaflet-control-layers-expanded');
       else
         container.addClass('leaflet-control-layers-expanded');
