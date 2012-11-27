@@ -15,6 +15,8 @@
       createHtml();
       applyBindings();
     }
+
+    Lanche.spinner.stop();
   };
 
   var loadCardapioFromServer = function() {
@@ -53,6 +55,7 @@
   // Routes
   !function () {
     Path.map("#cardapio/hamburguer").to(function(){
+      Lanche.spinner.start();
       head
       .js("javascripts/lawnchair-0.6.1.min.js")
       .js("javascripts/_cardapio_hamburguer.js")

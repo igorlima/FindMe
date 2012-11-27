@@ -19,6 +19,8 @@
     viewModel.showBtnVoltar(false);
     viewModel.showHomeContent(true);
     viewModel.showMap(false);
+
+    Lanche.spinner.stop();
   };
 
   //ViewModel
@@ -34,12 +36,14 @@
   // Routes
   !function () {
     Path.map("#cardapio").to(function(){
+      Lanche.spinner.start();
       head.js("javascripts/_cardapio.js", function() {
         Lanche.Cardapio.load();
       });
     }).enter(Lanche.Util.clearPanel);
 
     Path.map("#map").to(function(){
+      Lanche.spinner.start();
       head
       .js("javascripts/leaflet.min.js")
       .js("javascripts/_map.js")

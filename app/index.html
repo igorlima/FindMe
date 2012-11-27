@@ -141,13 +141,22 @@
   <script src="javascripts/head.load.min.js"></script>
   <script>
     head
+    .js("javascripts/spin.min.js", function() {
+      var Lanche = window.Lanche = window.Lanche || function() {};
+      var target = document.getElementsByTagName('body')[0];
+      var spinner = Lanche.spinner = new Spinner({});
+      spinner.start = function() {
+        spinner.spin(target);
+      };
+      spinner.start();
+    })
     .js("javascripts/path.min.js")
     .js("javascripts/zepto.min.js")
     .js("javascripts/knockout-2.2.0.js")
     .ready(function(){
       
       //ViewModel
-      var Lanche = window.Lanche = function() {};
+      var Lanche = window.Lanche = window.Lanche || function() {};
       var LancheViewModel = function () {};
       Lanche.viewModel = new LancheViewModel();
 

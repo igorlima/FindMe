@@ -10,6 +10,7 @@
 
     createHtml();
     applyBindings();
+    Lanche.spinner.stop();
   };
 
   var createHtml = function() {
