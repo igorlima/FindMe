@@ -17,8 +17,7 @@
     .on('mouseout', function() {
       container.removeClass('leaflet-control-layers-expanded');
     });
-
-    Map.map.on('swipe', function() {
+    $(Lanche.Map.map.getContainer()).on('swipe', function() {
       container.removeClass('leaflet-control-layers-expanded');
     });
 
