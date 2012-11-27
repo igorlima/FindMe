@@ -7,6 +7,7 @@
 
   Local.layer = Leaflet.geoJson().addTo(Map.map);
   Local.layer.addTo(Map.map);
+  Local.datas = [];
 
   var styleFeaturePoint = {
     "color": "#dd0000",
@@ -30,26 +31,29 @@
   };
 
   Local.fn.addToMap = function () {
-    Leaflet.geoJson(this.geoJson, {
-      style: function(feature) {
-        switch (feature.geometry.type) {
-          case 'Point':    return styleFeaturePoint;
-          case 'Polygon': return styleFeaturePolygon;
+    Local.datas.push({ 
+      geoJson: this.geoJson,
+      layer: Leaflet.geoJson(this.geoJson, {
+        style: function(feature) {
+          switch (feature.geometry.type) {
+            case 'Point':    return styleFeaturePoint;
+            case 'Polygon': return styleFeaturePolygon;
+          }
+        },
+        pointToLayer: function (feature, latlng) {
+          return Leaflet.circleMarker (latlng, stylePoint); //alteração para que o ponto seja um círculo
+        },
+        onEachFeature: function (feature, layer) {
+          //adicionando popup a cada ponto
+          if (feature.properties && feature.properties.popupContent)
+            layer.bindPopup(feature.properties.popupContent);
+        },
+        filter: function(feature, layer) {
+          //utilizando filtro para alterar a visibilidade do ponto no mapa
+          return feature.properties.show_on_map;
         }
-      },
-      pointToLayer: function (feature, latlng) {
-        return Leaflet.circleMarker (latlng, stylePoint); //alteração para que o ponto seja um círculo
-      },
-      onEachFeature: function (feature, layer) {
-        //adicionando popup a cada ponto
-        if (feature.properties && feature.properties.popupContent)
-          layer.bindPopup(feature.properties.popupContent);
-      },
-      filter: function(feature, layer) {
-        //utilizando filtro para alterar a visibilidade do ponto no mapa
-        return feature.properties.show_on_map;
-      }
-    }).addTo(Local.layer);
+      }).addTo(Local.layer)
+    });
     return Local;
   };
 
@@ -99,7 +103,7 @@
   Local.casaDaGleyce = {
     "type": "Feature",
     "properties": {
-      "name": "Residência da Gleycia",
+      "name": "Residência da Gleyce",
       "popupContent": "Aqui é a residência da querida Gleycinha.",
       "show_on_map": true
     },
