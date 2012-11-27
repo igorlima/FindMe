@@ -11,7 +11,7 @@
     container.on('tap', function() {
       container.addClass('leaflet-control-layers-expanded');
     });
-    Map.map.on('tap', function() {
+    Map.map.on('click', function() {
       container.removeClass('leaflet-control-layers-expanded');
     });
     container.on('mouseover', function() {
