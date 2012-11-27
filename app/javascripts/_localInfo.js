@@ -7,17 +7,18 @@
 
   // CRIACAO DO CONTAINER DO CONTROLE
   !function() {
-    container = $("<div class='leaflet-control-layers leaflet-control'/>");
-    container.on('tap', function() {
-      if (container.hasClass('leaflet-control-layers-expanded'))
-        container.removeClass('leaflet-control-layers-expanded');
-      else
-        container.addClass('leaflet-control-layers-expanded');
-    });
-    container.on('mouseover', function() {
+    container = $("<div class='leaflet-control-layers leaflet-control'/>")
+    .on('tap', function() {
       container.addClass('leaflet-control-layers-expanded');
+    })
+    .on('mouseover', function() {
+      container.addClass('leaflet-control-layers-expanded');
+    })
+    .on('mouseout', function() {
+      container.removeClass('leaflet-control-layers-expanded');
     });
-    container.on('mouseout', function() {
+
+    Map.map.on('swipe', function() {
       container.removeClass('leaflet-control-layers-expanded');
     });
 
