@@ -8,6 +8,12 @@
   // CRIACAO DO CONTAINER DO CONTROLE
   !function() {
     container = $("<div class='leaflet-control-layers leaflet-control'/>");
+    container.on('tap', function() {
+      container.addClass('leaflet-control-layers-expanded');
+    });
+    Map.map.on('tap', function() {
+      container.removeClass('leaflet-control-layers-expanded');
+    });
     container.on('mouseover', function() {
       container.addClass('leaflet-control-layers-expanded');
     });
