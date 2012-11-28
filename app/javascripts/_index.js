@@ -30,11 +30,26 @@
     viewModel.showBtnVoltar = ko.observable(false);
     viewModel.showHomeContent = ko.observable(false);
     viewModel.showMap = ko.observable(false);
+    viewModel.pedido = ko.observable({});
     ko.applyBindings(viewModel);
   }();
   
   // Routes
   !function () {
+    Path.map("#pedido").to(function() {
+      Lanche.spinner.start();
+      $(".bar-tab .tab-item a[href='#pedido']")
+      .attr('href', '#')
+      .on('tap', function(e) { e.stopPropagation(); Lanche.Pedido.load(); })
+      .on('click', function(e) { e.stopPropagation(); Lanche.Pedido.load(); });
+      head
+      .js("javascripts/lawnchair-0.6.1.min.js")
+      .js("javascripts/_pedido.js")
+      .ready( function() {
+        Lanche.Pedido.load();
+      });
+    }).enter(Lanche.Util.clearPanel);
+
     Path.map("#cardapio").to(function(){
       Lanche.spinner.start();
       head.js("javascripts/_cardapio.js", function() {

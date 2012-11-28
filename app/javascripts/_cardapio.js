@@ -28,14 +28,14 @@
   };
 
   var createHtml = function() {
-    var app = $('#phone-app');
-    app.empty();
-    app.append(""+
+    $('#phone-app')
+    .empty()
+    .append(""+
       "<div class='content-padded'>"+
         "<p class='welcome'>Aprecie nosso cardárpio.</p>"+
       "</div>"
-    );
-    app.append(""+
+    )
+    .append(""+
       "<ul class='list inset' data-bind=\"foreach: { data: cardapios, as: 'c' }\" >"+
         "<li>"+
           "<a data-bind='attr: { href: c.url }'>"+

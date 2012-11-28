@@ -67,20 +67,17 @@
 </head>
 <body>
   
-  <!-- Make sure all your bars are the first things in your <body> -->
+  <div class="popover visible"></div>
   <header class="bar-title">
     <a class="button-prev" data-bind="attr: {href: url_voltar}, visible: showBtnVoltar">
       Voltar
     </a>
     <h1 class="title" data-bind="text: title"></h1>
   </header>
-
-  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content" data-bind="visible: showHomeContent">
     <div class="content-padded">
       <p class="welcome">Obrigado por utilizada nosso sistema online. Assim podemos oferecer maior mobilidade e agilidade em nossos serviços.</p>
     </div>
-
     <ul class="list inset">
       <li>
         <a href="#cardapio">
@@ -129,7 +126,7 @@
         </a>
       </li>
       <li class="tab-item">
-        <a href="#">
+        <a href="#pedido">
           <img class="tab-icon" src="images/icon-hamburger.png">
           <div class="tab-label">Meu pedido</div>
         </a>

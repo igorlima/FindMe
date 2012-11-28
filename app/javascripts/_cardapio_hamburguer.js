@@ -22,14 +22,14 @@
   };
 
   var createHtml = function() {
-    var app = $('#phone-app');
-    app.empty();
-    app.append(""+
+    $('#phone-app')
+    .empty()
+    .append(""+
       "<div class='content-padded'>"+
         "<p class='welcome'>Aprecie nosso(s) Hamburguer(es).</p>"+
       "</div>"
-    );
-    app.append(""+
+    )
+    .append(""+
       "<ul class='list inset compra' data-bind=\"foreach: { data: hamburgueres, as: 'h' }\" >"+
         "<li>"+
           "<strong data-bind='text: h.description'></strong>"+
@@ -40,8 +40,8 @@
           "<a class='button-positive' data-bind='click: $root.moreHamburguer'>+</a>"+
         "</li>"+
       "</ul>"
-    );
-    app.append(""+
+    )
+    .append(""+
       "<ul class='list inset'>"+
         "<li>"+
           "<strong>Total</strong>"+
