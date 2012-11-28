@@ -57,9 +57,23 @@
       });
     }).enter(Lanche.Util.clearPanel);
 
+    Path.map("#promocoes").to(function(){
+      Lanche.spinner.start();
+      head
+      .js("javascripts/ratchet-slider.js")
+      .js("javascripts/fingerblast.js")
+      .js("javascripts/_promocao.js")
+      .ready( function() {
+        Lanche.Promocao.load();
+      });
+    }).enter(Lanche.Util.clearPanel);
+
     Path.map("#cardapio").to(function(){
       Lanche.spinner.start();
-      head.js("javascripts/_cardapio.js", function() {
+      head
+      .js("javascripts/lawnchair-0.6.1.min.js")
+      .js("javascripts/_cardapio.js")
+      .ready( function() {
         Lanche.Cardapio.load();
       });
     }).enter(Lanche.Util.clearPanel);
