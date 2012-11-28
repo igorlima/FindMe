@@ -50,6 +50,13 @@
       });
     }).enter(Lanche.Util.clearPanel);
 
+    Path.map("#contato").to(function(){
+      Lanche.spinner.start();
+      head.js("javascripts/_contato.js", function() {
+        Lanche.Contato.load();
+      });
+    }).enter(Lanche.Util.clearPanel);
+
     Path.map("#cardapio").to(function(){
       Lanche.spinner.start();
       head.js("javascripts/_cardapio.js", function() {
