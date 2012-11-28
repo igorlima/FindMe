@@ -1,4 +1,4 @@
-;(function(Lanche, ready, $, ko, viewModel) {
+;(function(Lanche, $, ko, viewModel) {
   var cardapios = null;
 
   var Cardapio = Lanche.Cardapio = function(){};
@@ -16,9 +16,8 @@
       applyBindings();
     }
 
-    ready(function(){
+    if (cardapios) 
       Lanche.spinner.stop();
-    });
     
   };
 
@@ -27,6 +26,7 @@
       cardapios = data;
       createHtml();
       applyBindings();
+      Lanche.spinner.stop();
     });
   };
 
@@ -70,4 +70,4 @@
     Path.listen();
   }();
   
-})(window.Lanche, domready, Zepto, ko, Lanche.viewModel);
+})(window.Lanche, Zepto, ko, Lanche.viewModel);
