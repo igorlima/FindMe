@@ -21,7 +21,7 @@
       container.removeClass('leaflet-control-layers-expanded');
     });
 
-    container.append("<a class='leaflet-control-layers-toggle' href='#' title='Layers'></a>");
+    container.append("<a class='leaflet-control-layers-toggle lanche-control' href='#' title='Layers'></a>");
     container.append("<form class='leaflet-control-layers-list'/>");
 
     Info.control.onAdd = function(map) {

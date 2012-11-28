@@ -1,0 +1,45 @@
+.welcome {
+  line-height: 1.5;
+  color: #555;
+}
+
+.detail-lanche {
+  padding-left: 5px;
+  font-size: 0.8em;
+}
+
+.list {
+  margin-bottom: 60px;
+}
+
+.list.compra {
+  margin-bottom: 20px;
+}
+
+.list.compra li {
+  padding-right: 130px;
+}
+
+.list.compra .count {
+  margin-right: 80px;
+}
+
+.list.compra .button-negative {
+  margin-right: 40px;
+}
+
+.total {
+  float: right;
+}
+
+.all-screen { 
+  height: 100%; 
+}
+
+form.contato {
+  margin: 8px;
+}
+
+.lanche-control {
+  background-image: url(../images/hamburger-32x32.png) !important;
+}
