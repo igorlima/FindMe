@@ -72,6 +72,7 @@
       Lanche.spinner.start();
       head
       .js("javascripts/lawnchair-0.6.1.min.js")
+      .js("javascripts/ready.min.js")
       .js("javascripts/_cardapio.js")
       .ready( function() {
         Lanche.Cardapio.load();
