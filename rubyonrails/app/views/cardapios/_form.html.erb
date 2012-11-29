@@ -1,0 +1,25 @@
+<%= form_for(@cardapio) do |f| %>
+  <% if @cardapio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cardapio.errors.count, "error") %> prohibited this cardapio from being saved:</h2>
+
+      <ul>
+      <% @cardapio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @cardapio.url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @cardapio.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_cardapio_path(@cardapio) %> |
+<%= link_to 'Back', cardapios_path %>
