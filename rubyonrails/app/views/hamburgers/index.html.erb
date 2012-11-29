@@ -5,6 +5,7 @@
     <th>Description</th>
     <th>Ingredients</th>
     <th>Price</th>
+    <th>Order</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= hamburger.description %></td>
     <td><%= hamburger.ingredients %></td>
     <td><%= hamburger.price %></td>
+    <td><%= hamburger.order %></td>
     <td><%= link_to 'Show', hamburger %></td>
     <td><%= link_to 'Edit', edit_hamburger_path(hamburger) %></td>
     <td><%= link_to 'Destroy', hamburger, method: :delete, data: { confirm: 'Are you sure?' } %></td>

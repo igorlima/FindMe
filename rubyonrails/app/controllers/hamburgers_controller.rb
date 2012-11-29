@@ -2,7 +2,7 @@ class HamburgersController < ApplicationController
   # GET /hamburgers
   # GET /hamburgers.json
   def index
-    @hamburgers = Hamburger.all
+    @hamburgers = Hamburger.all.asc('order')
 
     respond_to do |format|
       format.html # index.html.erb

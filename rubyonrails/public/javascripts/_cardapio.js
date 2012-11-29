@@ -1,4 +1,5 @@
-;(function(Lanche, $, ko, viewModel) {
+;(function(window, $, ko, viewModel, P) {
+  var Lanche = window.Lanche;
   var cardapios = null;
 
   var Cardapio = Lanche.Cardapio = function(){};
@@ -41,7 +42,7 @@
     .append(""+
       "<ul class='list inset' data-bind=\"foreach: { data: cardapios, as: 'c' }\" >"+
         "<li>"+
-          "<a data-bind='attr: { href: c.url }, click: $root.selecionarCardapio(c) '>"+
+          "<a data-bind='attr: { href: c.url }, click: function(c, event){ $root.selecionarCardapio(c, event) } '>"+
             "<strong data-bind='text: c.description'></strong>"+
             "<span class='chevron'></span>"+
           "</a>"+
@@ -52,8 +53,9 @@
 
   var applyBindings = function() {
     viewModel.cardapios = cardapios;
-    viewModel.selecionarCardapio = function(c) {
+    viewModel.selecionarCardapio = function(c, event) {
       viewModel.cardapio(c);
+      window.location.href = event.currentTarget.href
     };
     ko.applyBindings(viewModel);
   };
@@ -78,4 +80,4 @@
     viewModel.cardapio = ko.observable(null);
   }();
   
-})(window.Lanche, Zepto, ko, Lanche.viewModel);
+})(window, Zepto, ko, Lanche.viewModel, Path);
