@@ -1,10 +1,10 @@
-<%= form_for(@hamburger) do |f| %>
-  <% if @hamburger.errors.any? %>
+<%= form_for(@cardapio_item) do |f| %>
+  <% if @cardapio_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@hamburger.errors.count, "error") %> prohibited this hamburger from being saved:</h2>
+      <h2><%= pluralize(@cardapio_item.errors.count, "error") %> prohibited this cardapio_item from being saved:</h2>
 
       <ul>
-      <% @hamburger.errors.full_messages.each do |msg| %>
+      <% @cardapio_item.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :order %><br />
-    <%= f.text_field :order %>
+    <%= f.number_field :order %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -4,8 +4,10 @@ one:
   description: MyString
   ingredients: MyString
   price: 
+  order: 1
 
 two:
   description: MyString
   ingredients: MyString
   price: 
+  order: 1

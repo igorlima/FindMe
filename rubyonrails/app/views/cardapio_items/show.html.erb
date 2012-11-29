@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @cardapio_item.description %>
+</p>
+
+<p>
+  <b>Ingredients:</b>
+  <%= @cardapio_item.ingredients %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @cardapio_item.price %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @cardapio_item.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_cardapio_item_path(@cardapio_item) %> |
+<%= link_to 'Back', cardapio_items_path %>

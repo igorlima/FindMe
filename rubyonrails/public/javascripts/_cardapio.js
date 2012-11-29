@@ -68,7 +68,7 @@
       .js("javascripts/lawnchair-0.6.1.min.js")
       .js("javascripts/_cardapio_conteudo.js")
       .ready(function(){
-        Cardapio.Hamburguer.load();
+        Cardapio.Item.load();
       });
     }).enter(Lanche.Util.clearPanel);
 

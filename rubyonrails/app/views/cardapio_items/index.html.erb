@@ -1,0 +1,29 @@
+<h1>Listing cardapio_items</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Ingredients</th>
+    <th>Price</th>
+    <th>Order</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cardapio_items.each do |cardapio_item| %>
+  <tr>
+    <td><%= cardapio_item.description %></td>
+    <td><%= cardapio_item.ingredients %></td>
+    <td><%= cardapio_item.price %></td>
+    <td><%= cardapio_item.order %></td>
+    <td><%= link_to 'Show', cardapio_item %></td>
+    <td><%= link_to 'Edit', edit_cardapio_item_path(cardapio_item) %></td>
+    <td><%= link_to 'Destroy', cardapio_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cardapio item', new_cardapio_item_path %>

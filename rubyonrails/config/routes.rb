@@ -1,5 +1,6 @@
 Rubyonrails::Application.routes.draw do
-  resources :hamburgers
+
+  resources :cardapio_items
 
   resources :cardapios
 
