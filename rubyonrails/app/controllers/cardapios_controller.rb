@@ -2,7 +2,7 @@ class CardapiosController < ApplicationController
   # GET /cardapios
   # GET /cardapios.json
   def index
-    @cardapios = Cardapio.all
+    @cardapios = Cardapio.all.asc('order')
 
     respond_to do |format|
       format.html # index.html.erb
