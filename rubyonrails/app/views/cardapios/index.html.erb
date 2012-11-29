@@ -4,6 +4,7 @@
   <tr>
     <th>Url</th>
     <th>Description</th>
+    <th>Json</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= cardapio.url %></td>
     <td><%= cardapio.description %></td>
+    <td><%= cardapio.json %></td>
     <td><%= link_to 'Show', cardapio %></td>
     <td><%= link_to 'Edit', edit_cardapio_path(cardapio) %></td>
     <td><%= link_to 'Destroy', cardapio, method: :delete, data: { confirm: 'Are you sure?' } %></td>

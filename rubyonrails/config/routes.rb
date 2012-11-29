@@ -1,4 +1,6 @@
 Rubyonrails::Application.routes.draw do
+  resources :hamburgers
+
   resources :cardapios
 
   # The priority is based upon order of creation:

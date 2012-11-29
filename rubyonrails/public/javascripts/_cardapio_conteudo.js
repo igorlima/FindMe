@@ -1,24 +1,37 @@
-;(function(window, $, ko, viewModel){
-  var hamburgueres = [
-    {
-      description: 'X-Burguer',
-      ingredients: '(Pão, Carne e Queijo)',
-      price: 5,
-      qte: ko.observable(0)
-    }
-  ];
+;(function(window, $, ko, viewModel, P){
+  var hamburgueres = null;
 
   var Hamburguer = window.Lanche.Cardapio.Hamburguer = function(){};
   Hamburguer.load = function() {
-    viewModel.title('Hamburguer');
-    viewModel.url_voltar('#cardapio');
+    viewModel.title( viewModel.cardapio().description );
+    viewModel.url_voltar( P.routes.previous );
     viewModel.showBtnVoltar(true);
     viewModel.showHomeContent(false);
     viewModel.showMap(false);
 
-    createHtml();
-    applyBindings();
-    Lanche.spinner.stop();
+    if (!hamburgueres) {
+      loadCardapioConteudoFromServer();
+    } else { 
+      createHtml();
+      applyBindings();
+    }
+
+    if (hamburgueres) 
+      Lanche.spinner.stop();
+
+  };
+
+  var loadCardapioConteudoFromServer = function() {
+    $.getJSON( viewModel.cardapio().json , function(data) {
+      hamburgueres = data;
+      hamburgueres.forEach( function(hamburguer) {
+        hamburguer.qte = ko.observable(0);
+      });
+
+      createHtml();
+      applyBindings();
+      Lanche.spinner.stop();
+    });
   };
 
   var createHtml = function() {
@@ -60,15 +73,15 @@
       h.qte() > 0 && h.qte( h.qte()-1 );
     };
     viewModel.priceHamburguer = function(h) {
-      return "R$ " + h.price.toFixed(2);
+      return "R$ " + parseFloat(h.price).toFixed(2);
     };
     viewModel.total = ko.computed(function() {
         var total = 0;
         for (var i=0; i < viewModel.hamburgueres().length; i++)
             total += viewModel.hamburgueres()[i].qte() * viewModel.hamburgueres()[i].price;
-        return "R$ " + total.toFixed(2);
+        return "R$ " + parseFloat(total).toFixed(2);
     });
     ko.applyBindings(viewModel);
   };
 
-})(window, Zepto, ko, Lanche.viewModel);
+})(window, Zepto, ko, Lanche.viewModel, Path);
