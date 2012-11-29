@@ -26,7 +26,7 @@
         "<ul>"+
           "<li>"+
             "<img src='images/promocao-1.jpg'>"+
-            "<span class='slide-text'>← Arraste me e se surpreenda</span>"+
+            "<span class='slide-text'><strong>← Arraste e se surpreenda</strong></span>"+
           "</li>"+
           "<li>"+
             "<img src='images/promocao-2.jpg'>"+
