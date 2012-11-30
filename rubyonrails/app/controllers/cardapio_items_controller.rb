@@ -2,7 +2,8 @@ class CardapioItemsController < ApplicationController
   # GET /cardapio_items
   # GET /cardapio_items.json
   def index
-    @cardapio_items = CardapioItem.all
+    
+    @cardapio_items = cardapio.itens
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +81,11 @@ class CardapioItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def cardapio
+    id_cardapio = request.query_parameters[:id]
+    Cardapio.where( _id: id_cardapio ).first
+  end
+
+  
 end
