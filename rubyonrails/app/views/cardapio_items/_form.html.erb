@@ -1,4 +1,4 @@
-<%= form_for(@cardapio_item) do |f| %>
+<%= form_for @cardapio_item, :url => cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id) do |f| %>
   <% if @cardapio_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cardapio_item.errors.count, "error") %> prohibited this cardapio_item from being saved:</h2>

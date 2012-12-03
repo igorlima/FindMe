@@ -21,5 +21,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_cardapio_item_path(@cardapio_item) %> |
-<%= link_to 'Back', cardapio_items_path %>
+<%= link_to 'Edit', edit_cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id) %> |
+<%= link_to 'Back', cardapio_items_path( :cardapio => @cardapio.id ) %>

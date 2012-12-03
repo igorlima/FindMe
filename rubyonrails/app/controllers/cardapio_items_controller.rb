@@ -3,7 +3,7 @@ class CardapioItemsController < ApplicationController
   # GET /cardapio_items.json
   def index
     
-    @cardapio_items = cardapio.itens
+    @cardapio_items = cardapio_itens
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class CardapioItemsController < ApplicationController
   # GET /cardapio_items/1
   # GET /cardapio_items/1.json
   def show
-    @cardapio_item = CardapioItem.find(params[:id])
+    @cardapio_item = cardapio_itens.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +25,7 @@ class CardapioItemsController < ApplicationController
   # GET /cardapio_items/new
   # GET /cardapio_items/new.json
   def new
+    @cardapio = cardapio
     @cardapio_item = CardapioItem.new
 
     respond_to do |format|
@@ -35,17 +36,19 @@ class CardapioItemsController < ApplicationController
 
   # GET /cardapio_items/1/edit
   def edit
-    @cardapio_item = CardapioItem.find(params[:id])
+    @cardapio_item = cardapio_itens.find(params[:id])
   end
 
   # POST /cardapio_items
   # POST /cardapio_items.json
   def create
+    @cardapio = cardapio
     @cardapio_item = CardapioItem.new(params[:cardapio_item])
+    cardapio_itens.push( @cardapio_item )
 
     respond_to do |format|
       if @cardapio_item.save
-        format.html { redirect_to @cardapio_item, notice: 'Cardapio item was successfully created.' }
+        format.html { redirect_to cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id), notice: 'Cardapio item was successfully created.' }
         format.json { render json: @cardapio_item, status: :created, location: @cardapio_item }
       else
         format.html { render action: "new" }
@@ -57,11 +60,12 @@ class CardapioItemsController < ApplicationController
   # PUT /cardapio_items/1
   # PUT /cardapio_items/1.json
   def update
-    @cardapio_item = CardapioItem.find(params[:id])
+    @cardapio = cardapio
+    @cardapio_item = cardapio_itens.find(params[:id])
 
     respond_to do |format|
       if @cardapio_item.update_attributes(params[:cardapio_item])
-        format.html { redirect_to @cardapio_item, notice: 'Cardapio item was successfully updated.' }
+        format.html { redirect_to cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id), notice: 'Cardapio item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,18 +77,24 @@ class CardapioItemsController < ApplicationController
   # DELETE /cardapio_items/1
   # DELETE /cardapio_items/1.json
   def destroy
-    @cardapio_item = CardapioItem.find(params[:id])
+    @cardapio = cardapio
+    @cardapio_item = cardapio_itens.find(params[:id])
     @cardapio_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to cardapio_items_url }
+      format.html { redirect_to cardapio_items_path( :cardapio => @cardapio.id ) }
       format.json { head :no_content }
     end
   end
 
   def cardapio
-    id_cardapio = request.query_parameters[:id]
-    Cardapio.where( _id: id_cardapio ).first
+    id_cardapio = request.query_parameters[:cardapio]
+    Cardapio.find( id_cardapio )
+  end
+
+  def cardapio_itens
+    @cardapio = cardapio
+    @cardapio.itens
   end
 
   

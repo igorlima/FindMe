@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @cardapio_item %> |
-<%= link_to 'Back', cardapio_items_path %>
+<%= link_to 'Show', cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id) %> |
+<%= link_to 'Back', cardapio_items_path( :cardapio => @cardapio.id ) %>

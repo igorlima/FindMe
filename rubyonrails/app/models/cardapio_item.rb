@@ -5,5 +5,5 @@ class CardapioItem
   field :price, type: BigDecimal
   field :order, type: Integer
 
-  embedded_in :cardapio
+  embedded_in :cardapio_itens
 end
