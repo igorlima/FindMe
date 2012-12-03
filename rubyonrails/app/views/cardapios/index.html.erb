@@ -9,6 +9,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @cardapios.each do |cardapio| %>
@@ -19,6 +20,7 @@
     <td><%= cardapio.order %></td>
     <td><%= link_to 'Show', cardapio %></td>
     <td><%= link_to 'Edit', edit_cardapio_path(cardapio) %></td>
+    <td><%= link_to 'Itens', cardapio_items_path(:cardapio => cardapio.id) %></td>
     <td><%= link_to 'Destroy', cardapio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
