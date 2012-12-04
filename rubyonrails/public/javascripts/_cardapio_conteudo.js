@@ -10,8 +10,6 @@
     viewModel.showHomeContent(false);
     viewModel.showMap(false);
 
-    
-
     if (!itens) {
       loadCardapioConteudoFromServer();
     } else { 
