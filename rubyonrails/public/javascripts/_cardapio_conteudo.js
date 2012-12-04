@@ -4,10 +4,13 @@
   var Item = window.Lanche.Cardapio.Item = function(){};
   Item.load = function() {
     viewModel.title( viewModel.cardapio().description );
+    viewModel.welcome = ko.observable( viewModel.cardapio().welcome );
     viewModel.url_voltar( P.routes.previous );
     viewModel.showBtnVoltar(true);
     viewModel.showHomeContent(false);
     viewModel.showMap(false);
+
+    
 
     if (!itens) {
       loadCardapioConteudoFromServer();
@@ -39,7 +42,7 @@
     .empty()
     .append(""+
       "<div class='content-padded'>"+
-        "<p class='welcome' data-bind='text:'>Aprecie nosso(s) Hamburguer(es).</p>"+
+        "<p class='welcome' data-bind='text: welcome '></p>"+
       "</div>"
     )
     .append(""+
