@@ -1,6 +1,8 @@
 <h1>Editing cardapio_item</h1>
 
-<%= render 'form' %>
+<%= form_for @cardapio_item, :url => cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id) do |f| %>
+  <%= render 'form', f: f, has_fields_to_quarter: true %>
+<% end %>
 
 <%= link_to 'Show', cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id) %> |
 <%= link_to 'Back', cardapio_items_path( :cardapio => @cardapio.id ) %>

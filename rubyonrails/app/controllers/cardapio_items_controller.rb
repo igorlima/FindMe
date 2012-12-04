@@ -2,7 +2,7 @@ class CardapioItemsController < ApplicationController
   # GET /cardapio_items
   # GET /cardapio_items.json
   def index
-    
+
     @cardapio_items = cardapio_itens
 
     respond_to do |format|
