@@ -55,7 +55,7 @@
     viewModel.cardapios = cardapios;
     viewModel.selecionarCardapio = function(c, event) {
       viewModel.cardapio(c);
-      window.location.href = event.currentTarget.href
+      window.location.href = event.currentTarget.href;
     };
     ko.applyBindings(viewModel);
   };
@@ -67,6 +67,7 @@
       head
       .js("javascripts/lawnchair-0.6.1.min.js")
       .js("javascripts/_cardapio_conteudo.js")
+      .js("javascripts/_pedido.js")
       .ready(function(){
         Cardapio.Item.load();
       });

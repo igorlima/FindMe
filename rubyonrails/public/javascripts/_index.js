@@ -30,7 +30,6 @@
     viewModel.showBtnVoltar = ko.observable(false);
     viewModel.showHomeContent = ko.observable(false);
     viewModel.showMap = ko.observable(false);
-    viewModel.pedido = ko.observable({});
     ko.applyBindings(viewModel);
   }();
   
@@ -43,7 +42,6 @@
       .on('tap', function(e) { e.stopPropagation(); Lanche.Pedido.load(); })
       .on('click', function(e) { e.stopPropagation(); Lanche.Pedido.load(); });
       head
-      .js("javascripts/lawnchair-0.6.1.min.js")
       .js("javascripts/_pedido.js")
       .ready( function() {
         Lanche.Pedido.load();
