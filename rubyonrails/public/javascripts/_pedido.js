@@ -24,19 +24,16 @@
 
   Pedido.fn.add = function(item) {
     if (!this._itens.hasKey(item._id))
-      this._itens.add( item._id, {
-        qte: 0, 
-        item: item
-      });
+      this._itens.add( item._id, item );
 
-    this._itens.get(item._id).qte++;
+    item.qte( item.qte()+1 );
   };
 
   Pedido.fn.remove = function(item) {
     if( !this._itens.hasKey(item._id) ) return;
 
-    this._itens.get(item._id).qte--;
-    if (this._itens.get(item._id).qte <= 0)
+    item.qte( item.qte()-1 );
+    if (item.qte() <= 0)
       this._itens.remove(item._id);
 
   };
@@ -95,7 +92,7 @@
     .append(""+
       "<ul class='list' data-bind=\"visible: pedido().length() > 0 , foreach: { data: pedido().itens() , as: 'i' } \" >"+
         "<li>"+
-          "<strong data-bind='text: i.item.description '></strong>"+
+          "<strong data-bind='text: i.description '></strong>"+
           " - <span data-bind='text: $root.subTotalItemPedido(i) '></span>" +
           "<span class='count-main' data-bind='text: i.qte '></span>"+
         "</li>"+
@@ -120,18 +117,22 @@
 
   var applyBindings = function() {
     view.esvaziarPedido = function() {
-      view.pedido( new Pedido({}) );
+      var itens = view.pedido()._itens;
+      itens.each( function(_id_item){
+        itens.get(_id_item).qte(0);
+        itens.remove(_id_item);
+      });
     };
 
     view.subTotalItemPedido = function(i) {
       if (!i) return '';
-      return "R$ " + parseFloat( i.qte * i.item.price ).toFixed(2);
+      return "R$ " + parseFloat( i.qte() * i.price ).toFixed(2);
     };
 
     view.totalPedido = ko.computed(function() {
         var total = 0;
         for (var i=0; i < view.pedido().itens().length; i++)
-            total += view.pedido().itens()[i].qte * view.pedido().itens()[i].item.price;
+            total += view.pedido().itens()[i].qte() * view.pedido().itens()[i].price;
         return "R$ " + parseFloat(total).toFixed(2);
     });
 

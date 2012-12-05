@@ -71,11 +71,9 @@
     viewModel.itens = ko.observableArray(hash_itens[id_cardapio]);
     viewModel.moreItem = function(h) {
       viewModel.pedido().add(h);
-      h.qte() < 5 && h.qte( h.qte()+1 );
     };
     viewModel.lessItem = function(h) {
       viewModel.pedido().remove(h);
-      h.qte() > 0 && h.qte( h.qte()-1 );
     };
     viewModel.priceItem = function(h) {
       return "R$ " + parseFloat(h.price).toFixed(2);
