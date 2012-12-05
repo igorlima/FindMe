@@ -80,11 +80,11 @@
     .empty()
     .append(""+
       "<header class='popover-header'>"+
-        "<a class='button' href='#' data-bind='visible: pedido().length() > 0, click: esvaziarPedido ' >"+
+        "<a class='button' href='#' data-bind='visible: showBtnPedido, click: esvaziarPedido ' >"+
           "Esvaziar"+
         "</a>"+
         "<h3 class='title'>Meu Pedido</h3>"+
-        "<a class='button' href='#' data-bind='visible: pedido().length() > 0 ' >"+
+        "<a class='button' href='#' data-bind='visible: showBtnPedido, click: finalizarPedido ' >"+
           "Comprar"+
         "</a>"+
       "</header>"
@@ -122,6 +122,13 @@
         itens.get(_id_item).qte(0);
         itens.remove(_id_item);
       });
+      view.showBtnPedido(false);
+    };
+
+    view.showBtnPedido = ko.observable( view.pedido().length() > 0 );
+
+    view.finalizarPedido = function() {
+      
     };
 
     view.subTotalItemPedido = function(i) {
