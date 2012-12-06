@@ -3,7 +3,7 @@ class CardapioItemsController < ApplicationController
   # GET /cardapio_items.json
   def index
 
-    @cardapio_items = cardapio_itens
+    @cardapio_items = cardapio_itens.asc('order')
 
     respond_to do |format|
       format.html # index.html.erb
