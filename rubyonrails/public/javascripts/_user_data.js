@@ -1,0 +1,35 @@
+;(function(window, $){
+
+  var Lanche = window.Lanche = window.Lanche || function() {};
+  var User = Lanche.User = function() {};
+
+  $.getJSON('/user.json', function(data){
+    User.data = data;
+    if (data) {
+
+      $('#authentication a').attr( 'href', '/signout' );
+      $('#authentication strong').html( 'Sair do facebook' );
+      $('#bar-tab-item-user')
+      .empty()
+      .addClass('tab-item')
+      .append(""+
+        "<a href='#user'>"+
+          "<img class='tab-icon' src='images/icon-profile.png'>"+
+          "<div class='tab-label'>"+ data.firstName.substr(0,8) +"</div>"+
+        "</a>"
+      )
+      ;
+
+    } else {
+
+      $('#authentication a').attr( 'href', '/auth/facebook' );
+      $('#authentication strong').html( 'Logar usando Facebook' );
+      $('#bar-tab-item-user')
+      .empty()
+      .removeClass('tab-item')
+      ;
+      
+    }
+
+  });
+})(window, Zepto);
