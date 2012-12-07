@@ -29,6 +29,11 @@ $(document).ready(function(){
 	$('ul.main-menu li a').each(function(){
 		if($($(this))[0].href==String(window.location))
 			$(this).parent().addClass('active');
+
+		$(this).click(function(){
+	    $('ul.main-menu li a').parent().removeClass('active');
+	    $(this).parent().addClass('active');
+	  });
 	});
 			
 	/* ---------- Acivate Functions ---------- */
@@ -206,7 +211,7 @@ function template_functions(){
 			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
 			"sPaginationType": "bootstrap",
 			"oLanguage": {
-			"sLengthMenu": "_MENU_ records per page"
+			"sLengthMenu": "_MENU_ registros por página"
 			}
 		} );
 	$('.btn-close').click(function(e){
