@@ -26,15 +26,7 @@ $(document).ready(function(){
 	
 				
 	/* ---------- Add class .active to current link  ---------- */
-	$('ul.main-menu li a').each(function(){
-		if($($(this))[0].href==String(window.location))
-			$(this).parent().addClass('active');
-
-		$(this).click(function(){
-	    $('ul.main-menu li a').parent().removeClass('active');
-	    $(this).parent().addClass('active');
-	  });
-	});
+	activeCurrentLink();
 			
 	/* ---------- Acivate Functions ---------- */
 	$("#overlay").delay(1250).fadeOut(500);
@@ -49,6 +41,14 @@ $(document).ready(function(){
 	
 	
 });
+
+function activeCurrentLink() {
+	$('ul.main-menu li a').each(function(){
+		$(this).parent().removeClass('active');
+		if($($(this))[0].href==String(window.location))
+			$(this).parent().addClass('active');
+	});
+}
 
 /* ---------- Masonry Gallery ---------- */
 

@@ -3,7 +3,9 @@
 /* Controllers */
 lanchesOnlineApp
   .controller( "HomeCtrl", ['$scope', function(ng) {
+    activeCurrentLink();
     circle_progess();
+    widthFunctions();
   }])
 
   .controller( "CardapiosCtrl", ['$scope', function(ng) {
@@ -16,14 +18,17 @@ lanchesOnlineApp
       $target.slideToggle();
     });
 
+    activeCurrentLink();
+    widthFunctions();
   }])
 
   .controller( "PedidosCtrl", ['$scope', function(ng) {
-
+    activeCurrentLink();
+    widthFunctions();
   }])
 
   .controller( "MensagensCtrl", ['$scope', function(ng) {
-
+    activeCurrentLink();
+    widthFunctions();
   }])
   ;
-
