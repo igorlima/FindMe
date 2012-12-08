@@ -11,6 +11,7 @@ angular
   $routeProvider.when('/cardapios', {templateUrl: 'partials/cardapios.html', controller: 'CardapiosCtrl'});
   $routeProvider.when('/cardapios-novo', {templateUrl: 'partials/cardapios-novo.html', controller: 'CardapiosNovoCtrl'});
   $routeProvider.when('/cardapios-visualizacao', {templateUrl: 'partials/cardapios-visualizacao.html', controller: 'CardapiosVisualizacaoCtrl'});
+  $routeProvider.when('/cardapios-edicao', {templateUrl: 'partials/cardapios-edicao.html', controller: 'CardapiosEdicaoCtrl'});
   $routeProvider.when('/mensagens', {templateUrl: 'partials/mensagens.html', controller: 'MensagensCtrl'});
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);

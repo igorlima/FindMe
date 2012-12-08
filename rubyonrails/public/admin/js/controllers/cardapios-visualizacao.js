@@ -5,8 +5,8 @@ lancheOnlineApp.
 controller( "CardapiosVisualizacaoCtrl", ['$rootScope', '$scope', '$location', 'Cardapio',
   function(root, ng, loc, Cardapio) {
 
-    if (!root.cardapio) 
-      loc.path('cardapios');
+    if (!root.cardapio)
+      ng.voltar();
 
     ng.voltar = function() {
       loc.path('cardapios');
