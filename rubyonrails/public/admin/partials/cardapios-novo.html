@@ -16,17 +16,58 @@
     <hr>
   </div>
 
+  <div id="alerta"> </div>
+
   <div class="row-fluid sortable">
     <div class="box span12">
       <div class="box-header" data-original-title>
-        <h2><i class="fa-icon-list"></i><span class="break"></span>Novo Cardápio</h2>
+        <h2><i class="fa-icon-edit"></i><span class="break"></span>Novo Cardápio</h2>
         <div class="box-icon">
           <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
         </div>
       </div>
       <div class="box-content">
         
-        
+        <form class="form-horizontal">
+          <fieldset>
+            <div class="control-group">
+              <label class="control-label" for="url">Url</label>
+              <div class="controls">
+                <input class="input-xlarge focused" placeholder="Digite a url da listagem da cardápio" type="text" ng-model="cardapio.url">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="description">Título</label>
+              <div class="controls">
+                <input class="input-xlarge focused" placeholder="Digite um título para o ardápio" type="text" ng-model="cardapio.description">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="welcome">Descrição</label>
+              <div class="controls">
+                <input class="input-xlarge focused" placeholder="Digite uma descrição para o cardápio" type="text" ng-model="cardapio.welcome">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="json">Json</label>
+              <div class="controls">
+                <input class="input-xlarge focused" placeholder="Link da listagem de itens do cardápio" type="text" ng-model="cardapio.json">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="order">Ordem</label>
+              <div class="controls">
+                <input class="input-xlarge focused" placeholder="Digite uma ordem de precedência" type="text" ng-model="cardapio.order">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-success" ng-click="salvar($event)">Salvar</button>
+              <button type="reset" class="btn btn-warning">Limpar</button>
+              <button type="button" class="btn btn-inverse" ng-click="voltar()">Voltar</button>
+            </div>
+          </fieldset>
+        </form>
+
       </div>
     </div>
   </div>
