@@ -19,7 +19,7 @@ controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio',
       root.cardapio = cardapio;
     };
 
-    ng.editarItens = function(cardapio) {
+    ng.itens = function(cardapio) {
       root.cardapio = cardapio;
     };
 
