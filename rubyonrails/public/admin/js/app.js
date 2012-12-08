@@ -13,6 +13,7 @@ angular
   $routeProvider.when('/cardapios-visualizacao', {templateUrl: 'partials/cardapios-visualizacao.html', controller: 'CardapiosVisualizacaoCtrl'});
   $routeProvider.when('/cardapios-edicao', {templateUrl: 'partials/cardapios-edicao.html', controller: 'CardapiosEdicaoCtrl'});
   $routeProvider.when('/cardapios-itens', {templateUrl: 'partials/cardapios-itens.html', controller: 'CardapiosItensCtrl'});
+  $routeProvider.when('/cardapios-itens-novo', {templateUrl: 'partials/cardapios-itens-novo.html', controller: 'CardapiosItensNovoCtrl'});
   $routeProvider.when('/mensagens', {templateUrl: 'partials/mensagens.html', controller: 'MensagensCtrl'});
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);

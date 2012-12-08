@@ -2,66 +2,40 @@
 
 lancheOnlineApp.
 
-controller( "CardapiosItensCtrl", ['$rootScope', '$scope', '$location', 'CardapioItem',
+controller( "CardapiosItensNovoCtrl", ['$rootScope', '$scope', '$location', 'CardapioItem',
   function(root, ng, loc, CardapioItem) {
     !root.cardapio && loc.path('cardapios');
 
-    ng.itens = [];
-    ng.carregando = true;
-
-    var listarItens = function() {
-      CardapioItem.all( {cardapio:root.cardapio._id}, function(data) {
-        ng.itens = data;
-        ng.carregando = false;
-      });
-    };
-    listarItens();
+    ng.item = {};
 
     ng.voltar = function() {
-      loc.path('cardapios');
+      loc.path('cardapios-itens');
     };
 
-    ng.visualizar = function(item) {
-      root.cardapioItem = item;
-    };
-
-    ng.editar = function(item) {
-      root.cardapioItem = item;
-    };
-
-    ng.excluir = function(item) {
-      ng.cardapioItem = item;
-      $('#modalExcluirItem').modal('show');
-    };
-
-    ng.excluirItem = function(event) {
+    ng.salvar = function(event) {
       event.preventDefault();
-      ng.carregando = true;
-      $('#modalExcluirItem').modal('hide');
-
       var alerta = $('#alerta').empty();
-      CardapioItem.remove( {id:ng.cardapioItem._id},
+      CardapioItem.save( {cardapio:root.cardapio._id}, ng.item,
         function(data){
           alerta.append(
             "<div class='alert alert-success'>"+
               "<button type='button' class='close' data-dismiss='alert'>×</button>"+
-              "<strong>Exclusão realizada com sucesso!</strong> O cardápio foi excluído da listagem."+
+              "<strong>Salvo com sucesso!</strong> O novo item já está disponivel no cardápio."+
             "</div>"
           );
-          listarItens();
+          ng.item = {};
         },
         function(data){
           alerta.append(
             "<div class='alert alert-error'>"+
               "<button type='button' class='close' data-dismiss='alert'>×</button>"+
-              "<strong>Atenção!</strong> Ocorreu algum problema ao excluir. Por favor, tente mais tarde."+
+              "<strong>Atenção!</strong> Ocorreu algum problema ao salvar. Por favor, tente mais tarde."+
             "</div>"
           );
-          listarItens();
         }
       );
     };
-    
+
     $('.btn-minimize').click(function(e){
       e.preventDefault();
       var $target = $(this).parent().parent().next('.box-content');
@@ -70,7 +44,7 @@ controller( "CardapiosItensCtrl", ['$rootScope', '$scope', '$location', 'Cardapi
       $target.slideToggle();
     });
 
-    activeCurrentLink();
     widthFunctions();
 
-  }]);
+  }])
+;
