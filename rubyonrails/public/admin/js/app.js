@@ -10,6 +10,7 @@ angular
   $routeProvider.when('/pedidos', {templateUrl: 'partials/pedidos.html', controller: 'PedidosCtrl'});
   $routeProvider.when('/cardapios', {templateUrl: 'partials/cardapios.html', controller: 'CardapiosCtrl'});
   $routeProvider.when('/cardapios-novo', {templateUrl: 'partials/cardapios-novo.html', controller: 'CardapiosNovoCtrl'});
+  $routeProvider.when('/cardapios-visualizacao', {templateUrl: 'partials/cardapios-visualizacao.html', controller: 'CardapiosVisualizacaoCtrl'});
   $routeProvider.when('/mensagens', {templateUrl: 'partials/mensagens.html', controller: 'MensagensCtrl'});
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);
