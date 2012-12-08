@@ -28,9 +28,36 @@ controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio',
     };
 
     ng.excluir = function(cardapio) {
-      ng.cardapios = [];
+      ng.cardapio = cardapio;
+      $('#modalExcluirCardapio').modal('show');
+    };
+
+    ng.excluirCardapio = function(event) {
+      event.preventDefault();
       ng.carregando = true;
-      listarCardapios();
+      $('#modalExcluirCardapio').modal('hide');
+
+      var alerta = $('#alerta').empty();
+      Cardapio.remove( {id:ng.cardapio._id},
+        function(data){
+          alerta.append(
+            "<div class='alert alert-success'>"+
+              "<button type='button' class='close' data-dismiss='alert'>×</button>"+
+              "<strong>Exclusão realizada com sucesso!</strong> O cardápio foi excluído da listagem."+
+            "</div>"
+          );
+          listarCardapios();
+        },
+        function(data){
+          alerta.append(
+            "<div class='alert alert-error'>"+
+              "<button type='button' class='close' data-dismiss='alert'>×</button>"+
+              "<strong>Atenção!</strong> Ocorreu algum problema ao excluir. Por favor, tente mais tarde."+
+            "</div>"
+          );
+          listarCardapios();
+        }
+      );
     };
     
     $('.btn-minimize').click(function(e){
