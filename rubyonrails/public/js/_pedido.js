@@ -149,8 +149,8 @@
   // Inicializacao
   !function () {
     head
-    .js("javascripts/lawnchair-0.6.1.min.js")
-    .js("javascripts/jaylist.min.js", function() {
+    .js("js/lawnchair-0.6.1.min.js")
+    .js("js/jaylist.min.js", function() {
       view.pedido = ko.observable( new Pedido({}) );
     });
   }();

@@ -65,9 +65,9 @@
     Path.map("#cardapio/conteudo").to(function(){
       Lanche.spinner.start();
       head
-      .js("javascripts/lawnchair-0.6.1.min.js")
-      .js("javascripts/_cardapio_conteudo.js")
-      .js("javascripts/_pedido.js")
+      .js("js/lawnchair-0.6.1.min.js")
+      .js("js/_cardapio_conteudo.js")
+      .js("js/_pedido.js")
       .ready(function(){
         Cardapio.Item.load();
       });

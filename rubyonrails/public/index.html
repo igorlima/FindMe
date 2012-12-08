@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Lanche online</title>
-  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
 
   <!-- Sets initial viewport load and disables zooming  -->
   <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -13,13 +13,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <!-- Set Apple icons for when prototype is saved to home screen -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57x57.png">
 
-  <link rel="stylesheet" href="stylesheets/ratchet.min.css">
-  <link rel="stylesheet" href="stylesheets/leaflet.min.css">
-  <link rel="stylesheet" href="stylesheets/lanche.css">
+  <link rel="stylesheet" href="css/ratchet.min.css">
+  <link rel="stylesheet" href="css/leaflet.min.css">
+  <link rel="stylesheet" href="css/lanche.css">
 
 </head>
 <body>
@@ -72,7 +72,7 @@
     <ul class="tab-inner">
       <li class="tab-item">
         <a href="#home">
-          <img class="tab-icon" src="images/icon-home.png">
+          <img class="tab-icon" src="img/icon-home.png">
           <div class="tab-label">Início</div>
         </a>
       </li>
@@ -80,13 +80,13 @@
       </li>
       <li class="tab-item">
         <a href="#contato">
-          <img class="tab-icon" src="images/icon-messages.png">
+          <img class="tab-icon" src="img/icon-messages.png">
           <div class="tab-label">Contato</div>
         </a>
       </li>
       <li class="tab-item">
         <a href="#pedido">
-          <img class="tab-icon" src="images/icon-hamburger.png">
+          <img class="tab-icon" src="img/icon-hamburger.png">
           <div class="tab-label">Meu pedido</div>
         </a>
       </li>
@@ -94,10 +94,10 @@
   </nav>
 
   <!-- Include the compiled Ratchet JS -->
-  <script src="javascripts/head.load.min.js"></script>
+  <script src="js/head.load.min.js"></script>
   <script>
     head
-    .js("javascripts/spin.min.js", function() {
+    .js("js/spin.min.js", function() {
       var Lanche = window.Lanche = window.Lanche || function() {};
       var target = document.getElementsByTagName('body')[0];
       var spinner = Lanche.spinner = new Spinner({});
@@ -106,10 +106,10 @@
       };
       spinner.start();
     })
-    .js("javascripts/path.min.js")
-    .js("javascripts/zepto.min.js")
-    .js("javascripts/knockout-2.2.0.js")
-    .js("javascripts/_user_data.js")
+    .js("js/path.min.js")
+    .js("js/zepto.min.js")
+    .js("js/knockout-2.2.0.js")
+    .js("js/_user_data.js")
     .ready(function(){
       
       //ViewModel
@@ -119,7 +119,7 @@
 
       //Routes
       Path.map("#home").to(function(){
-        head.js("javascripts/_index.js", function() {
+        head.js("js/_index.js", function() {
           Lanche.Index.load();
         });
       });

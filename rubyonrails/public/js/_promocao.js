@@ -25,14 +25,14 @@
       "<div class='slider'>"+
         "<ul>"+
           "<li>"+
-            "<img src='images/promocao-1.jpg'>"+
+            "<img src='img/promocao-1.jpg'>"+
             "<span class='slide-text'><strong>← Arraste e se surpreenda</strong></span>"+
           "</li>"+
           "<li>"+
-            "<img src='images/promocao-2.jpg'>"+
+            "<img src='img/promocao-2.jpg'>"+
           "</li>"+
           "<li>"+
-            "<img src='images/promocao-3.jpg'>"+
+            "<img src='img/promocao-3.jpg'>"+
           "</li>"+
         "</ul>"+
       "</div>"

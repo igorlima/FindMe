@@ -42,7 +42,7 @@
       .on('tap', function(e) { e.stopPropagation(); Lanche.Pedido.load(); })
       .on('click', function(e) { e.stopPropagation(); Lanche.Pedido.load(); });
       head
-      .js("javascripts/_pedido.js")
+      .js("js/_pedido.js")
       .ready( function() {
         Lanche.Pedido.load();
       });
@@ -50,7 +50,7 @@
 
     Path.map("#contato").to(function(){
       Lanche.spinner.start();
-      head.js("javascripts/_contato.js", function() {
+      head.js("js/_contato.js", function() {
         Lanche.Contato.load();
       });
     }).enter(Lanche.Util.clearPanel);
@@ -58,9 +58,9 @@
     Path.map("#promocoes").to(function(){
       Lanche.spinner.start();
       head
-      .js("javascripts/ratchet-slider.js")
-      .js("javascripts/fingerblast.js")
-      .js("javascripts/_promocao.js")
+      .js("js/ratchet-slider.js")
+      .js("js/fingerblast.js")
+      .js("js/_promocao.js")
       .ready( function() {
         Lanche.Promocao.load();
       });
@@ -69,8 +69,8 @@
     Path.map("#cardapio").to(function(){
       Lanche.spinner.start();
       head
-      .js("javascripts/lawnchair-0.6.1.min.js")
-      .js("javascripts/_cardapio.js")
+      .js("js/lawnchair-0.6.1.min.js")
+      .js("js/_cardapio.js")
       .ready( function() {
         Lanche.Cardapio.load();
       });
@@ -79,10 +79,10 @@
     Path.map("#map").to(function(){
       Lanche.spinner.start();
       head
-      .js("javascripts/leaflet.min.js")
-      .js("javascripts/_map.js")
-      .js("javascripts/_local.js")
-      .js("javascripts/_localInfo.js")
+      .js("js/leaflet.min.js")
+      .js("js/_map.js")
+      .js("js/_local.js")
+      .js("js/_localInfo.js")
       .ready(function() {
         Lanche.Map.load();
       });

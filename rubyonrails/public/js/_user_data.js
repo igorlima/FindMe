@@ -7,14 +7,14 @@
     User.data = data;
     if (data) {
 
-      $('#authentication a').attr( 'href', '/signout' );
-      $('#authentication strong').html( 'Sair do facebook' );
+      $('#authentication a').attr('href', '/signout');
+      $('#authentication strong').html('Sair');
       $('#bar-tab-item-user')
       .empty()
       .addClass('tab-item')
       .append(""+
         "<a href='#user'>"+
-          "<img class='tab-icon' src='images/icon-profile.png'>"+
+          "<img class='tab-icon' src='img/icon-profile.png'>"+
           "<div class='tab-label'>"+ data.firstName.substr(0,8) +"</div>"+
         "</a>"
       )
@@ -22,8 +22,8 @@
 
     } else {
 
-      $('#authentication a').attr( 'href', '/auth/facebook' );
-      $('#authentication strong').html( 'Logar usando Facebook' );
+      $('#authentication a').attr('href', '/auth/facebook');
+      $('#authentication strong').html('Logar usando Facebook');
       $('#bar-tab-item-user')
       .empty()
       .removeClass('tab-item')
