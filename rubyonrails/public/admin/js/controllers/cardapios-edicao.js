@@ -6,7 +6,7 @@ controller( "CardapiosEdicaoCtrl", ['$rootScope', '$scope', '$location', 'Cardap
   function(root, ng, loc, Cardapio) {
 
     if (!root.cardapio) 
-      ng.voltar();
+      loc.path('cardapios');
 
     ng.voltar = function() {
       loc.path('cardapios');

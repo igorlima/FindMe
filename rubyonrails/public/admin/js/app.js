@@ -4,7 +4,7 @@
 // Declare app level module which depends on filters, and services
 var lancheOnlineApp = 
 angular
-.module('lancheOnlineApp', ['lancheOnlineApp.filters', 'cardapioMOdel', 'lancheOnlineApp.directives'])
+.module('lancheOnlineApp', ['lancheOnlineApp.filters', 'cardapioModel', 'cardapioItemModel', 'lancheOnlineApp.directives'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'});
   $routeProvider.when('/pedidos', {templateUrl: 'partials/pedidos.html', controller: 'PedidosCtrl'});
@@ -12,6 +12,7 @@ angular
   $routeProvider.when('/cardapios-novo', {templateUrl: 'partials/cardapios-novo.html', controller: 'CardapiosNovoCtrl'});
   $routeProvider.when('/cardapios-visualizacao', {templateUrl: 'partials/cardapios-visualizacao.html', controller: 'CardapiosVisualizacaoCtrl'});
   $routeProvider.when('/cardapios-edicao', {templateUrl: 'partials/cardapios-edicao.html', controller: 'CardapiosEdicaoCtrl'});
+  $routeProvider.when('/cardapios-itens', {templateUrl: 'partials/cardapios-itens.html', controller: 'CardapiosItensCtrl'});
   $routeProvider.when('/mensagens', {templateUrl: 'partials/mensagens.html', controller: 'MensagensCtrl'});
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);

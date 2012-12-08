@@ -7,7 +7,10 @@
         <a href="#/home">Home</a> <span class="divider">/</span>
       </li>
       <li>
-        <a>Cardápios</a>
+        <a href="#/cardapios">Cardápios</a> <span class="divider">/</span>
+      </li>
+      <li>
+        <a>Itens</a>
       </li>
     </ul>
     <hr>
@@ -17,11 +20,11 @@
 
   <div class="row-fluid sortable">
     <div class="progress progress-striped progress-success active" ng-show="carregando">
-      <div class="bar" style="width: 100%;">carregando a listagem de cardápios</div>
+      <div class="bar" style="width: 100%;">carregando itens do cardápio de {{cardapio.description}}</div>
     </div>
     <div class="box span12" ng-show="!carregando">
       <div class="box-header" data-original-title>
-        <h2><i class="fa-icon-list"></i><span class="break"></span>Cardápios</h2>
+        <h2><i class="fa-icon-list"></i><span class="break"></span>Itens do cardápio {{cardapio.description}}</h2>
         <div class="box-icon">
           <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
         </div>
@@ -31,25 +34,22 @@
           <thead>
             <tr>
               <th>Título</th>
-              <th>Descrição</th>
-              <th>Ações</th>
+              <th>Preço</th>
+              <th style="width: 180px;">Ações</th>
             </tr>
           </thead>   
           <tbody>
-          <tr ng-repeat="cardapio in cardapios">
-            <td class="center">{{cardapio.description}}</td>
-            <td class="center">{{cardapio.welcome}}</td>
+          <tr ng-repeat="item in itens">
+            <td class="center">{{item.description}}</td>
+            <td class="center">{{item.price}}</td>
             <td class="center">
-              <a class="btn btn-success" href="#/cardapios-visualizacao" ng-click="visualizar(cardapio)">
+              <a class="btn btn-success" href="#/cardapios-itens-visualizacao" ng-click="visualizar(item)">
                 <i class="icon-zoom-in icon-white"></i>
               </a>
-              <a class="btn btn-warning" href="#/cardapios-itens" ng-click="itens(cardapio)">
-                <i class="icon-folder-open icon-white"></i>
-              </a>
-              <a class="btn btn-info" href="#/cardapios-edicao" ng-click="editar(cardapio)">
+              <a class="btn btn-info" href="#/cardapios-itens-edicao" ng-click="editar(item)">
                 <i class="icon-edit icon-white"></i>
               </a>
-              <a class="btn btn-danger" ng-click="excluir(cardapio)">
+              <a class="btn btn-danger" ng-click="excluir(item)">
                 <i class="icon-trash icon-white"></i>
               </a>
             </td>
@@ -57,25 +57,25 @@
           </tbody>
         </table>
 
-        <a href="#/cardapios-novo" class="btn btn-large btn-inverse">
+        <a href="#/cardapios-itens-novo" class="btn btn-large btn-inverse">
           <i class="icon-plus icon-white"></i>  
-          Novo Cardápio
+          Novo Item
         </a>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal hide fade" id="modalExcluirCardapio">
+<div class="modal hide fade" id="modalExcluirItem">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>{{cardapio.description}}</h3>
+    <h3>{{item.description}}</h3>
   </div>
   <div class="modal-body">
-    <p>Deseja realemente excluir o cardápio "{{cardapio.description}}"</p>
+    <p>Deseja realemente excluir o cardápio "{{item.description}}"</p>
   </div>
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">Fechar</a>
-    <a href="#/cardapios" class="btn btn-danger" ng-click="excluirCardapio($event)">Excluir</a>
+    <a href="#/cardapios-itens" class="btn btn-danger" ng-click="excluirItem($event)">Excluir</a>
   </div>
 </div>
