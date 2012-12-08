@@ -19,6 +19,23 @@ lancheOnlineApp
       });
     };
     listarCardapios();
+
+    ng.visualizar = function(cardapio) {
+      root.cardapio = cardapio;
+    };
+
+    ng.editarItens = function(cardapio) {
+      root.cardapio = cardapio;
+    };
+
+    ng.editar = function(cardapio) {
+      root.cardapio = cardapio;
+    };
+
+    ng.excluir = function(cardapio) {
+      root.cardapios = [];
+      listarCardapios();
+    };
     
     $('.btn-minimize').click(function(e){
       e.preventDefault();

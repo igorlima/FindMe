@@ -35,17 +35,17 @@
             <td class="center">{{cardapio.description}}</td>
             <td class="center">{{cardapio.welcome}}</td>
             <td class="center">
-              <a class="btn btn-success" href="#">
-                <i class="icon-zoom-in icon-white"></i>  
+              <a class="btn btn-success" href="#" ng-click="visualizar(cardapio)">
+                <i class="icon-zoom-in icon-white"></i>
               </a>
-              <a class="btn btn-warning" href="#">
-                <i class="icon-folder-open icon-white"></i>  
+              <a class="btn btn-warning" href="#" ng-click="editarItens(cardapio)">
+                <i class="icon-folder-open icon-white"></i>
               </a>
-              <a class="btn btn-info" href="#">
-                <i class="icon-edit icon-white"></i>  
+              <a class="btn btn-info" href="#" ng-click="editar(cardapio)">
+                <i class="icon-edit icon-white"></i>
               </a>
-              <a class="btn btn-danger" href="#">
-                <i class="icon-trash icon-white"></i> 
+              <a class="btn btn-danger" ng-click="excluir(cardapio)">
+                <i class="icon-trash icon-white"></i>
               </a>
             </td>
           </tr>
