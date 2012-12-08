@@ -3,7 +3,7 @@
 /* Directives */
 
 
-angular.module('lanchesOnlineApp.directives', []).
+angular.module('lancheOnlineApp.directives', []).
   directive('appVersion', ['version', function(version) {
     return function(scope, elm, attrs) {
       elm.text(version);

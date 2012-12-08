@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-var lanchesOnlineApp = angular.module('lanchesOnlineApp', ['lanchesOnlineApp.filters', 'lanchesOnlineApp.services', 'lanchesOnlineApp.directives']).
+var lancheOnlineApp = angular.module('lancheOnlineApp', ['lancheOnlineApp.filters', 'lancheOnlineApp.services', 'lancheOnlineApp.directives']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'});
     $routeProvider.when('/pedidos', {templateUrl: 'partials/pedidos.html', controller: 'PedidosCtrl'});

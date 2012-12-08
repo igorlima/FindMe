@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-lanchesOnlineApp
+lancheOnlineApp
   .controller( "HomeCtrl", ['$scope', function(ng) {
     activeCurrentLink();
     circle_progess();
