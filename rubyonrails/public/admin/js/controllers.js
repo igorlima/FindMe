@@ -8,7 +8,17 @@ lancheOnlineApp
     widthFunctions();
   }])
 
-  .controller( "CardapiosCtrl", ['$scope', function(ng) {
+  .controller( "CardapiosCtrl", ['$scope', 'Cardapio', function(ng, Cardapio) {
+
+    ng.cardapios = [];
+
+    var listarCardapios = function() {
+      Cardapio.all(function(data){
+        ng.cardapios = data;
+        ng.has_cardapios = ng.cardapios.length > 0 ? true : false;
+      });
+    };
+    listarCardapios();
     
     $('.btn-minimize').click(function(e){
       e.preventDefault();

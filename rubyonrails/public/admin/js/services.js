@@ -3,7 +3,14 @@
 /* Services */
 
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('lancheOnlineApp.services', []).
-  value('version', '0.1');
+angular.module('cardapioMOdel', ['ngResource']).
+factory('Cardapio', ['$resource', function($resource){
+  return $resource('/cardapios/:id', {}, {
+    all:    {method:'GET'   , params:{}, isArray:true },
+    save:   {method:'POST'  , params:{}},
+    update: {method:'PUT'   , params:{}},
+    get:    {method:'GET'   , params:{id:'@id'}},
+    remove: {method:'DELETE', params:{id:'@id'}}
+  });
+}]);
+
