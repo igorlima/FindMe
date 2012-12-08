@@ -1,12 +1,13 @@
 lancheOnlineApp.controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio', 
 
   function(root, ng, Cardapio) {
-    root.cardapios = root.cardapios || [];
+    ng.cardapios = [];
+    ng.carregando = true;
 
     var listarCardapios = function() {
       Cardapio.all(function(data){
-        root.cardapios = data;
-        ng.has_cardapios = ng.cardapios.length > 0 ? true : false;
+        ng.cardapios = data;
+        ng.carregando = false;
       });
     };
     listarCardapios();
@@ -24,7 +25,8 @@ lancheOnlineApp.controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio'
     };
 
     ng.excluir = function(cardapio) {
-      root.cardapios = [];
+      ng.cardapios = [];
+      ng.carregando = true;
       listarCardapios();
     };
     
@@ -38,5 +40,5 @@ lancheOnlineApp.controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio'
 
     activeCurrentLink();
     widthFunctions();
-    
+
   }]);
