@@ -1,5 +1,8 @@
-lancheOnlineApp.controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio', 
+'use strict';
 
+lancheOnlineApp.
+
+controller( "CardapiosCtrl", ['$rootScope', '$scope', 'Cardapio',
   function(root, ng, Cardapio) {
     ng.cardapios = [];
     ng.carregando = true;
