@@ -40,12 +40,16 @@ controller( "CardapiosItensCtrl", ['$rootScope', '$scope', '$location', 'Cardapi
       $('#modalExcluirItem').modal('hide');
 
       var alerta = $('#alerta').empty();
-      CardapioItem.remove( {id:ng.cardapioItem._id},
+      CardapioItem.remove( 
+        {
+          id:ng.cardapioItem._id,
+          cardapio:root.cardapio._id
+        },
         function(data){
           alerta.append(
             "<div class='alert alert-success'>"+
               "<button type='button' class='close' data-dismiss='alert'>×</button>"+
-              "<strong>Exclusão realizada com sucesso!</strong> O cardápio foi excluído da listagem."+
+              "<strong>Exclusão realizada com sucesso!</strong> O item foi excluído do cardápio."+
             "</div>"
           );
           listarItens();
