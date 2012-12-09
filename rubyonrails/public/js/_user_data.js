@@ -32,4 +32,19 @@
     }
 
   });
+
+  // Routes
+  !function () {
+    Path.map("#user").to(function() {
+      Lanche.spinner.start();
+      head
+      .js("js/_user.js")
+      .ready( function() {
+        Lanche.User.load();
+      });
+    }).enter(Lanche.Util.clearPanel);
+
+    Path.listen();
+  }();
+
 })(window, Zepto);
