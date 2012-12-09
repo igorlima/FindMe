@@ -42,7 +42,7 @@
       .ready( function() {
         Lanche.User.load();
       });
-    }).enter(Lanche.Util.clearPanel);
+    });
 
     Path.listen();
   }();
