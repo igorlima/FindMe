@@ -32,6 +32,7 @@ factory('Mensagem', ['$resource', function($resource){
     save:   {method:'POST'  , params:{}},
     update: {method:'PUT'   , params:{id:'@id'}},
     get:    {method:'GET'   , params:{id:'@id'}},
+    mark:   {method:'GET'   , params:{id:'@id'}},
     remove: {method:'DELETE', params:{id:'@id'}}
   });
 }]);

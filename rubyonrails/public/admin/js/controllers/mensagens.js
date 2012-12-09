@@ -11,6 +11,28 @@ controller( "MensagensCtrl", ['$rootScope', '$scope', 'Mensagem',
       $('#modalVisualizarMensagem').modal('show');
     };
 
+    ng.marcarComoLida = function(mensagem) {
+      Mensagem.mark( {id: mensagem._id, isread: 'read'},
+        function(data){
+          !root.carregandoMensagens && root.listarMensagens();
+        },
+        function(data){
+          !root.carregandoMensagens && root.listarMensagens();
+        }
+      );
+    };
+
+    ng.marcarComoNaoLida = function(mensagem) {
+      Mensagem.mark( {id: mensagem._id, isread: 'notread'},
+        function(data){
+          !root.carregandoMensagens && root.listarMensagens();
+        },
+        function(data){
+          !root.carregandoMensagens && root.listarMensagens();
+        }
+      );
+    };
+
     ng.excluir = function(mensagem) {
       ng.mensagem = mensagem;
       $('#modalExcluirMensagem').modal('show');

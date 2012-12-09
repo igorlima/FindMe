@@ -43,10 +43,10 @@
               <a class="btn btn-success" ng-click="visualizar(mensagem)">
                 <i class="icon-zoom-in icon-white"></i>
               </a>
-              <a class="btn btn-inverse" href="#" ng-show="mensagem.read==0"  ng-click="">
+              <a class="btn btn-inverse" ng-show="mensagem.read==0" ng-click="marcarComoLida(mensagem)">
                 <i class="icon-envelope icon-white"></i>
               </a>
-              <a class="btn" href="#" ng-show="mensagem.read!=0" ng-click="">
+              <a class="btn" ng-show="mensagem.read!=0" ng-click="marcarComoNaoLida(mensagem)">
                 <i class="icon-eye-close"></i>
               </a>
               <a class="btn btn-danger" ng-click="excluir(mensagem)">
