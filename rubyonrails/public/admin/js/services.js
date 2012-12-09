@@ -25,3 +25,13 @@ factory('CardapioItem', ['$resource', function($resource){
   });
 }]);
 
+angular.module('mensagemModel', ['ngResource']).
+factory('Mensagem', ['$resource', function($resource){
+  return $resource('/messages/:id/:isread', {}, {
+    all:    {method:'GET'   , params:{}, isArray:true },
+    save:   {method:'POST'  , params:{}},
+    update: {method:'PUT'   , params:{id:'@id'}},
+    get:    {method:'GET'   , params:{id:'@id'}},
+    remove: {method:'DELETE', params:{id:'@id'}}
+  });
+}]);

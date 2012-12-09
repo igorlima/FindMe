@@ -58,98 +58,13 @@
         <div class="nav-no-collapse header-nav">
           <ul class="nav pull-right">            
             <!-- start: Message Dropdown -->
-            <li class="dropdown hidden-phone">
-              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-envelope icon-white"></i> <span class="label label-success hidden-phone">9</span>
+            <li>
+              <a class="btn" href="#/mensagens">
+                <i class="icon-envelope icon-white"></i> 
+                <span class="label label-success hidden-phone">
+                  {{mensagensNaoLidas.length}}
+                </span>
               </a>
-              <ul class="dropdown-menu messages">
-                <li>
-                  <span class="dropdown-menu-title">Você possui 9 messagens</span>
-                </li>  
-                <li>
-                  <a href="#">
-                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
-                    <span class="header">
-                      <span class="from">
-                        Łukasz Holeczek
-                      </span>
-                      <span class="time">
-                        6 min
-                      </span>
-                    </span>
-                    <span class="message">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                    </span>  
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="avatar"><img src="img/avatar2.jpg" alt="Avatar"></span>
-                    <span class="header">
-                      <span class="from">
-                        Megan Abott
-                      </span>
-                      <span class="time">
-                        56 min
-                      </span>
-                    </span>
-                    <span class="message">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                    </span>  
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="avatar"><img src="img/avatar3.jpg" alt="Avatar"></span>
-                    <span class="header">
-                      <span class="from">
-                        Kate Ross
-                      </span>
-                      <span class="time">
-                        3 hours
-                      </span>
-                    </span>
-                    <span class="message">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                    </span>  
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="avatar"><img src="img/avatar4.jpg" alt="Avatar"></span>
-                    <span class="header">
-                      <span class="from">
-                          Julie Blank
-                      </span>
-                      <span class="time">
-                        yesterday
-                      </span>
-                    </span>
-                    <span class="message">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                    </span>  
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="avatar"><img src="img/avatar5.jpg" alt="Avatar"></span>
-                    <span class="header">
-                      <span class="from">
-                        Jane Sanders
-                      </span>
-                      <span class="time">
-                        Jul 25, 2012
-                      </span>
-                    </span>
-                    <span class="message">
-                      Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                    </span>  
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-menu-sub-footer">Ver todas mensagens</a>
-                </li>  
-              </ul>
             </li>
             <!-- end: Message Dropdown -->
             <li>
@@ -266,6 +181,7 @@
 
   <script src="http://igorribeirolima.com.br:9292/faye/client.js"></script>
   <script type="text/javascript">
+  /*
     var client = new Faye.Client('http://igorribeirolima.com.br:9292/faye', {
       timeout: 120
     });
@@ -285,6 +201,7 @@
         class_name: 'my-sticky-class'
       });
     });
+  */
   </script>
   <!-- end: JavaScript-->
   
