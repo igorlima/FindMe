@@ -1,7 +1,7 @@
 ;(function(window, $){
 
   var Lanche = window.Lanche = window.Lanche || function() {};
-  var User = Lanche.User = function() {};
+  var User = Lanche.User = Lanche.User || function() {};
 
   $.getJSON('/user.json', function(data){
     User.data = data;

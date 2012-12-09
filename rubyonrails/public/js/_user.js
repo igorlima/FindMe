@@ -1,6 +1,6 @@
 ;(function(Lanche, $, viewModel) {
 
-  var User = Lanche.User || function(){};
+  var User = Lanche.User = Lanche.User || function() {};
   User.load = function() {
     viewModel.title('Usuário');
     viewModel.url_voltar('#home');
