@@ -9,6 +9,7 @@
     viewModel.showMap(false);
 
     createHtml();
+    applyBindings();
     Lanche.spinner.stop();
   };
 
@@ -25,22 +26,35 @@
         "<div class='input-group'>"+
           "<div class='input-row'>"+
             "<label>Nome</label>"+
-            "<input type='text' placeholder='Igor Ribeiro Lima'>"+
+            "<input type='text' placeholder='Igor Ribeiro Lima' data-bind='value: contato().name' >"+
           "</div>"+
           "<div class='input-row'>"+
             "<label>Telefone</label>"+
-            "<input type='text' placeholder='(35) 9961-3395'>"+
+            "<input type='text' placeholder='(35) 9961-3395' data-bind='value: contato().phone' >"+
           "</div>"+
           "<div class='input-row'>"+
             "<label>E-mail</label>"+
-            "<input type='email' placeholder='team@evolut.io'>"+
+            "<input type='email' placeholder='team@evolut.io' data-bind='value: contato().email' >"+
           "</div>"+
         "</div>"+
-        "<input type='search' placeholder='Assunto'>"+
-        "<textarea rows='5'></textarea>"+
+        "<input type='search' placeholder='Assunto' data-bind='value: contato().subject' >"+
+        "<textarea rows='5' data-bind='value: contato().text' ></textarea>"+
         "<a class='button button-block'>Enviar</a>"+
-      "</form"
+      "</form>"
     );
+
+    $('#phone-app form a.button').click(function() {
+      Lanche.spinner.start();
+      $.post('/messages.json', {message: viewModel.contato()}, function(response){ 
+        viewModel.contato({});
+        Lanche.spinner.stop();
+      });
+    });
+  };
+
+  var applyBindings = function() {
+    viewModel.contato = ko.observable({});
+    ko.applyBindings(viewModel);
   };
   
 })(window.Lanche, Zepto, Lanche.viewModel);
