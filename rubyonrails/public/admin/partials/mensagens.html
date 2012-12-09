@@ -43,8 +43,11 @@
               <a class="btn btn-success" href="#" ng-click="">
                 <i class="icon-zoom-in icon-white"></i>
               </a>
-              <a class="btn btn-warning" href="#" ng-click="">
-                <i class="icon-folder-open icon-white"></i>
+              <a class="btn btn-inverse" href="#" ng-show="mensagem.read==0"  ng-click="">
+                <i class="icon-envelope icon-white"></i>
+              </a>
+              <a class="btn" href="#" ng-show="mensagem.read!=0" ng-click="">
+                <i class="icon-eye-close"></i>
               </a>
               <a class="btn btn-danger" ng-click="">
                 <i class="icon-trash icon-white"></i>
