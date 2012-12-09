@@ -33,18 +33,4 @@
 
   });
 
-  // Routes
-  !function () {
-    Path.map("#user").to(function() {
-      Lanche.spinner.start();
-      head
-      .js("js/_user.js")
-      .ready( function() {
-        Lanche.User.load();
-      });
-    });
-
-    Path.listen();
-  }();
-
 })(window, Zepto);

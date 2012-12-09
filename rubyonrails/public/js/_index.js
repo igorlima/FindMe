@@ -48,6 +48,15 @@
       });
     }).enter(Lanche.Util.clearPanel);
 
+    Path.map("#user").to(function() {
+      Lanche.spinner.start();
+      head
+      .js("js/_user.js")
+      .ready( function() {
+        Lanche.User.load();
+      });
+    });
+
     Path.map("#contato").to(function(){
       Lanche.spinner.start();
       head.js("js/_contato.js", function() {
