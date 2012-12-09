@@ -8,4 +8,5 @@ class Message
   field :email, type: String
   field :subject, type: String
   field :text, type: String
+  field :read, type: Integer, default: 0
 end

@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all.limit(35).desc('updated_at')
+    @messages = Message.all.limit(35).asc( 'read' ).desc('updated_at')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,6 +59,7 @@ class MessagesController < ApplicationController
   # PUT /messages/1.json
   def update
     @message = Message.find(params[:id])
+    @message.read = 1;
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
