@@ -1,5 +1,7 @@
 Rubyonrails::Application.routes.draw do
 
+  resources :messages
+
   resources :cardapio_items
 
   resources :cardapios
