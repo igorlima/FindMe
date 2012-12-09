@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all.limit(35).asc( 'read' ).desc('updated_at')
+    @messages = Message.all.limit(25).asc( 'read' ).desc('updated_at')
 
     respond_to do |format|
       format.html # index.html.erb
