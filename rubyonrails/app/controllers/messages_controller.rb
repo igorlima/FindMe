@@ -59,7 +59,6 @@ class MessagesController < ApplicationController
   # PUT /messages/1.json
   def update
     @message = Message.find(params[:id])
-    @message.read = 1;
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
@@ -68,6 +67,36 @@ class MessagesController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def read
+    @message = Message.find(params[:id])
+    @message.read = 1;
+
+    respond_to do |format|
+      if @message.update_attributes(params[:message])
+        format.html { render json: { success: true } }
+        format.json { render json: { success: true } }
+      else
+        format.html { render json: { success: false } }
+        format.json { render json: { success: false } }
+      end
+    end
+  end
+
+  def notread
+    @message = Message.find(params[:id])
+    @message.read = 0;
+
+    respond_to do |format|
+      if @message.update_attributes(params[:message])
+        format.html { render json: { success: true } }
+        format.json { render json: { success: true } }
+      else
+        format.html { render json: { success: false } }
+        format.json { render json: { success: false } }
       end
     end
   end

@@ -1,6 +1,8 @@
 Rubyonrails::Application.routes.draw do
 
   resources :messages
+  match 'messages/:id/read', to: 'messages#read', :via => :get
+  match 'messages/:id/notread', to: 'messages#notread', :via => :get
 
   resources :cardapio_items
 
