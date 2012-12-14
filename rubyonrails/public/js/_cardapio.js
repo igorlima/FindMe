@@ -62,7 +62,7 @@
 
   // Routes
   !function () {
-    Path.map("#cardapio/conteudo").to(function(){
+    P.map("#cardapio/conteudo").to(function(){
       Lanche.spinner.start();
       head
       .js("js/lawnchair-0.6.1.min.js")
@@ -73,7 +73,7 @@
       });
     }).enter(Lanche.Util.clearPanel);
 
-    Path.listen();
+    P.listen();
   }();
 
   // Observable

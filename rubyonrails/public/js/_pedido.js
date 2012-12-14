@@ -1,4 +1,4 @@
-;(function(Lanche, $, ko, view) {
+;(function(Lanche, $, ko, vm, P) {
   
   var Pedido = Lanche.Pedido = function() {
     this._itens = this._itens || new list();
@@ -84,7 +84,7 @@
           "Esvaziar"+
         "</a>"+
         "<h3 class='title'>Meu Pedido</h3>"+
-        "<a class='button' href='#' data-bind='visible: showBtnPedido, click: finalizarPedido ' >"+
+        "<a class='button' data-bind='visible: showBtnPedido, click: finalizarPedido ' >"+
           "Comprar"+
         "</a>"+
       "</header>"
@@ -116,43 +116,58 @@
   };
 
   var applyBindings = function() {
-    view.esvaziarPedido = function() {
-      var itens = view.pedido()._itens;
+    vm.esvaziarPedido = function() {
+      var itens = vm.pedido()._itens;
       itens.each( function(_id_item){
         itens.get(_id_item).qte(0);
         itens.remove(_id_item);
       });
-      view.showBtnPedido(false);
+      vm.showBtnPedido(false);
     };
 
-    view.showBtnPedido = ko.observable( view.pedido().length() > 0 );
+    vm.showBtnPedido = ko.observable( vm.pedido().length() > 0 );
 
-    view.finalizarPedido = function() {
-      
+    vm.finalizarPedido = function() {
+      close();
+      Path.dispatch('#compra');
     };
 
-    view.subTotalItemPedido = function(i) {
+    vm.subTotalItemPedido = function(i) {
       if (!i) return '';
       return "R$ " + parseFloat( i.qte() * i.price ).toFixed(2);
     };
 
-    view.totalPedido = ko.computed(function() {
+    vm.totalPedido = ko.computed(function() {
         var total = 0;
-        for (var i=0; i < view.pedido().itens().length; i++)
-            total += view.pedido().itens()[i].qte() * view.pedido().itens()[i].price;
+        for (var i=0; i < vm.pedido().itens().length; i++)
+            total += vm.pedido().itens()[i].qte() * vm.pedido().itens()[i].price;
         return "R$ " + parseFloat(total).toFixed(2);
     });
 
-    ko.applyBindingsToDescendants(view, $('.popover')[0]);
+    ko.applyBindingsToDescendants(vm, $('.popover')[0]);
   };
+
+  // Routes
+  !function () {
+    P.map("#compra").to(function(){
+      Lanche.spinner.start();
+      head
+      .js("js/_compra.js")
+      .ready(function(){
+        Lanche.Compra.load();
+      });
+    }).enter(Lanche.Util.clearPanel);
+
+    P.listen();
+  }();
 
   // Inicializacao
   !function () {
     head
     .js("js/lawnchair-0.6.1.min.js")
     .js("js/jaylist.min.js", function() {
-      view.pedido = ko.observable( new Pedido({}) );
+      vm.pedido = ko.observable( new Pedido({}) );
     });
   }();
 
-})(window.Lanche, Zepto, ko, Lanche.viewModel);
+})(window.Lanche, Zepto, ko, Lanche.viewModel, Path);
