@@ -43,4 +43,5 @@ gem 'mongoid', '~> 3.0.2'
 gem 'omniauth-facebook'
 gem 'faye'
 gem 'thin'
+gem 'paypal-recurring'
 
