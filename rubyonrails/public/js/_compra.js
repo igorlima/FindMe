@@ -20,7 +20,7 @@
       "<div class='content-padded'>"+
         "<p class='welcome'>"+
           "O total do pedido ficou em "+
-          "<strong data-bind='text: totalPedido'></strong>. "+
+          "<strong data-bind='text: strTotalPedido'></strong>. "+
           "Foi acrescido R$0.60 da taxa online e mais R$2.50 da taxa de entrega." +
         "</p>"+
       "</div>"

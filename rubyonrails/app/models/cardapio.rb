@@ -20,4 +20,3 @@ class Cardapio
   end
 
 end
-

@@ -102,7 +102,7 @@
       "<ul class='list inset' data-bind='visible: pedido().length()>0' >"+
         "<li>"+
           "<strong>Total</strong>"+
-          "<strong class='total' data-bind='text: totalPedido' ></strong>"+
+          "<strong class='total' data-bind='text: strTotalPedido' ></strong>"+
         "</li>"+
       "</ul>"
     )
@@ -141,7 +141,11 @@
         var total = 0;
         for (var i=0; i < vm.pedido().itens().length; i++)
             total += vm.pedido().itens()[i].qte() * vm.pedido().itens()[i].price;
-        return "R$ " + parseFloat(total).toFixed(2);
+        return parseFloat(total);
+    });
+
+    vm.strTotalPedido = ko.computed(function() {
+        return "R$ " + vm.totalPedido().toFixed(2);
     });
 
     ko.applyBindingsToDescendants(vm, $('.popover')[0]);
