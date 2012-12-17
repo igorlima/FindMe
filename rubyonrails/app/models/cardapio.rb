@@ -6,5 +6,6 @@ class Cardapio
   field :json, type:String
   field :order, type:Integer
 
-  embeds_many :itens, :as => :cardapio_itens, :class_name => "CardapioItem"
+  has_many :itens, :class_name => "CardapioItem"
+
 end

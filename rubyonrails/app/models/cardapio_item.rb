@@ -5,5 +5,6 @@ class CardapioItem
   field :price, type: BigDecimal
   field :order, type: Integer
 
-  embedded_in :cardapio_itens
+  belongs_to :cardapio, polymorphic: true
+  
 end
