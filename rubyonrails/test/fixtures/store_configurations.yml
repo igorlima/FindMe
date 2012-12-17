@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  qty_limit_lunch: 1
+  is_open: false
+  delivery_fee: 
+  online_fee: 
+
+two:
+  qty_limit_lunch: 1
+  is_open: false
+  delivery_fee: 
+  online_fee: 

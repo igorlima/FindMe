@@ -1,0 +1,33 @@
+<%= form_for(@store_configuration) do |f| %>
+  <% if @store_configuration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store_configuration.errors.count, "error") %> prohibited this store_configuration from being saved:</h2>
+
+      <ul>
+      <% @store_configuration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :qty_limit_lunch %><br />
+    <%= f.number_field :qty_limit_lunch %>
+  </div>
+  <div class="field">
+    <%= f.label :is_open %><br />
+    <%= f.check_box :is_open %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_fee %><br />
+    <%= f.text_field :delivery_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :online_fee %><br />
+    <%= f.text_field :online_fee %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Qty limit lunch:</b>
+  <%= @store_configuration.qty_limit_lunch %>
+</p>
+
+<p>
+  <b>Is open:</b>
+  <%= @store_configuration.is_open %>
+</p>
+
+<p>
+  <b>Delivery fee:</b>
+  <%= @store_configuration.delivery_fee %>
+</p>
+
+<p>
+  <b>Online fee:</b>
+  <%= @store_configuration.online_fee %>
+</p>
+
+
+<%= link_to 'Edit', edit_store_configuration_path(@store_configuration) %> |
+<%= link_to 'Back', store_configurations_path %>

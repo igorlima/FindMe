@@ -1,0 +1,29 @@
+<h1>Listing store_configurations</h1>
+
+<table>
+  <tr>
+    <th>Qty limit lunch</th>
+    <th>Is open</th>
+    <th>Delivery fee</th>
+    <th>Online fee</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @store_configurations.each do |store_configuration| %>
+  <tr>
+    <td><%= store_configuration.qty_limit_lunch %></td>
+    <td><%= store_configuration.is_open %></td>
+    <td><%= store_configuration.delivery_fee %></td>
+    <td><%= store_configuration.online_fee %></td>
+    <td><%= link_to 'Show', store_configuration %></td>
+    <td><%= link_to 'Edit', edit_store_configuration_path(store_configuration) %></td>
+    <td><%= link_to 'Destroy', store_configuration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Store configuration', new_store_configuration_path %>
