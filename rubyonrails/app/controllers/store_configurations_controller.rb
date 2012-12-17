@@ -1,4 +1,13 @@
 class StoreConfigurationsController < ApplicationController
+
+  def configuration
+    @store_configuration = StoreConfiguration.desc('updated_at').first
+    respond_to do |format|
+      format.html { render json: @store_configuration }
+      format.json { render json: @store_configuration }
+    end
+  end
+
   # GET /store_configurations
   # GET /store_configurations.json
   def index

@@ -1,6 +1,7 @@
 Rubyonrails::Application.routes.draw do
 
   resources :store_configurations
+  match 'configuration', to: 'store_configurations#configuration', :via => :get
 
   resources :messages
   match 'messages/:id/read', to: 'messages#read', :via => :get
