@@ -10,7 +10,7 @@
 
     createHtml();
     applyBindings();
-    Lanche.spinner.stop();
+    vm.configuration().online_fee && Lanche.spinner.stop();
   };
 
   var createHtml = function() {
@@ -21,7 +21,8 @@
         "<p class='welcome'>"+
           "O total do pedido ficou em "+
           "<strong data-bind='text: strTotalPedido'></strong>. "+
-          "Foi acrescido R$0.60 da taxa online e mais R$2.50 da taxa de entrega." +
+          "Foi acrescido <span data-bind='text: strOnlineFee'></span> da taxa online " +
+          "e mais <span data-bind='text: strDeliveryFee'></span> da taxa de entrega." +
         "</p>"+
       "</div>"
     )
@@ -56,7 +57,32 @@
         city: 'Lavras'
       }
     });
+    vm.onlineFee = ko.computed(function() {
+      return vm.configuration().online_fee ? parseFloat(vm.configuration().online_fee) : 0.00;
+    });
+    vm.deliveryFee = ko.computed(function() {
+      return vm.configuration().delivery_fee ? parseFloat(vm.configuration().delivery_fee) : 0.00;
+    });
+    vm.strOnlineFee = ko.computed(function() {
+      return "R$ " + vm.onlineFee().toFixed(2);
+    });
+    vm.strDeliveryFee = ko.computed(function() {
+      return "R$ " + vm.deliveryFee().toFixed(2);
+    });
+    vm.strTotalPedido = ko.computed(function() {
+      var total = vm.totalPedido() + vm.deliveryFee() + vm.onlineFee();
+      return "R$ " + total.toFixed(2);
+    });
     ko.applyBindings(vm);
   };
+
+  // Observable
+  !function () {
+    vm.configuration = ko.observable({});
+    $.getJSON( "/configuration", function(data) {
+      vm.configuration(data);
+      Lanche.spinner.stop();
+    });
+  }();
 
 })(window, Zepto, ko, Lanche.viewModel);
