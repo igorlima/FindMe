@@ -43,10 +43,10 @@
           "</div>"+
           "<div class='input-row'>"+
             "<label>Observação</label>"+
-            "<textarea rows='5' placeholder='Próximo ao Postinho. X-Burguer sem maionese' data-bind='value: compra().address.observation' ></textarea>"+
+            "<textarea rows='5' placeholder='Próximo ao Postinho. X-Burguer sem maionese' data-bind='value: compra().observation' ></textarea>"+
           "</div>"+
         "</div>"+
-        "<a class='button button-block'>Comprar</a>"+
+        "<a class='button button-block' data-bind='click: checkout '>Comprar</a>"+
       "</form>"
     );
   };
@@ -73,6 +73,24 @@
       var total = vm.totalPedido() + vm.deliveryFee() + vm.onlineFee();
       return "R$ " + total.toFixed(2);
     });
+    vm.checkout = function() {
+      
+      var checkout = vm.compra();
+      checkout.itens = [];
+      vm.pedido().itens().forEach( function(item){
+        checkout.itens.push({
+          id: item._id,
+          qty: item.qte()
+        });
+      });
+
+      Lanche.spinner.start();
+      $.post('/checkout', checkout, function(response){ 
+        console.warn(response);
+        Lanche.spinner.stop();
+      });
+
+    };
     ko.applyBindings(vm);
   };
 

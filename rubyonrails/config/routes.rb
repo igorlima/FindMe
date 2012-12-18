@@ -16,6 +16,8 @@ Rubyonrails::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'user', to: 'sessions#user'
 
+  match 'checkout', to: 'orders#create', :via => :post
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

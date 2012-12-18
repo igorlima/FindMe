@@ -7,4 +7,9 @@ class StoreConfiguration
   field :is_open, type: Boolean
   field :delivery_fee, type: BigDecimal
   field :online_fee, type: BigDecimal
+
+  def self.first_one
+    desc('updated_at').first
+  end
+
 end
