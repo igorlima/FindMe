@@ -9,6 +9,8 @@ class User
   field :oauth_token, type: String
   field :oauth_expires_at, type: Time
 
+  has_many :orders, :class_name => "Order"
+
   def self.from_omniauth(auth)
     user = User.where( uid: auth.uid, provider: auth.provider ).first
     user = User.new if user.nil?

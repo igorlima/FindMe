@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cardapio_item_id: MyString
+  qty: 1
+
+two:
+  cardapio_item_id: MyString
+  qty: 1

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  token: MyString
+  description: MyString
+  observation: MyString
+  has_shipping: MyString
+
+two:
+  token: MyString
+  description: MyString
+  observation: MyString
+  has_shipping: MyString
