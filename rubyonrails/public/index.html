@@ -106,30 +106,29 @@
       };
       spinner.start();
     })
-    .js("js/path.min.js")
-    .js("js/zepto.min.js")
-    .js("js/knockout-2.2.0.js")
-    .js("js/_user_data.js")
-    .ready(function(){
-      
-      //ViewModel
-      var Lanche = window.Lanche = window.Lanche || function() {};
-      var LancheViewModel = function () {};
-      Lanche.viewModel = new LancheViewModel();
+    .js(
+      "js/path.min.js",
+      "js/zepto.min.js",
+      "js/knockout-2.2.0.js",
+      "js/_user_data.js",
+      function() {
+        //ViewModel
+        var Lanche = window.Lanche = window.Lanche || function() {};
+        var LancheViewModel = function () {};
+        Lanche.viewModel = new LancheViewModel();
 
-      //Routes
-      Path.map("#home").to(function(){
-        head.js("js/_index.js", function() {
-          Lanche.Index.load();
+        //Routes
+        Path.map("#home").to(function(){
+          head.js("js/_index.js", function() {
+            Lanche.Index.load();
+          });
         });
-      });
 
-      location.hash = 'home';
-      Path.root("#home");
-      Path.listen();
-
-    })
-    ;
+        location.hash = 'home';
+        Path.root("#home");
+        Path.listen();
+      }
+    );
   </script>
 </body>
 </html>

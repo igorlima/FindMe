@@ -42,59 +42,72 @@
       .on('tap', function(e) { e.stopPropagation(); Lanche.Pedido.load(); })
       .on('click', function(e) { e.stopPropagation(); Lanche.Pedido.load(); });
       head
-      .js("js/_pedido.js")
-      .ready( function() {
-        Lanche.Pedido.load();
-      });
+      .js(
+        "js/_pedido.js",
+        function() {
+          Lanche.Pedido.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     Path.map("#user").to(function() {
       Lanche.spinner.start();
       head
-      .js("js/_user.js")
-      .ready( function() {
-        Lanche.User.load();
-      });
+      .js(
+        "js/_user.js",
+        function() {
+          Lanche.User.load();
+        }
+      );
     });
 
     Path.map("#contato").to(function(){
       Lanche.spinner.start();
-      head.js("js/_contato.js", function() {
-        Lanche.Contato.load();
-      });
+      head.js(
+        "js/_contato.js", 
+        function() {
+          Lanche.Contato.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     Path.map("#promocoes").to(function(){
       Lanche.spinner.start();
       head
-      .js("js/ratchet-slider.js")
-      .js("js/fingerblast.js")
-      .js("js/_promocao.js")
-      .ready( function() {
-        Lanche.Promocao.load();
-      });
+      .js(
+        "js/ratchet-slider.js",
+        "js/fingerblast.js",
+        "js/_promocao.js",
+        function() {
+          Lanche.Promocao.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     Path.map("#cardapio").to(function(){
       Lanche.spinner.start();
       head
-      .js("js/lawnchair-0.6.1.min.js")
-      .js("js/_cardapio.js")
-      .ready( function() {
-        Lanche.Cardapio.load();
-      });
+      .js(
+        "js/lawnchair-0.6.1.min.js",
+        "js/_cardapio.js",
+        function() {
+          Lanche.Cardapio.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     Path.map("#map").to(function(){
       Lanche.spinner.start();
       head
-      .js("js/leaflet.min.js")
-      .js("js/_map.js")
-      .js("js/_local.js")
-      .js("js/_localInfo.js")
-      .ready(function() {
-        Lanche.Map.load();
-      });
+      .js(
+        "js/leaflet.min.js",
+        "js/_map.js",
+        "js/_local.js",
+        "js/_localInfo.js",
+        function() {
+          Lanche.Map.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     Path.listen();

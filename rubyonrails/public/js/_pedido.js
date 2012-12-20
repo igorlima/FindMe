@@ -156,10 +156,12 @@
     P.map("#compra").to(function(){
       Lanche.spinner.start();
       head
-      .js("js/_compra.js")
-      .ready(function(){
-        Lanche.Compra.load();
-      });
+      .js(
+        "js/_compra.js",
+        function() {
+          Lanche.Compra.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     P.listen();
@@ -167,11 +169,15 @@
 
   // Inicializacao
   !function () {
+    vm.pedido = ko.observable( new Pedido({}) );
     head
-    .js("js/lawnchair-0.6.1.min.js")
-    .js("js/jaylist.min.js", function() {
-      vm.pedido = ko.observable( new Pedido({}) );
-    });
+    .js(
+      "js/lawnchair-0.6.1.min.js",
+      "js/jaylist.min.js", 
+      function() {
+        
+      }
+    );
   }();
 
 })(window.Lanche, Zepto, ko, Lanche.viewModel, Path);

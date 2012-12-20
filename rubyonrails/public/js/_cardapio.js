@@ -65,12 +65,14 @@
     P.map("#cardapio/conteudo").to(function(){
       Lanche.spinner.start();
       head
-      .js("js/lawnchair-0.6.1.min.js")
-      .js("js/_cardapio_conteudo.js")
-      .js("js/_pedido.js")
-      .ready(function(){
-        Cardapio.Item.load();
-      });
+      .js(
+        "js/lawnchair-0.6.1.min.js",
+        "js/_cardapio_conteudo.js",
+        "js/_pedido.js",
+        function() {
+          Cardapio.Item.load();
+        }
+      );
     }).enter(Lanche.Util.clearPanel);
 
     P.listen();
