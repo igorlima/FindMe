@@ -12,8 +12,17 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       if @order.save
-        format.html { render json: params }
-        format.json { render json: params }
+        ppr = PayPal::Recurring.new({
+          :return_url   => CONFIG[:return_url],
+          :cancel_url   => CONFIG[:cancel_url],
+          :ipn_url      => CONFIG[:ipn_url],
+          :currency     => "BRL",
+          :locale       => "BR",
+          :description  => "Awesome - Monthly Subscription",
+          :amount       => "9.00"
+        })
+        response = ppr.checkout
+        redirect_to response.checkout_url if response.valid?
       else
         format.html { render json: @order.errors, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
