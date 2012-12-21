@@ -86,8 +86,9 @@
 
       Lanche.spinner.start();
       $.post('/checkout', checkout, function(response){ 
+        response = JSON.parse(response);
         console.warn(response);
-        Lanche.spinner.stop();
+        window.location.href = response['checkout_paypal_url'];
       });
 
     };

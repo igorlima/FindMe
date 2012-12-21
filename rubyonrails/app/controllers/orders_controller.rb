@@ -22,7 +22,12 @@ class OrdersController < ApplicationController
           :amount       => "9.00"
         })
         response = ppr.checkout
-        redirect_to response.checkout_url if response.valid?
+
+        format.html { render json: {:checkout_paypal_url => response.checkout_url} } if response.valid?
+        format.json { render json: {:checkout_paypal_url => response.checkout_url} } if response.valid?
+        format.html { render json: {} } unless response.valid?
+        format.json { render json: {} } unless response.valid?
+
       else
         format.html { render json: @order.errors, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
