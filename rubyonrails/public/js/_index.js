@@ -43,6 +43,7 @@
       .on('click', function(e) { e.stopPropagation(); Lanche.Pedido.load(); });
       head
       .js(
+        "js/jaylist.min.js",
         "js/_pedido.js",
         function() {
           Lanche.Pedido.load();
