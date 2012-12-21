@@ -16,19 +16,20 @@ class Order
     @configuration = StoreConfiguration.first_one
     @fee += @configuration.online_fee
     @fee += @configuration.delivery_fee if self.has_shipping
-    @fee
+    @fee.round(2)
   end
 
   def total_itens
-    @total = 0.0
+    @total_itens = 0.0
     self.itens.each do |item|
-      @total += CardapioItem.find( item.cardapio_item_id ).price * item.qty
+      @total_itens += CardapioItem.find( item.cardapio_item_id ).price * item.qty
     end
-    @total
+    @total_itens.round(2)
   end
 
   def total
-    total_itens + fee
+    @total = total_itens + fee
+    @total.round(2)
   end
 
 end

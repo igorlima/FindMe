@@ -124,6 +124,8 @@
           });
         });
 
+        (location.hash == '#thanks') && alert("Pedido efetuado com sucesso. Muito obrigado pela preferência");
+
         location.hash = 'home';
         Path.root("#home");
         Path.listen();

@@ -19,21 +19,13 @@ class OrdersController < ApplicationController
   end
 
   def success
-    @order = Order.where( :token => params[:token] ).first
-    response = request_payment(@order)
-    @order.payment = Payment.new( 
-      :params => params.to_s, 
-      :status => response.status,
-      :transaction_id => response.transaction_id,
-      :payer_id => params[:PayerID]
-    )
 
-    respond_to do |format|
-      if response.approved? and response.completed? and @order.save
-        redirect_to "/#thanks"
-      else
-        cancel
-      end
+    @order = request_payment
+    
+    if (!@order.nil?) && (@order.payment.status == "Completed" and @order.save)
+      redirect_to "/#thanks"
+    else
+      cancel
     end
 
   end
@@ -56,7 +48,7 @@ private
   end
 
   def checkout(order)
-    ppr = PayPal::Recurring.new( paypal_checkout_values(@order) )
+    ppr = PayPal::Recurring.new( paypal_checkout_values(order) )
     response = ppr.checkout
   end
 
@@ -72,15 +64,26 @@ private
     }
   end
 
-  def request_payment(order)
-    ppr = PayPal::Recurring.new( paypal_request_payment_values(order) )
+  def request_payment
+    @order = Order.where( :token => params[:token] ).first
+    return @order if @order.nil?
+    return @order unless @order.payment.nil?
+
+    ppr = PayPal::Recurring.new( paypal_request_payment_values(@order) )
     response = ppr.request_payment
+    @order.payment = Payment.new( 
+      :params => params.to_s, 
+      :status => response.status,
+      :transaction_id => response.transaction_id,
+      :payer_id => params[:PayerID]
+    )
+    @order
   end
 
   def paypal_request_payment_values(order)
     values = {
       :token => order.token,
-      :payer_id => order.payment.payer_id,
+      :payer_id => params[:PayerID],
       :amount => order.total,
       :currency => "BRL"
     }
