@@ -8,10 +8,8 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       if response.valid? && @order.save
-        format.html { render json: {:checkout_paypal_url => response.checkout_url} } if response.valid?
-        format.json { render json: {:checkout_paypal_url => response.checkout_url} } if response.valid?
-        format.html { render json: {} } unless response.valid?
-        format.json { render json: {} } unless response.valid?
+        format.html { render json: {:checkout_paypal_url => response.checkout_url} }
+        format.json { render json: {:checkout_paypal_url => response.checkout_url} }
       else
         format.html { render json: @order.errors, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -21,6 +19,22 @@ class OrdersController < ApplicationController
   end
 
   def success
+    @order = Order.where( :token => params[:token] ).first
+    response = request_payment(@order)
+    @order.payment = Payment.new( 
+      :params => params.to_s, 
+      :status => response.status,
+      :transaction_id => response.transaction_id,
+      :payer_id => params[:PayerID]
+    )
+
+    respond_to do |format|
+      if response.approved? and response.completed? and @order.save
+        redirect_to "/#thanks"
+      else
+        cancel
+      end
+    end
 
   end
 
@@ -42,11 +56,11 @@ private
   end
 
   def checkout(order)
-    ppr = PayPal::Recurring.new( paypal_values(@order) )
+    ppr = PayPal::Recurring.new( paypal_checkout_values(@order) )
     response = ppr.checkout
   end
 
-  def paypal_values(order)
+  def paypal_checkout_values(order)
     values = {
       :return_url   => CONFIG[:return_url],
       :cancel_url   => CONFIG[:cancel_url],
@@ -55,6 +69,20 @@ private
       :locale       => "BR",
       :description  => "Pedido do Lanches Online - Obrigado pela preferencia",
       :amount       => order.total
+    }
+  end
+
+  def request_payment(order)
+    ppr = PayPal::Recurring.new( paypal_request_payment_values(order) )
+    response = ppr.request_payment
+  end
+
+  def paypal_request_payment_values(order)
+    values = {
+      :token => order.token,
+      :payer_id => order.payment.payer_id,
+      :amount => order.total,
+      :currency => "BRL"
     }
   end
 
