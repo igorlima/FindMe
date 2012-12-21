@@ -21,8 +21,9 @@ class OrdersController < ApplicationController
   def success
 
     @order = request_payment
+    cancel if @order.nil?
     
-    if (!@order.nil?) && (@order.payment.status == "Completed" and @order.save)
+    if @order.save and @order.payment.status == "Completed"
       redirect_to "/#thanks"
     else
       cancel
