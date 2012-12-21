@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-
+    redirect_to "/"
   end
 
 private

@@ -17,6 +17,7 @@ Rubyonrails::Application.routes.draw do
   match 'user', to: 'sessions#user'
 
   match 'checkout', to: 'orders#create', :via => :post
+  match 'cancel', to: 'orders#cancel', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
