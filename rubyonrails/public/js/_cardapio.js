@@ -66,7 +66,7 @@
       Lanche.spinner.start();
       head
       .js(
-        "js/lawnchair-0.6.1.min.js",
+        "js/jaylist.min.js",
         "js/_cardapio_conteudo.js",
         "js/_pedido.js",
         function() {

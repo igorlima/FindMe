@@ -173,7 +173,6 @@
     head
     .js(
       "js/lawnchair-0.6.1.min.js",
-      "js/jaylist.min.js", 
       function() {
         
       }
