@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
 
     @payment.notification = @notification
     @payment.save
-    ApplicationHelper.broadcast("/payments/notification", @payment) if @payment.status == "Completed"
+    ApplicationHelper.broadcast("/payments/notification", @payment) if @payment.notification.status == "Completed"
 
   end
 
