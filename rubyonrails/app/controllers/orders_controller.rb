@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   def success
 
-    @order = request_payment
+    @order = request_payment(params)
     return cancel if @order.nil?
 
     @order.save
@@ -35,20 +35,18 @@ class OrdersController < ApplicationController
 
   def ipn
 
-    @notification = Notification.new(
-      :params => params.to_s, 
-      :invoice => params[:invoice],
-      :transaction_id => params[:txn_id],
-      :status => params[:payment_status]
-    )
-
-    @payment = Payment.where( :transaction_id => @notification.transaction_id ).first
+    @payment = Payment.where( :transaction_id => params[:txn_id] ).first
     return cancel if @payment.nil?
     return cancel if @payment.transaction_id.nil?
 
-    @payment.notification = @notification
+    @payment.notification = Notification.new if @payment.notification.nil?
+    @payment.notification.params  = params.to_s
+    @payment.notification.invoice = params[:invoice]
+    @payment.notification.status  = params[:payment_status]
+
     @payment.save
     ApplicationHelper.broadcast("/payments/notification", @payment) if @payment.notification.status == "Completed"
+    render :nothing => true
 
   end
 
@@ -82,7 +80,7 @@ private
     }
   end
 
-  def request_payment
+  def request_payment(params) 
 
     @order = Order.where( :token => params[:token] ).first
     return @order if @order.nil?
