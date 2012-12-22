@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        broadcast "/messages/new", @message
+        ApplicationHelper.broadcast "/messages/new", @message
 
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
@@ -111,14 +111,6 @@ class MessagesController < ApplicationController
       format.html { redirect_to messages_url }
       format.json { head :no_content }
     end
-  end
-
-private
-
-  def broadcast(channel, data)
-    message = {:channel => channel, :data => data}
-    uri = URI.parse("http://igorribeirolima.com.br:9292/faye")
-    Net::HTTP.post_form(uri, :message => message.to_json)
   end
 
 end

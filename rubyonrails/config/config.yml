@@ -2,13 +2,16 @@ development:
   return_url: http://localhost:3000/success
   cancel_url: http://localhost:3000/cancel
   ipn_url: http://localhost:3000/ipn
+  broadcast_url: http://igorribeirolima.com.br:9292/faye
 
 test:
   return_url: http://localhost:3000/success
   cancel_url: http://localhost:3000/cancel
   ipn_url: http://localhost:3000/ipn
+  broadcast_url: http://igorribeirolima.com.br:9292/faye
 
 production:
   return_url: http://igorribeirolima.com.br:3000/success
   cancel_url: http://igorribeirolima.com.br:3000/cancel
   ipn_url: http://igorribeirolima.com.br:3000/ipn
+  broadcast_url: http://igorribeirolima.com.br:9292/faye
