@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
       :status => params[:payment_status]
     )
 
-    @payment = Notification.where( :transaction_id => @notification.transaction_id ).first
+    @payment = Payment.where( :transaction_id => @notification.transaction_id ).first
     return cancel if @payment.nil?
     return cancel if @payment.transaction_id.nil?
 
