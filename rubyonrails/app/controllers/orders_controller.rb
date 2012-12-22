@@ -19,15 +19,35 @@ class OrdersController < ApplicationController
   end
 
   def success
+
     @order = request_payment
-    cancel if @order.nil?
-    
+    return cancel if @order.nil?
+
     @order.save
     redirect_to "/#thanks"
+
   end
 
   def cancel
     redirect_to "/"
+  end
+
+  def ipn
+
+    @notification = Notification.new(
+      :params => params.to_s, 
+      :invoice => params[:invoice],
+      :transaction_id => params[:txn_id],
+      :status => params[:payment_status]
+    )
+
+    @payment = Notification.where( :transaction_id => @notification.transaction_id ).first
+    return cancel if @payment.nil?
+    return cancel if @payment.transaction_id.nil?
+
+    @payment.notification = @notification
+    @payment.save
+
   end
 
 private
@@ -61,8 +81,10 @@ private
   end
 
   def request_payment
+
     @order = Order.where( :token => params[:token] ).first
     return @order if @order.nil?
+    return nil    if @order.token.nil?
     return @order unless @order.payment.nil?
 
     ppr = PayPal::Recurring.new( paypal_request_payment_values(@order) )

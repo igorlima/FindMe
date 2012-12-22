@@ -7,5 +7,5 @@ class Payment
   field :payer_id, type: String
 
   has_one :order
-  embeds_one :payment, :as => :payment_notification, :class_name => "Notification"
+  embeds_one :notification, :as => :payment_notification, :class_name => "Notification"
 end
