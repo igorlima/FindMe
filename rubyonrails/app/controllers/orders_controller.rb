@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
     return cancel if @order.nil?
 
     @order.save
-    ApplicationHelper.broadcast("/payments/notification", @order.payment) if @order.payment.status == "Completed"
+    ApplicationHelper.broadcast("/payments/notification", @order.payment) if @order.payment.completed?
     redirect_to "/#thanks"
 
   end
@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
     )
     @payment.notifications.push(@notification)
     @notification.save
-    ApplicationHelper.broadcast("/payments/notification", @payment) if @notification.status == "Completed"
+    ApplicationHelper.broadcast("/payments/notification", @payment) if @payment.completed?
     render :nothing => true
 
   end

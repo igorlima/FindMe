@@ -8,5 +8,17 @@ class Payment
 
   has_one :order
   has_many :notifications, :class_name => "Notification"
-  
+
+  def completed?
+    @notification = last_notification
+    return @notification.status == "Completed" unless @notification.nil?
+    return status == "Completed"
+  end
+
+  private
+
+  def last_notification
+    notifications.desc('updated_at').first
+  end
+
 end
