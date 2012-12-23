@@ -36,6 +36,12 @@ class OrdersController < ApplicationController
   def ipn
 
     @payment = Payment.where( :transaction_id => params[:txn_id] ).first
+    puts '----------------------------'
+    puts params
+    puts '----------------------------'
+    puts params.inspect
+    puts '----------------------------'
+
     return cancel if @payment.nil?
     return cancel if @payment.transaction_id.nil?
 
