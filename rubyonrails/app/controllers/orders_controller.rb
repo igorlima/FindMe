@@ -35,13 +35,9 @@ class OrdersController < ApplicationController
 
   def ipn
 
-    @payment = Payment.where( :transaction_id => params[:parent_txn_id] ).first
-    puts '----------------------------'
-    puts params
-    puts '----------------------------'
-    puts params.inspect
-    puts '----------------------------'
+    return cancel unless (PayPal::Recurring::Notification.new params).verified?
 
+    @payment = Payment.where( :transaction_id => params[:parent_txn_id] ).first
     return cancel if @payment.nil?
     return cancel if @payment.transaction_id.nil?
 
