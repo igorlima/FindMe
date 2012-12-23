@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 
   def ipn
 
-    @payment = Payment.where( :transaction_id => params[:txn_id] ).first
+    @payment = Payment.where( :transaction_id => params[:parent_txn_id] ).first
     puts '----------------------------'
     puts params
     puts '----------------------------'
@@ -45,13 +45,15 @@ class OrdersController < ApplicationController
     return cancel if @payment.nil?
     return cancel if @payment.transaction_id.nil?
 
-    @payment.notification = Notification.new if @payment.notification.nil?
-    @payment.notification.params  = params.to_s
-    @payment.notification.invoice = params[:invoice]
-    @payment.notification.status  = params[:payment_status]
-
-    @payment.save
-    ApplicationHelper.broadcast("/payments/notification", @payment) if @payment.notification.status == "Completed"
+    @notification = Notification.new(
+      :transaction_id => params[:txn_id],
+      :verify_sign => params[:verify_sign],
+      :params => params.to_s,
+      :status => params[:payment_status]
+    )
+    @payment.notifications.push(@notification)
+    @notification.save
+    ApplicationHelper.broadcast("/payments/notification", @payment) if @notification.status == "Completed"
     render :nothing => true
 
   end

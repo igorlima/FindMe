@@ -1,9 +1,11 @@
 class Notification
   include Mongoid::Document
-  field :params, type: String
-  field :invoice, type: String
-  field :status, type: String
+  include Mongoid::Timestamps
+  field :params,         type: String
+  field :status,         type: String
   field :transaction_id, type: String
+  field :verify_sign,    type: String
 
-  embedded_in :payment_notification
+  belongs_to  :payment, polymorphic: true
+
 end
