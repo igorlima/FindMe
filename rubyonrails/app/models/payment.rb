@@ -15,6 +15,16 @@ class Payment
     return status == "Completed"
   end
 
+  def as_json(options={})
+    @notification = last_notification
+    {
+      "_id"            => _id,
+      "transaction_id" => transaction_id,
+      "payer_id"       => payer_id,
+      "status"         => @notification.nil? ? status : @notification.status
+    }
+  end
+
   private
 
   def last_notification
