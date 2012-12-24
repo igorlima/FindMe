@@ -33,6 +33,11 @@ class Payment
     }
   end
 
+  def broadcast
+    ApplicationHelper.broadcast("/payments/notification", self) if completed?
+    self
+  end
+
   private
 
   def last_notification
