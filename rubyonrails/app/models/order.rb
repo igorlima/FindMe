@@ -12,6 +12,33 @@ class Order
   belongs_to :user, polymorphic: true
   embeds_many :itens, :as => :order_itens, :class_name => "OrderItem"
 
+  def as_json(options={})
+    {
+      "_id"            => _id,
+      "address"        => address,
+      "created_at"     => created_at,
+      "description"    => description,
+      "has_shipping"   => has_shipping,
+      "itens"          => _itens,
+      "observation"    => observation,
+      "status"         => status,
+      "total"          => total,
+      "user"           => user,
+      "updated_at"     => updated_at
+    }
+  end
+
+  def _itens
+    itens = []
+    self.itens.each do |item|
+      itens.push(
+        :qty => item.qty,
+        :description => CardapioItem.find( item.cardapio_item_id ).description
+      )
+    end
+    itens
+  end
+
   def fee
     @fee = 0.0
     @configuration = StoreConfiguration.first_one

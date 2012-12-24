@@ -1,11 +1,17 @@
 class OrdersController < ApplicationController
 
   def list
-    Order.where(
+    orders = Order.where(
       :status.in => [ Order.STATUS[:paid], Order.STATUS[:doing], Order.STATUS[:done] ],
     ).
     desc('created_at').
     limit( StoreConfiguration.first_one.qty_limit_lunch )
+
+    respond_to do |format|
+      format.html { render json: orders }
+      format.json { render json: orders }
+    end
+
   end
 
   def create

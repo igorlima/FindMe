@@ -20,6 +20,7 @@ Rubyonrails::Application.routes.draw do
   match 'success', to: 'orders#success', :via => :get
   match 'ipn', to: 'orders#ipn', :via => :post
   match 'cancel', to: 'orders#cancel', :via => :get
+  match 'orders', to: 'orders#list', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
