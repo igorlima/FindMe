@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
         format.html { render json: {:checkout_paypal_url => response.checkout_url} }
         format.json { render json: {:checkout_paypal_url => response.checkout_url} }
       else
-        format.html { render json: @order.errors, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.html { render json: {:errors => @order.errors} }
+        format.json { render json: {:errors => @order.errors} }
       end
     end
 

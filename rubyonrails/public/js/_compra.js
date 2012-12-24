@@ -87,8 +87,9 @@
       Lanche.spinner.start();
       $.post('/checkout', checkout, function(response){ 
         response = JSON.parse(response);
-        console.warn(response);
-        window.location.href = response['checkout_paypal_url'];
+        response['checkout_paypal_url'] && (window.location.href = response['checkout_paypal_url']);
+        response.errors && response.errors.base && (alert(response.errors.base[0]));
+        Lanche.spinner.stop();
       });
 
     };
