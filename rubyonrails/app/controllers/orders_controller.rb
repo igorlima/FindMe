@@ -64,10 +64,8 @@ class OrdersController < ApplicationController
 private
 
   def new_order
-    user = session[:user]
 
     @order = Order.new
-    @order.user = User.where(uid: user.uid, provider: user.provider).first unless user.nil?
     @order.observation = params[:observation]
     @order.has_shipping = true
     @order.address = Address.new(params[:address])
