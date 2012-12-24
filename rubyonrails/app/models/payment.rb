@@ -33,6 +33,14 @@ class Payment
     }
   end
 
+  def set_order_status
+    order = Order.where( :payment => self.id ).first
+    order.set_as :paid     if completed?
+    order.set_as :refunded if refunded?
+    order.save             if order.changed?
+    self
+  end
+
   def broadcast
     ApplicationHelper.broadcast("/payments/notification", self) if completed?
     self

@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
     return cancel if @order.nil?
 
     @order.save
-    @order.payment.broadcast
+    (@order.payment.set_order_status).broadcast
     redirect_to "/#thanks"
 
   end
@@ -43,13 +43,12 @@ class OrdersController < ApplicationController
 
     @notification = Notification.new(
       :transaction_id => params[:txn_id],
-      :verify_sign => params[:verify_sign],
       :params => params.to_s,
       :status => params[:payment_status]
     )
     @payment.notifications.push(@notification)
     @notification.save
-    @payment.broadcast
+    (@payment.set_order_status).broadcast
     render :nothing => true
 
   end
