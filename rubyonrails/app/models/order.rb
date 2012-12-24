@@ -14,6 +14,7 @@ class Order
 
   validate :check_if_store_open
   validate :check_if_store_on_limit
+  validate :check_user
 
   def as_json(options={})
     {
@@ -102,6 +103,10 @@ private
 
   def check_if_store_on_limit
     errors.add(:base, "Estamos lotado de pedido. Desculpa.") if Order.list.count >= StoreConfiguration.first_one.qty_limit_lunch
+  end
+
+  def check_user
+    errors.add(:base, "Favor fazer o login para efetuar a compra") if user.nil?
   end
 
 end

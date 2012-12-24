@@ -1,13 +1,7 @@
 class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
-    session[:user] = { 
-      provider: user.provider, 
-      uid: user.uid, 
-      name: user.name, 
-      firstName: user.first_name,
-      image: user.image 
-    }
+    session[:user] = user_session_values( user )
     redirect_to '/'
   end
 
@@ -21,6 +15,18 @@ class SessionsController < ApplicationController
       format.html { render json: session[:user] }
       format.json { render json: session[:user] }
     end
+  end
+
+private
+
+  def user_session_values(user)
+    { 
+      provider: user.provider, 
+      uid: user.uid, 
+      name: user.name, 
+      firstName: user.first_name,
+      image: user.image 
+    }
   end
 
 end
