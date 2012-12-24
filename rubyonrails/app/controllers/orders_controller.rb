@@ -64,7 +64,7 @@ private
     params[:itens].each do |item|
       @order.itens.push( OrderItem.new( :cardapio_item_id => item[:id], :qty => item[:qty] ) )
     end
-    @order
+    @order.set_as :pending
   end
 
   def checkout(order)

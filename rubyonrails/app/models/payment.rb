@@ -9,10 +9,18 @@ class Payment
   has_one :order
   has_many :notifications, :class_name => "Notification"
 
-  def completed?
+  def is?(status)
     @notification = last_notification
-    return @notification.status == "Completed" unless @notification.nil?
-    return status == "Completed"
+    return @notification.status == status unless @notification.nil?
+    return self.status == status
+  end
+
+  def completed?
+    is? "Completed"
+  end
+
+  def refunded?
+    is? "Refunded"
   end
 
   def as_json(options={})

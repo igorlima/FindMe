@@ -4,6 +4,7 @@ class Order
   field :token, type: String
   field :description, type: String
   field :observation, type: String
+  field :status,      type: String
   field :has_shipping, type: Boolean
 
   belongs_to :address, autosave: true
@@ -30,6 +31,24 @@ class Order
   def total
     @total = total_itens + fee
     @total.round(2)
+  end
+
+  STATUS = {
+    :pending   => "PENDING",
+    :paid      => "PAID",
+    :doing     => "DOING",
+    :done      => "DONE",
+    :delivered => "DELIVERED",
+    :refunded  => "REFUNDED"
+  }
+
+  def set_as(type)
+    self.status = STATUS[type]
+    self
+  end
+
+  def is?(type)
+    status == STATUS[type]
   end
 
 end
