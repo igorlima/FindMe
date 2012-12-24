@@ -12,6 +12,9 @@ class Order
   belongs_to :user, polymorphic: true
   embeds_many :itens, :as => :order_itens, :class_name => "OrderItem"
 
+  validate :check_if_store_open
+  validate :check_if_store_on_limit
+
   def as_json(options={})
     {
       "_id"            => _id,
@@ -37,6 +40,14 @@ class Order
       )
     end
     itens
+  end
+
+  def self.list
+    orders = Order.where(
+      :status.in => [ Order.STATUS[:paid], Order.STATUS[:doing], Order.STATUS[:done] ],
+    ).
+    desc('created_at').
+    limit( StoreConfiguration.first_one.qty_limit_lunch )
   end
 
   def fee
@@ -80,6 +91,17 @@ class Order
 
   def is?(type)
     status == @@STATUS[type]
+  end
+
+
+private
+
+  def check_if_store_open
+    errors.add(:base, "Loja fechada") unless StoreConfiguration.first_one.is_open?
+  end
+
+  def check_if_store_on_limit
+    errors.add(:base, "Estamos lotado de pedido. Desculpa.") if Order.list.count >= StoreConfiguration.first_one.qty_limit_lunch
   end
 
 end
