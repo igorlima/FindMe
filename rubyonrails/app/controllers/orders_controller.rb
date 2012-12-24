@@ -1,5 +1,13 @@
 class OrdersController < ApplicationController
 
+  def list
+    Order.where(
+      :status.in => [ Order.STATUS[:paid], Order.STATUS[:doing], Order.STATUS[:done] ],
+    ).
+    desc('created_at').
+    limit( StoreConfiguration.first_one.qty_limit_lunch )
+  end
+
   def create
 
     @order = new_order

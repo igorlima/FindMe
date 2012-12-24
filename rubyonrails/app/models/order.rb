@@ -33,7 +33,7 @@ class Order
     @total.round(2)
   end
 
-  STATUS = {
+  @@STATUS = {
     :pending   => "PENDING",
     :paid      => "PAID",
     :doing     => "DOING",
@@ -42,13 +42,17 @@ class Order
     :refunded  => "REFUNDED"
   }
 
+  def self.STATUS
+    @@STATUS
+  end
+
   def set_as(type)
-    self.status = STATUS[type]
+    self.status = @@STATUS[type]
     self
   end
 
   def is?(type)
-    status == STATUS[type]
+    status == @@STATUS[type]
   end
 
 end
