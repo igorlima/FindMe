@@ -50,6 +50,9 @@
           authenticity_token: Lanche.User.data.authenticity_token
         },
         function(response) {
+          response = JSON.parse(response);
+          var message_errors = Lanche.Util.message_errors(response.errors);
+          message_errors && (alert(message_errors));
           viewModel.contato({});
           Lanche.spinner.stop();
         }

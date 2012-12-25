@@ -8,6 +8,18 @@
     var url = Util.url(event);
     return url.match("[a-zA-Z_0-9]+[.]html")[0].replace(".html", "");
   };
+  Util.message_errors = function(errors) {
+    var message = null;
+    if (!errors) return message;
+
+    for( var error in errors ) {
+      errors[error] && errors[error].forEach( function(msg) {
+        if (message) message += '\n' + msg;
+        else message = msg;
+      });
+    }
+    return message;
+  };
   Util.clearPanel = function(){
     // You can put some code in here to do fancy DOM transitions, such as fade-out or slide-in.
   };

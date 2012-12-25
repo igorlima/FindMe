@@ -67,7 +67,7 @@ private
   def new_order
 
     @order = Order.new
-    @order.user = session[:user]
+    @order.user = User.find( session[:user].id ) unless session[:user].nil?
     @order.observation = params[:observation]
     @order.has_shipping = true
     @order.address = Address.new(params[:address])

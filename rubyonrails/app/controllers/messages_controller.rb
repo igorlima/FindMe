@@ -42,6 +42,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.user = User.find( session[:user].id ) unless session[:user].nil?
 
     respond_to do |format|
       if @message.save
@@ -51,7 +52,7 @@ class MessagesController < ApplicationController
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
-        format.json { render json: @message.errors }
+        format.json { render json: {:errors => @message.errors} }
       end
     end
   end

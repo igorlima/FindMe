@@ -10,6 +10,7 @@ class User
   field :oauth_expires_at, type: Time
 
   has_many :orders, :class_name => "Order"
+  has_many :messages, :class_name => "Message"
 
   def as_json(options={})
     {
