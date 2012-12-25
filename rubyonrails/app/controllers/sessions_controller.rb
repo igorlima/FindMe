@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def create
-    session[:user] = User.from_omniauth(env["omniauth.auth"])
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user] = User.find( user.id )
     redirect_to '/'
   end
 
