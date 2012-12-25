@@ -5,7 +5,7 @@
 
   $.getJSON('/user.json', function(data){
     User.data = data;
-    if (data) {
+    if (data && data.uid) {
 
       $('#authentication a').attr('href', '/signout');
       $('#authentication strong').html('Sair');
