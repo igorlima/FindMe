@@ -51,7 +51,7 @@ class MessagesController < ApplicationController
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.json { render json: @message.errors }
       end
     end
   end
