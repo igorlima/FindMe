@@ -88,8 +88,9 @@
       Lanche.spinner.start();
       $.post('/checkout', checkout, function(response){ 
         response = JSON.parse(response);
+        var message_errors = Lanche.Util.message_errors(response.errors);
+        message_errors && (alert(message_errors));
         response['checkout_paypal_url'] && (window.location.href = response['checkout_paypal_url']);
-        response.errors && response.errors.base && (alert(response.errors.base[0]));
         Lanche.spinner.stop();
       });
 
