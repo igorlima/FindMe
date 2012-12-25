@@ -29,12 +29,17 @@ class Payment
       "_id"            => _id,
       "transaction_id" => transaction_id,
       "payer_id"       => payer_id,
-      "status"         => @notification.nil? ? status : @notification.status
+      "status"         => @notification.nil? ? status : @notification.status,
+      "user"           => order.user
     }
   end
 
+  def order
+    Order.where( :payment => self.id ).first
+  end
+
   def set_order_status
-    order = Order.where( :payment => self.id ).first
+    order = self.order
     order.set_as :paid     if completed?
     order.set_as :refunded if refunded?
     order.save             if order.changed?

@@ -28,14 +28,7 @@ private
 
   def user_session_values(user)
     return {} if user.nil?
-
-    {
-      provider: user[:provider],
-      uid: user[:uid],
-      name: user[:name],
-      firstName: user[:first_name],
-      image: user[:image]
-    }
+    user.as_json
   end
 
 end
