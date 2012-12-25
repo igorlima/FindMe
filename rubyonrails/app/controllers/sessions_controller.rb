@@ -17,9 +17,11 @@ class SessionsController < ApplicationController
   end
 
   def user
+    user = session[:user] ||= {}
+    user = user.merge( :authenticity_token => form_authenticity_token )
     respond_to do |format|
-      format.html { render json: session[:user] }
-      format.json { render json: session[:user] }
+      format.html { render json: user }
+      format.json { render json: user }
     end
   end
 
