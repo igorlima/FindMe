@@ -12,9 +12,9 @@ class Order
   belongs_to :user, polymorphic: true
   embeds_many :itens, :as => :order_itens, :class_name => "OrderItem"
 
+  validates_presence_of :user, :message => "Favor fazer o login para efetuar a compra"
   validate :check_if_store_open
   validate :check_if_store_on_limit
-  validate :check_user
 
   def as_json(options={})
     {
@@ -30,17 +30,6 @@ class Order
       "user"           => user,
       "updated_at"     => updated_at
     }
-  end
-
-  def _itens
-    itens = []
-    self.itens.each do |item|
-      itens.push(
-        :qty => item.qty,
-        :description => CardapioItem.find( item.cardapio_item_id ).description
-      )
-    end
-    itens
   end
 
   def self.list
@@ -105,8 +94,15 @@ private
     errors.add(:base, "Estamos lotado de pedido. Desculpa.") if Order.list.count >= StoreConfiguration.first_one.qty_limit_lunch
   end
 
-  def check_user
-    errors.add(:base, "Favor fazer o login para efetuar a compra") if user.nil?
+  def _itens
+    itens = []
+    self.itens.each do |item|
+      itens.push(
+        :qty => item.qty,
+        :description => CardapioItem.find( item.cardapio_item_id ).description
+      )
+    end
+    itens
   end
 
 end
