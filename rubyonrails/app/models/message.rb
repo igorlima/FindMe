@@ -21,6 +21,7 @@ class Message
       email:   email,
       subject: subject,
       text:    text,
+      read:    read,
       user:    user
     }
   end

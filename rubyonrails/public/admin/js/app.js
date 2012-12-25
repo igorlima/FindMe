@@ -48,7 +48,7 @@ angular
     var unique_id = $.gritter.add({
       title: message.subject, // (string | mandatory) the heading of the notification
       text: message.text, // (string | mandatory) the text inside the notification
-      image: 'http://graph.facebook.com/1081863633/picture?type=square', // (string | optional) the image to display on the left
+      image: message.user.image, // (string | optional) the image to display on the left
       sticky: false, // (bool | optional) if you want it to fade out on its own or just sit there
       time: '', // (int | optional) the time you want it to be alive for before fading out
       class_name: 'my-sticky-class' // (string | optional) the class name you want to apply to that specific message
