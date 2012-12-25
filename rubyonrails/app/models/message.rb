@@ -13,6 +13,7 @@ class Message
   belongs_to :user, polymorphic: true
 
   validates_presence_of :user, :message => "Favor fazer o login para enviar uma mensagem"
+  validates_presence_of :text, :message => "Favor preencher pelo menos o conteudo da mensagem"
 
   def as_json(options={})
     {
