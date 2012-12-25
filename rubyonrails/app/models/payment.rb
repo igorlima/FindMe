@@ -34,10 +34,6 @@ class Payment
     }
   end
 
-  def order
-    Order.where( :payment => self.id ).first
-  end
-
   def set_order_status
     order = self.order
     order.set_as :paid     if completed?
