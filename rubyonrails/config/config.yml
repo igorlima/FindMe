@@ -3,6 +3,8 @@ development:
   cancel_url: http://localhost:3000/cancel
   ipn_url: http://igorribeirolima.com.br:3000/ipn
   broadcast_url: http://igorribeirolima.com.br:9292/faye
+  user_uid_fake: 1081863633
+  user_provider_fake: facebook
 
 test:
   return_url: http://localhost:3000/success

@@ -11,6 +11,7 @@ Rubyonrails::Application.routes.draw do
 
   resources :cardapios
 
+  match 'auth/fake', to: 'sessions#fake'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
