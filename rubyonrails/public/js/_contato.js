@@ -45,10 +45,15 @@
 
     $('#phone-app form a.button').click(function() {
       Lanche.spinner.start();
-      $.post('/messages.json', {message: viewModel.contato()}, function(response){ 
-        viewModel.contato({});
-        Lanche.spinner.stop();
-      });
+      $.post('/messages.json', {
+          message: viewModel.contato(),
+          authenticity_token: Lanche.User.data.authenticity_token
+        },
+        function(response) {
+          viewModel.contato({});
+          Lanche.spinner.stop();
+        }
+      );
     });
   };
 
