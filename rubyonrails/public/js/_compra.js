@@ -76,6 +76,7 @@
     vm.checkout = function() {
       
       var checkout = vm.compra();
+      checkout.authenticity_token = Lanche.User.data.authenticity_token;
       checkout.itens = [];
       vm.pedido().itens().forEach( function(item){
         checkout.itens.push({

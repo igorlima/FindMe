@@ -14,7 +14,7 @@ class Order
 
   validate :check_if_store_open
   validate :check_if_store_on_limit
-  #validate :check_user
+  validate :check_user
 
   def as_json(options={})
     {

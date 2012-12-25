@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  protect_from_forgery :except => [:ipn]
 
   def list
     respond_to do |format|
@@ -66,6 +67,7 @@ private
   def new_order
 
     @order = Order.new
+    @order.user = session[:user]
     @order.observation = params[:observation]
     @order.has_shipping = true
     @order.address = Address.new(params[:address])
