@@ -22,6 +22,10 @@ angular
 }])
 .run(['$rootScope', 'Mensagem', function(root, Mensagem) {
 
+  var client = new Faye.Client('http://igorribeirolima.com.br:9292/faye', {
+    timeout: 120
+  });
+
   root.mensagens = root.mensagens || [];
   root.mensagensNaoLidas = root.mensagensNaoLidas || [];
   root.listarMensagens = function() {
@@ -38,11 +42,6 @@ angular
   };
   root.listarMensagens();
 
-
-
-  var client = new Faye.Client('http://igorribeirolima.com.br:9292/faye', {
-    timeout: 120
-  });
   client.subscribe('/messages/new', function (message) {
     !root.carregandoMensagens && root.listarMensagens();
     var unique_id = $.gritter.add({
@@ -54,6 +53,10 @@ angular
       class_name: 'my-sticky-class' // (string | optional) the class name you want to apply to that specific message
     });
   });
+
+
+
+
   client.subscribe('/payments/notification', function (notification) {
     var unique_id = $.gritter.add({
       title: 'Notificação de pagamento',
