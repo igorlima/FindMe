@@ -59,9 +59,9 @@
     });
     Lanche.User.loadLastAddress( function(address) {
       var compra = vm.compra();
-      compra.address.street   = address.street;
-      compra.address.number   = address.number;
-      compra.address.district = address.district;
+      compra.address.street   = address.street ? address.street : "";
+      compra.address.number   = address.number ? address.number : "";
+      compra.address.district = address.district ? address.district : "";
       vm.compra(compra);
     });
 
