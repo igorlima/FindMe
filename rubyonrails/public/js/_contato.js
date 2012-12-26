@@ -61,7 +61,9 @@
   };
 
   var applyBindings = function() {
-    viewModel.contato = ko.observable({});
+    viewModel.contato = ko.observable({
+      name: Lanche.User.data.name
+    });
     ko.applyBindings(viewModel);
   };
   
