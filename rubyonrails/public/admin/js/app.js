@@ -54,6 +54,16 @@ angular
       class_name: 'my-sticky-class' // (string | optional) the class name you want to apply to that specific message
     });
   });
+  client.subscribe('/payments/notification', function (notification) {
+    var unique_id = $.gritter.add({
+      title: 'Notificação de pagamento',
+      text: 'Pagamento efetuado por ' + notification.user.name,
+      image: notification.user.image,
+      sticky: false,
+      time: '',
+      class_name: 'gritter-light'
+    });
+  });
 
 }])
 ;
