@@ -57,6 +57,14 @@
         city: 'Lavras'
       }
     });
+    Lanche.User.loadLastAddress( function(address) {
+      var compra = vm.compra();
+      compra.address.street   = address.street;
+      compra.address.number   = address.number;
+      compra.address.district = address.district;
+      vm.compra(compra)
+    });
+
     vm.onlineFee = ko.computed(function() {
       return vm.configuration().online_fee ? parseFloat(vm.configuration().online_fee) : 0.00;
     });

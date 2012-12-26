@@ -23,7 +23,8 @@ class User
   end
 
   def last_address
-    Order.where( :user => id ).desc("created_at").first.address
+    last_order = Order.where( :user => id ).desc("created_at").first
+    last_order.nil? ? {} : last_order.address
   end
 
   def self.from_omniauth(auth)

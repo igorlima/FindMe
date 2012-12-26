@@ -11,12 +11,13 @@
     });
   };
 
-  User.loadLastAddress = function() {
+  User.loadLastAddress = function( callback ) {
     if (!User.data) return;
 
     User.data.lastAddress = {};
     $.getJSON('/user/lastAddress.json', function(data) {
       User.data.lastAddress = data;
+      callback(User.data.lastAddress);
     });
   };
 
