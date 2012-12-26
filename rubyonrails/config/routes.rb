@@ -11,11 +11,12 @@ Rubyonrails::Application.routes.draw do
 
   resources :cardapios
 
-  match 'auth/fake',    to: 'sessions#fake'
+  match 'auth/fake',        to: 'sessions#fake'
   match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout',      to: 'sessions#destroy', as: 'signout'
-  match 'user',         to: 'sessions#user'
+  match 'auth/failure',     to: redirect('/')
+  match 'signout',          to: 'sessions#destroy', as: 'signout'
+  match 'user',             to: 'sessions#user'
+  match 'user/lastAddress', to: 'sessions#last_address'
 
   match 'checkout',             to: 'orders#create',    :via => :post
   match 'success',              to: 'orders#success',   :via => :get

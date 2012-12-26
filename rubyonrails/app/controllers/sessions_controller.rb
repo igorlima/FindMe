@@ -25,6 +25,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def last_address
+    has_user_in_session = !session[:user].nil?
+    last_address = has_user_in_session ? session[:user].last_address : {}
+    respond_to do |format|
+      format.html { render json: last_address }
+      format.json { render json: last_address }
+    end
+  end
+
 private
 
   def user_session_values(user)

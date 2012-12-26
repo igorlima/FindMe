@@ -6,4 +6,14 @@ class Address
   field :city, type: String
 
   has_one :order
+
+  def as_json(options={})
+    {
+      street:    street,
+      number:    number,
+      district:  district,
+      city:      city
+    }
+  end
+
 end

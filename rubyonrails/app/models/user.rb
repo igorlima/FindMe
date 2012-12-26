@@ -22,6 +22,10 @@ class User
     }
   end
 
+  def last_address
+    Order.where( :user => id ).desc("created_at").first.address
+  end
+
   def self.from_omniauth(auth)
     user = User.where( uid: auth.uid, provider: auth.provider ).first
     user = User.new if user.nil?
