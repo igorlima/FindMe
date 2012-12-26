@@ -62,7 +62,7 @@
       compra.address.street   = address.street;
       compra.address.number   = address.number;
       compra.address.district = address.district;
-      vm.compra(compra)
+      vm.compra(compra);
     });
 
     vm.onlineFee = ko.computed(function() {
