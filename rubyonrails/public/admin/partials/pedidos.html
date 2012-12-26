@@ -60,17 +60,40 @@
     <h3>Visualização do Pedido</h3>
   </div>
   <div class="modal-body">
-    <strong>Autor:    </strong> {{pedido.name}}    <br>
-    <strong>Telefone: </strong> {{pedido.phone}}   <br>
-    <strong>E-mail:   </strong> {{pedido.email}}   <br>
-    <strong>Assunto:  </strong> {{pedido.subject}} <br>
-    <strong>Conteúdo: </strong> {{pedido.text}}    <br>
+
+    <img ng-src="{{pedido.user.image}}"/> <br>
+    <strong> {{pedido.user.name}} </strong> <br>
+    <address ng-show="pedido.address && pedido.address.street && pedido.address.street.length>0">
+      <span> 
+        {{pedido.address.street}} 
+      </span>
+      <span ng-show="pedido.address.district && pedido.address.district.length>0">
+        - {{pedido.address.district}} 
+      </span>
+      <span>
+        - {{pedido.address.city}} 
+      </span>
+    </address>
+
+    <strong>Status: </strong> 
+    <span class="badge badge-{{status(pedido).style}}">
+      {{status(pedido).name}}
+    </span>
+    <br>
+
+    <strong>Observação: </strong> {{pedido.observation}} <br>
+    
+    <strong>Itens: </strong>
+    <span ng-repeat="item in pedido.itens">
+      <span>{{item.qty}} {{item.description}}</span>
+      <span ng-show="!$last">,&nbsp;</span>
+    </span>
   </div>
+
   <div class="modal-footer">
     <a href="#" class="btn" data-dismiss="modal">Fechar</a>
     <a href="#" class="btn btn-info"    data-dismiss="modal" ng-click="fazendoPedido()">Fazendo</a>
     <a href="#" class="btn btn-success" data-dismiss="modal" ng-click="pedidoPronto()">Pronto para entrega</a>
     <a href="#" class="btn btn-danger"  data-dismiss="modal" ng-click="pedidoEntregue()">Entregue</a>
-
   </div>
 </div>
