@@ -18,9 +18,9 @@ class Order
 
   def as_json(options={})
     {
-      "_id"            => _id,
+      "id"             => _id,
       "address"        => address,
-      "created_at"     => created_at,
+      "created_at"     => created_at.strftime("%H:%M - %d/%m/%Y"),
       "description"    => description,
       "has_shipping"   => has_shipping,
       "itens"          => _itens,
@@ -28,7 +28,7 @@ class Order
       "status"         => status,
       "total"          => total,
       "user"           => user,
-      "updated_at"     => updated_at
+      "updated_at"     => updated_at.strftime("%H:%M - %d/%m/%Y")
     }
   end
 
