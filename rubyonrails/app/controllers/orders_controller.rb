@@ -6,7 +6,51 @@ class OrdersController < ApplicationController
       format.html { render json: Order.list }
       format.json { render json: Order.list }
     end
+  end
 
+  def doing
+    @order = Order.find(params[:id])
+    @order.set_as :doing;
+
+    respond_to do |format|
+      if @order.save
+        format.html { render json: { success: true } }
+        format.json { render json: { success: true } }
+      else
+        format.html { render json: { success: false } }
+        format.json { render json: { success: false } }
+      end
+    end
+  end
+
+  def done
+    @order = Order.find(params[:id])
+    @order.set_as :done;
+
+    respond_to do |format|
+      if @order.save
+        format.html { render json: { success: true } }
+        format.json { render json: { success: true } }
+      else
+        format.html { render json: { success: false } }
+        format.json { render json: { success: false } }
+      end
+    end
+  end
+
+  def delivered
+    @order = Order.find(params[:id])
+    @order.set_as :delivered;
+
+    respond_to do |format|
+      if @order.save
+        format.html { render json: { success: true } }
+        format.json { render json: { success: true } }
+      else
+        format.html { render json: { success: false } }
+        format.json { render json: { success: false } }
+      end
+    end
   end
 
   def create

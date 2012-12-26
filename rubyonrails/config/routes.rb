@@ -4,24 +4,28 @@ Rubyonrails::Application.routes.draw do
   match 'configuration', to: 'store_configurations#configuration', :via => :get
 
   resources :messages
-  match 'messages/:id/read', to: 'messages#read', :via => :get
+  match 'messages/:id/read',    to: 'messages#read', :via => :get
   match 'messages/:id/notread', to: 'messages#notread', :via => :get
 
   resources :cardapio_items
 
   resources :cardapios
 
-  match 'auth/fake', to: 'sessions#fake'
+  match 'auth/fake',    to: 'sessions#fake'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
-  match 'user', to: 'sessions#user'
+  match 'signout',      to: 'sessions#destroy', as: 'signout'
+  match 'user',         to: 'sessions#user'
 
-  match 'checkout', to: 'orders#create', :via => :post
-  match 'success', to: 'orders#success', :via => :get
-  match 'ipn', to: 'orders#ipn', :via => :post
-  match 'cancel', to: 'orders#cancel', :via => :get
-  match 'orders', to: 'orders#list', :via => :get
+  match 'checkout',             to: 'orders#create',    :via => :post
+  match 'success',              to: 'orders#success',   :via => :get
+  match 'ipn',                  to: 'orders#ipn',       :via => :post
+  match 'cancel',               to: 'orders#cancel',    :via => :get
+  match 'orders',               to: 'orders#list',      :via => :get
+  match 'orders/:id/doing',     to: 'orders#doing',     :via => :post
+  match 'orders/:id/done',      to: 'orders#done',      :via => :post
+  match 'orders/:id/delivered', to: 'orders#delivered', :via => :post
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
