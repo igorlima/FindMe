@@ -36,3 +36,13 @@ factory('Mensagem', ['$resource', function($resource){
     remove: {method:'DELETE', params:{id:'@id'}}
   });
 }]);
+
+angular.module('pedidoModel', ['ngResource']).
+factory('Pedido', ['$resource', function($resource){
+  return $resource('/orders/:id/:status', {}, {
+    all:       {method:'GET' , params:{}, isArray:true },
+    doing:     {method:'POST', params:{id:'@id', status: 'doing'}},
+    done:      {method:'POST', params:{id:'@id', status: 'done'}},
+    delivered: {method:'POST', params:{id:'@id', status: 'delivered'}}
+  });
+}]);

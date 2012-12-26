@@ -4,7 +4,7 @@
 // Declare app level module which depends on filters, and services
 var lancheOnlineApp = 
 angular
-.module('lancheOnlineApp', ['lancheOnlineApp.filters', 'cardapioModel', 'cardapioItemModel', 'mensagemModel', 'lancheOnlineApp.directives'])
+.module('lancheOnlineApp', ['lancheOnlineApp.filters', 'cardapioModel', 'cardapioItemModel', 'mensagemModel', 'pedidoModel', 'lancheOnlineApp.directives'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'});
   $routeProvider.when('/pedidos', {templateUrl: 'partials/pedidos.html', controller: 'PedidosCtrl'});
@@ -20,7 +20,7 @@ angular
   $routeProvider.otherwise({redirectTo: '/home'});
 
 }])
-.run(['$rootScope', 'Mensagem', function(root, Mensagem) {
+.run(['$rootScope', 'Mensagem', 'Pedido', function(root, Mensagem, Pedido) {
 
   var client = new Faye.Client('http://igorribeirolima.com.br:9292/faye', {
     timeout: 120
@@ -56,8 +56,18 @@ angular
 
 
 
+  root.pedidos = root.pedidos || [];
+  root.listarPedidos = function() {
+    root.carregandoPedidos = true;
+    Pedido.all(function(data){
+      root.pedidos = data;
+      root.carregandoPedidos = false;
+    });
+  };
+  root.listarPedidos();
 
   client.subscribe('/payments/notification', function (notification) {
+    !root.carregandoPedidos && root.listarPedidos();
     var unique_id = $.gritter.add({
       title: 'Notificação de pagamento',
       text: 'Pagamento efetuado por ' + notification.user.name,
