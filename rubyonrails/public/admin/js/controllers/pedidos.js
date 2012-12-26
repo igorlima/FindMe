@@ -6,6 +6,33 @@ lancheOnlineApp.
 controller( "PedidosCtrl", ['$rootScope', '$scope', 'Pedido',
   function(root, ng, Pedido) {
 
+    var STATUS = {
+      "PENDING": {
+        name: "Pendente",
+        style: "default"
+      },
+      "PAID": {
+        name: "Pago",
+        style: "warning"
+      },
+      "DOING": {
+        name: "Preparando pedido",
+        style: "info"
+      },
+      "DONE": {
+        name: "Pedido preparado",
+        style: "success"
+      },
+      "DELIVERED": {
+        name: "Pedido entregue",
+        style: "important"
+      },
+      "REFUNDED": {
+        name: "Pedido reembolsado",
+        style: "inverse"
+      }
+    };
+
     var atualizarPedidos = function() {
       !root.carregandoPedidos && root.listarPedidos();
     };
@@ -13,6 +40,10 @@ controller( "PedidosCtrl", ['$rootScope', '$scope', 'Pedido',
     ng.visualizar = function(pedido) {
       ng.pedido = pedido;
       $('#modalVisualizarPedido').modal('show');
+    };
+
+    ng.status = function(pedido) {
+      return STATUS[pedido.status];
     };
 
     ng.fazendoPedido = function() {

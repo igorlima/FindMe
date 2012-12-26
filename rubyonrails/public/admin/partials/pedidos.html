@@ -26,7 +26,20 @@
       <div class="box-content">
         <table class="table table-striped">
           <tr ng-repeat="pedido in pedidos">
-            <td class="center">{{pedido.total}}</td>
+            <td class="center">
+              <span ng-repeat="item in pedido.itens">
+                <strong>{{item.qty}} </strong> 
+                <span> {{item.description}}</span>
+                <span ng-show="!$last">,&nbsp;</span>
+              </span>
+              <br>
+              <i ng-show="pedido.observation && pedido.observation.length > 0">
+                ({{pedido.observation}})
+              </i>
+              <span class="badge badge-{{status(pedido).style}}">
+                {{status(pedido).name}}
+              </span>
+            </td>
             <td class="center">
               <a class="btn btn-info" ng-click="visualizar(pedido)" style="float: right">
                 <i class="icon-search icon-white"></i>
