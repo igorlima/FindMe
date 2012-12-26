@@ -118,10 +118,13 @@
         Lanche.viewModel = new LancheViewModel();
 
         //Routes
-        Path.map("#home").to(function(){
+        Path.map("#home").to(function() {
+
+          Lanche.User.load();
           head.js("js/_index.js", function() {
             Lanche.Index.load();
           });
+          
         });
 
         (location.hash == '#thanks') && alert("Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência");
