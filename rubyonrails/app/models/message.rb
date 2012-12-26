@@ -17,6 +17,7 @@ class Message
 
   def as_json(options={})
     {
+      _id:     id,
       name:    name,
       phone:   phone,
       email:   email,

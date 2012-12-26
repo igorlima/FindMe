@@ -78,7 +78,7 @@ class MessagesController < ApplicationController
     @message.read = 1;
 
     respond_to do |format|
-      if @message.update_attributes(params[:message])
+      if @message.save
         format.html { render json: { success: true } }
         format.json { render json: { success: true } }
       else
@@ -93,7 +93,7 @@ class MessagesController < ApplicationController
     @message.read = 0;
 
     respond_to do |format|
-      if @message.update_attributes(params[:message])
+      if @message.save
         format.html { render json: { success: true } }
         format.json { render json: { success: true } }
       else
