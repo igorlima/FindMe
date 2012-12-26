@@ -11,6 +11,15 @@
     });
   };
 
+  User.loadLastAddress = function() {
+    if (!User.data) return;
+
+    User.data.lastAddress = {};
+    $.getJSON('/user/lastAddress.json', function(data) {
+      User.data.lastAddress = data;
+    });
+  };
+
   var authenticated = function(data) {
     var isAuthenticated = (data && data.uid);
     if (!isAuthenticated) return;
