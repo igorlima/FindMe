@@ -82,7 +82,6 @@
 
         //Routes
         Path.map("#home").to(function() {
-          Lanche.User.load();
           head.js("js/_index.js", function() {
             Lanche.Index.load();
           });

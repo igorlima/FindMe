@@ -26,24 +26,21 @@
 
   var Index = Lanche.Index = function() {};
   Index.load = function() {
-    $('#phone-app').load('partials/home.html');
-
-    viewModel.title('Lanche Online');
-    viewModel.url_voltar('#home');
-    viewModel.showBtnVoltar(false);
-    viewModel.showMap(false);
-
-    Lanche.spinner.stop();
+    Lanche.spinner.start();
+    $('#phone-app').load('partials/home.html', function() {
+      Lanche.User.load();
+      applyBindings();
+      Lanche.spinner.stop();
+    });
   };
 
-  //ViewModel
-  !function () {
+  var applyBindings = function() {
     viewModel.title = ko.observable('Lanche Online');
     viewModel.url_voltar = ko.observable('#home');
     viewModel.showBtnVoltar = ko.observable(false);
     viewModel.showMap = ko.observable(false);
     ko.applyBindings(viewModel);
-  }();
+  };
   
   // Routes
   !function () {
