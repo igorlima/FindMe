@@ -1,0 +1,22 @@
+<div class='content-padded'>
+  <p class='welcome'>Estamos abertos a qualquer tipo de sugestão e críticas.</p>
+</div>"
+<form class='contato'>
+  <div class='input-group'>
+    <div class='input-row'>
+      <label>Nome</label>
+      <input type='text' placeholder='Igor Ribeiro Lima' data-bind='value: contato().name' >
+    </div>
+    <div class='input-row'>
+      <label>Telefone</label>
+      <input type='text' placeholder='(35) 9961-3395' data-bind='value: contato().phone' >
+    </div>
+    <div class='input-row'>
+      <label>E-mail</label>
+      <input type='email' placeholder='team@evolut.io' data-bind='value: contato().email' >
+    </div>
+  </div>
+  <input type='search' placeholder='Assunto' data-bind='value: contato().subject' >
+  <textarea rows='5' data-bind='value: contato().text' ></textarea>
+  <a class='button button-block' data-bind="click: sendMessage">Enviar</a>
+</form>
