@@ -3,6 +3,15 @@
   color: #555;
 }
 
+.bar-tab .tab-inner {
+  display: block;
+}
+
+.bar-tab .tab-inner .tab-item {
+  width: 25%;
+  float: left;
+}
+
 .detail-lanche {
   padding-left: 5px;
   font-size: 0.8em;
