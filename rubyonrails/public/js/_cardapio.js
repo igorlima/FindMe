@@ -9,15 +9,10 @@
     viewModel.showBtnVoltar(true);
     viewModel.showMap(false);
 
-    if (!cardapios) {
+    if (!cardapios) 
       loadCardapioFromServer();
-    } else {  
+    else 
       createHtml();
-      applyBindings();
-    }
-
-    if (cardapios) 
-      Lanche.spinner.stop();
     
   };
 
@@ -25,29 +20,14 @@
     $.getJSON('/cardapios.json', function(data) {
       cardapios = data;
       createHtml();
-      applyBindings();
-      Lanche.spinner.stop();
     });
   };
 
   var createHtml = function() {
-    $('#phone-app')
-    .empty()
-    .append(""+
-      "<div class='content-padded'>"+
-        "<p class='welcome'>Aprecie nosso cardárpio.</p>"+
-      "</div>"
-    )
-    .append(""+
-      "<ul class='list inset' data-bind=\"foreach: { data: cardapios, as: 'c' }\" >"+
-        "<li>"+
-          "<a data-bind='attr: { href: c.url }, click: function(c, event){ $root.selecionarCardapio(c, event) } '>"+
-            "<strong data-bind='text: c.description'></strong>"+
-            "<span class='chevron'></span>"+
-          "</a>"+
-        "</li>"+
-      "</ul>"
-    );
+    $('#phone-app').load( 'partials/cardapio.html', function(){
+      applyBindings();
+      Lanche.spinner.stop();
+    });
   };
 
   var applyBindings = function() {
