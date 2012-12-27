@@ -5,7 +5,6 @@
   Compra.load = function() {
     vm.title('Finalizando Pedido');
     vm.showBtnVoltar(false);
-    vm.showHomeContent(false);
     vm.showMap(false);
 
     createHtml();

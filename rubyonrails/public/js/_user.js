@@ -5,7 +5,6 @@
     viewModel.title('Usuário');
     viewModel.url_voltar('#home');
     viewModel.showBtnVoltar(false);
-    viewModel.showHomeContent(false);
     viewModel.showMap(false);
 
     createHtml();

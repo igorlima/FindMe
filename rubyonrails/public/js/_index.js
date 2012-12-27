@@ -26,10 +26,11 @@
 
   var Index = Lanche.Index = function() {};
   Index.load = function() {
+    $('#phone-app').load('partials/home.html');
+
     viewModel.title('Lanche Online');
     viewModel.url_voltar('#home');
     viewModel.showBtnVoltar(false);
-    viewModel.showHomeContent(true);
     viewModel.showMap(false);
 
     Lanche.spinner.stop();
@@ -40,7 +41,6 @@
     viewModel.title = ko.observable('Lanche Online');
     viewModel.url_voltar = ko.observable('#home');
     viewModel.showBtnVoltar = ko.observable(false);
-    viewModel.showHomeContent = ko.observable(false);
     viewModel.showMap = ko.observable(false);
     ko.applyBindings(viewModel);
   }();

@@ -9,7 +9,6 @@
     viewModel.welcome = ko.observable( viewModel.cardapio().welcome );
     viewModel.url_voltar( P.routes.previous );
     viewModel.showBtnVoltar(true);
-    viewModel.showHomeContent(false);
     viewModel.showMap(false);
 
     if (!hash_itens[id_cardapio]) {
