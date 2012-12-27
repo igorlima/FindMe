@@ -1,26 +1,24 @@
-;(function(Lanche, $, viewModel) {
+;(function(Lanche, $, vm) {
 
   var User = Lanche.User = Lanche.User || function() {};
   User.load = function() {
-    viewModel.title('Usuário');
-    viewModel.url_voltar('#home');
-    viewModel.showBtnVoltar(false);
-    viewModel.showMap(false);
+    vm.title('Usuário');
+    vm.url_voltar('#home');
+    vm.showBtnVoltar(false);
+    vm.showMap(false);
 
-    createHtml();
-    Lanche.spinner.stop();
+    Lanche.spinner.start();
+    $('#phone-app').load( 'partials/perfil.html', function(){
+      applyBindings();
+      Lanche.spinner.stop();
+    });
+
   };
 
-  var createHtml = function() {
-    $('#phone-app')
-    .empty()
-    .append(""+
-      "<div class='content-padded'>"+
-        "<img src='"+ User.data.image +"' >"+
-        "<br>"+
-        "<p class='welcome'>Você está logado como "+ User.data.name +".</p>"+
-      "</div>"
-    );
+  var applyBindings = function() {
+    vm.imagePerfil = ko.observable( User.data.image );
+    vm.userNamePerfil = ko.observable( User.data.name );
+    ko.applyBindings(vm);
   };
   
 })(window.Lanche, Zepto, Lanche.viewModel);
