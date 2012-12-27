@@ -1,7 +1,7 @@
 ;(function(Lanche, $, vm) {
 
-  var User = Lanche.User = Lanche.User || function() {};
-  User.load = function() {
+  var Perfil = Lanche.Perfil = Lanche.Perfil || function() {};
+  Perfil.load = function() {
     vm.title('Usuário');
     vm.url_voltar('#home');
     vm.showBtnVoltar(false);
@@ -16,8 +16,8 @@
   };
 
   var applyBindings = function() {
-    vm.imagePerfil = ko.observable( User.data.image );
-    vm.userNamePerfil = ko.observable( User.data.name );
+    vm.imagePerfil = ko.observable( Lanche.User.data.image );
+    vm.userNamePerfil = ko.observable( Lanche.User.data.name );
     ko.applyBindings(vm);
   };
   

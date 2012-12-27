@@ -66,7 +66,7 @@
       .js(
         "js/_perfil.js",
         function() {
-          Lanche.User.load();
+          Lanche.Perfil.load();
         }
       );
     });
