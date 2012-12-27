@@ -1,0 +1,19 @@
+<div class='content-padded'>
+  <p class='welcome' data-bind='text: welcome '></p>
+</div>
+<ul class='list inset compra' data-bind="foreach: { data: itens, as: 'h' }" >
+  <li>
+    <strong data-bind='text: h.description'></strong>
+    <span class='detail-lanche' data-bind='text: h.ingredients'></span>
+     - <span data-bind='text: $root.priceItem(h) '></span>
+    <span class='count' data-bind='text: h.qte'></span>
+    <a class='button-negative' data-bind='click: $root.lessItem'>-</a>
+    <a class='button-positive' data-bind='click: $root.moreItem'>+</a>
+  </li>
+</ul>
+<ul class='list inset'>
+  <li>
+    <strong>Total</strong>
+    <strong class='total' data-bind='text: total'></strong>
+  </li>
+</ul>

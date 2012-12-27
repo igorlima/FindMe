@@ -1,13 +1,13 @@
-;(function(window, $, ko, viewModel, P) {
+;(function(window, $, ko, vm, P) {
   var Lanche = window.Lanche;
   var cardapios = null;
 
   var Cardapio = Lanche.Cardapio = function(){};
   Cardapio.load = function() {
-    viewModel.title('Cardápio');
-    viewModel.url_voltar('#home');
-    viewModel.showBtnVoltar(true);
-    viewModel.showMap(false);
+    vm.title('Cardápio');
+    vm.url_voltar('#home');
+    vm.showBtnVoltar(true);
+    vm.showMap(false);
 
     if (!cardapios) 
       loadCardapioFromServer();
@@ -31,12 +31,12 @@
   };
 
   var applyBindings = function() {
-    viewModel.cardapios = cardapios;
-    viewModel.selecionarCardapio = function(c, event) {
-      viewModel.cardapio(c);
+    vm.cardapios = cardapios;
+    vm.selecionarCardapio = function(c, event) {
+      vm.cardapio(c);
       window.location.href = event.currentTarget.href;
     };
-    ko.applyBindings(viewModel);
+    ko.applyBindings(vm);
   };
 
   // Routes
@@ -59,7 +59,7 @@
 
   // Observable
   !function () {
-    viewModel.cardapio = ko.observable(null);
+    vm.cardapio = ko.observable(null);
   }();
   
 })(window, Zepto, ko, Lanche.viewModel, Path);
