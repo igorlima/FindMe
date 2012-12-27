@@ -40,10 +40,13 @@
 
   Pedido.load = function() {
     popover();
-    Lanche.spinner.stop();
 
-    createHtml();
-    applyBindings();
+    Lanche.spinner.start();
+    $('.popover').load( 'partials/pedido.html', function(){
+      applyBindings();
+      Lanche.spinner.stop();
+    });
+    
   };
 
   var popover = function() {
@@ -73,46 +76,6 @@
 
   var keepOpen = function(e) {
     e.stopPropagation();
-  };
-
-  var createHtml = function() {
-    $('.popover')
-    .empty()
-    .append(""+
-      "<header class='popover-header'>"+
-        "<a class='button' href='#' data-bind='visible: showBtnPedido, click: esvaziarPedido ' >"+
-          "Esvaziar"+
-        "</a>"+
-        "<h3 class='title'>Meu Pedido</h3>"+
-        "<a class='button' data-bind='visible: showBtnPedido, click: finalizarPedido ' >"+
-          "Comprar"+
-        "</a>"+
-      "</header>"
-    )
-    .append(""+
-      "<ul class='list' data-bind=\"visible: pedido().length() > 0 , foreach: { data: pedido().itens() , as: 'i' } \" >"+
-        "<li>"+
-          "<strong data-bind='text: i.description '></strong>"+
-          " - <span data-bind='text: $root.subTotalItemPedido(i) '></span>" +
-          "<span class='count-main' data-bind='text: i.qte '></span>"+
-        "</li>"+
-      "</ul>"
-    )
-    .append(""+
-      "<ul class='list inset' data-bind='visible: pedido().length()>0' >"+
-        "<li>"+
-          "<strong>Total</strong>"+
-          "<strong class='total' data-bind='text: strTotalPedido' ></strong>"+
-        "</li>"+
-      "</ul>"
-    )
-    .append(""+
-      "<ul class='list inset' data-bind='visible: pedido().length()<=0' >"+
-        "<li>"+
-          "<strong>Nenhum item adicionado</strong>"+
-        "</li>"+
-      "</ul>"
-    );
   };
 
   var applyBindings = function() {
