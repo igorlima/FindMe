@@ -7,6 +7,7 @@
     vm.showBtnVoltar(false);
     vm.showMap(false);
 
+    Lanche.spinner.start();
     $('#phone-app').load( "partials/compra.html", function() {
       applyBindings();
       vm.configuration().online_fee && Lanche.spinner.stop();

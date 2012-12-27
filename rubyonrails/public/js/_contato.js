@@ -7,6 +7,7 @@
     vm.showBtnVoltar(false);
     vm.showMap(false);
 
+    Lanche.spinner.start();
     $('#phone-app').load( 'partials/contato.html', function() {
       applyBindings();
       Lanche.spinner.stop();
