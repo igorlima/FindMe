@@ -64,7 +64,7 @@
       Lanche.spinner.start();
       head
       .js(
-        "js/_user.js",
+        "js/_perfil.js",
         function() {
           Lanche.User.load();
         }
