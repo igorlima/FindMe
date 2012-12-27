@@ -60,7 +60,7 @@
       );
     }).enter(Lanche.Util.clearPanel);
 
-    Path.map("#user").to(function() {
+    Path.map("#perfil").to(function() {
       Lanche.spinner.start();
       head
       .js(
