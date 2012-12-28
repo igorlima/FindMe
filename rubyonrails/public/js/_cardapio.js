@@ -46,8 +46,8 @@
       head
       .js(
         "js/jaylist.min.js",
-        "js/_cardapio_conteudo.js",
         "js/_pedido.js",
+        "js/_cardapio_conteudo.js",
         function() {
           Cardapio.Item.load();
         }
