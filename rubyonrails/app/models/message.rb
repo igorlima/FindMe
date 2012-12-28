@@ -17,14 +17,16 @@ class Message
 
   def as_json(options={})
     {
-      _id:     id,
-      name:    name,
-      phone:   phone,
-      email:   email,
-      subject: subject,
-      text:    text,
-      read:    read,
-      user:    user
+      _id:        id,
+      name:       name,
+      phone:      phone,
+      email:      email,
+      subject:    subject,
+      text:       text,
+      read:       read,
+      user:       user,
+      created_at: created_at.strftime("%H:%M - %d/%m/%Y"),
+      updated_at: updated_at.strftime("%H:%M - %d/%m/%Y")
     }
   end
 
