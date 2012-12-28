@@ -91,12 +91,14 @@
           });
         });
 
-        (location.hash == '#thanks') && alert("Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência");
+        Path.map("#thanks").to(function() {
+          alert("Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência");
+        });
 
-        location.hash = 'home';
         Path.root("#home");
         Path.listen();
 
+        location.hash = 'home';
       }
     )
 
