@@ -1,5 +1,32 @@
 ;(function(Perfil, $, ko, vm) {
 
+  var STATUS = {
+    "PENDING": {
+      name: "Pendente",
+      style: "count"
+    },
+    "PAID": {
+      name: "Pago",
+      style: "count"
+    },
+    "DOING": {
+      name: "Preparando pedido",
+      style: "count-main"
+    },
+    "DONE": {
+      name: "Pedido preparado",
+      style: "count-positive"
+    },
+    "DELIVERED": {
+      name: "Pedido entregue",
+      style: "count"
+    },
+    "REFUNDED": {
+      name: "Pedido reembolsado",
+      style: "count"
+    }
+  };
+
   var Ordens = Perfil.Ordens = Lanche.Ordens || function() {};
   Ordens.load = function() {
     vm.title('Meus Pedidos');
@@ -20,6 +47,10 @@
   var applyBindings = function() {
     var hasPedidos = vm.pedidos() ? vm.pedidos().length > 0 : false;
     vm.hasPedidos = ko.observable( hasPedidos );
+    hasPedidos && vm.pedidos().forEach(function(pedido){
+      pedido.status = STATUS[pedido.status];
+    });
+
     ko.applyBindings(vm);
   };
 

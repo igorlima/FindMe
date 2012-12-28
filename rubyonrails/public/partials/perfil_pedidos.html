@@ -3,6 +3,12 @@
 </div>
 <ul class='list' data-bind="visible: hasPedidos, foreach: { data: pedidos, as: 'p' }" >
   <li>
-    <span data-bind='text: p.status'></span>
+    <span data-bind="foreach: { data: p.itens, as: 'item' }">
+      <span data-bind="text: item.qty + ' ' + item.description "></span>
+      <span data-bind="visible: ($index() < (p.itens.length - 1)) ">,&nbsp;</span>
+    </span> <br>
+    <i data-bind='text: p.observation'></i> <br>
+    <strong data-bind='text: p.created_at'></strong>
+    <span data-bind='text: p.status.name , attr: { class: p.status.style }'></span>
   </li>
 </ul>
