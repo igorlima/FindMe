@@ -15,8 +15,11 @@ Rubyonrails::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure',     to: redirect('/')
   match 'signout',          to: 'sessions#destroy', as: 'signout'
-  match 'user',             to: 'sessions#user'
-  match 'user/lastAddress', to: 'sessions#last_address'
+
+  match 'user',              to: 'user#data'
+  match 'user/lastAddress',  to: 'user#last_address'
+  match 'user/lastOrders',   to: 'user#last_orders'
+  match 'user/lastMessages', to: 'user#last_messages'
 
   match 'checkout',             to: 'orders#create',    :via => :post
   match 'success',              to: 'orders#success',   :via => :get

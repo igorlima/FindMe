@@ -27,6 +27,14 @@ class User
     last_order.nil? ? nil : last_order.address
   end
 
+  def last_orders
+    Order.where( :user => id ).desc("created_at").limit(5)
+  end
+
+  def last_messages
+    Message.where( :user => id ).desc("created_at").limit(5)
+  end
+
   def self.from_omniauth(auth)
     user = User.where( uid: auth.uid, provider: auth.provider ).first
     user = User.new if user.nil?
