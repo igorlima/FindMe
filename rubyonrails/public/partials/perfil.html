@@ -1,8 +1,28 @@
 <div class='content-padded'>
   <img data-bind="attr: { src: imagePerfil }" >
-  <br>
   <p class='welcome'>
     Você está logado como 
     <span data-bind="text: userNamePerfil"></span>.
   </p>
+  <br>
+  <ul class='list inset'>
+    <li>
+      <a href='#usuario/pedidos'>
+        <strong>Meus Pedidos</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+    <li>
+      <a href='#usuario/mensagens'>
+        <strong>Minhas Mensagens</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+    <li>
+      <a href='/signout'>
+        <strong>Sair</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+  </ul>
 </div>
