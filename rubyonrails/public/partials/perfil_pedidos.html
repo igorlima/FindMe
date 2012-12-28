@@ -1,0 +1,8 @@
+<div class="content-padded" data-bind="visible: !hasPedidos() " >
+  <p class="welcome">Você não possui nenhum pedido.</p>
+</div>
+<ul class='list' data-bind="visible: hasPedidos, foreach: { data: pedidos, as: 'p' }" >
+  <li>
+    <span data-bind='text: p.status'></span>
+  </li>
+</ul>
