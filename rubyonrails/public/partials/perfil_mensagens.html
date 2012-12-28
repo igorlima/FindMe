@@ -1,0 +1,10 @@
+<div class="content-padded" data-bind="visible: !hasMensagens() " >
+  <p class="welcome">Você não enviou nenhuma mensagem.</p>
+</div>
+<ul class='list' data-bind="visible: hasMensagens, foreach: { data: mensagens, as: 'm' }" >
+  <li>
+    <span data-bind='text: m.text'></span>
+    <span class='count-negative' data-bind='visible: m.read == 0 ' >não lida</span>
+    <span class='count-main' data-bind='visible: m.read == 1 ' >lida</span>
+  </li>
+</ul>
