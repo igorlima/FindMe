@@ -9,6 +9,8 @@
 
     Lanche.spinner.start();
     $('#phone-app').load( 'partials/promocao.html', function(){
+      new FingerBlast( $('.slider')[0] );
+      Lanche.Slider.scan();
       applyBindings();
       Lanche.spinner.stop();
     });
