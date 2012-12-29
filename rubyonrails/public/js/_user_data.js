@@ -45,4 +45,11 @@
 
   };
 
+
+  !function () {
+    $('#authentication a, #bar-tab-item-user a').click(function(){
+      Lanche.spinner.start();
+    });
+  }();
+
 })(window, Zepto);
