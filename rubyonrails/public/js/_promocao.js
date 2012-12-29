@@ -2,7 +2,7 @@
 
   var Promocao = Lanche.Promocao = function(){};
   Promocao.load = function() {
-    viewModel.title('Cardápio');
+    viewModel.title('Promoções');
     viewModel.url_voltar('#home');
     viewModel.showBtnVoltar(true);
     viewModel.showMap(false);
