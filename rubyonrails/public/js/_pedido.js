@@ -101,14 +101,14 @@
     };
 
     vm.totalPedido = ko.computed(function() {
-        var total = 0;
-        for (var i=0; i < vm.pedido().itens().length; i++)
-            total += vm.pedido().itens()[i].qte() * vm.pedido().itens()[i].price;
-        return parseFloat(total);
+      var total = 0;
+      for (var i=0; i < vm.pedido().itens().length; i++)
+        total += vm.pedido().itens()[i].qte() * vm.pedido().itens()[i].price;
+      return parseFloat(total);
     });
 
     vm.strTotalPedido = ko.computed(function() {
-        return "R$ " + vm.totalPedido().toFixed(2);
+      return "R$ " + vm.totalPedido().toFixed(2);
     });
 
     ko.applyBindingsToDescendants(vm, $('.popover')[0]);
@@ -118,13 +118,9 @@
   !function () {
     P.map("#compra").to(function(){
       Lanche.spinner.start();
-      head
-      .js(
-        "js/_compra.js",
-        function() {
-          Lanche.Compra.load();
-        }
-      );
+      head.js("js/_compra.js", function() {
+        Lanche.Compra.load();
+      });
     }).enter(Lanche.Util.clearPanel);
 
     P.listen();
@@ -133,13 +129,6 @@
   // Inicializacao
   !function () {
     vm.pedido = ko.observable( new Pedido({}) );
-    head
-    .js(
-      "js/lawnchair-0.6.1.min.js",
-      function() {
-        
-      }
-    );
   }();
 
 })(window.Lanche, Zepto, ko, Lanche.viewModel, Path);
