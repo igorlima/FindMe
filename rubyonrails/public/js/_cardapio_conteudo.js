@@ -71,8 +71,17 @@
       storage.get( ['cardapioItems', 'pedido'], function(args) {
         var itens = args[0];
         var pedido = args[1];
-        
+
         itens && (Item.data = itens.data);
+
+        pedido && $.each(pedido.data, function(itemID, qte) {
+          $.each(Item.data, function(cardapioID, itens) {
+            $.each(itens, function(index, item) {
+              (item._id == itemID) && (item.qte = ko.observable(qte));
+            });
+          });
+        });
+
       });
     });
   }();
