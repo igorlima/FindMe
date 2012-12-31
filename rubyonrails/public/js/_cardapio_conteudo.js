@@ -77,7 +77,10 @@
         pedido && $.each(pedido.data, function(itemID, qte) {
           $.each(Item.data, function(cardapioID, itens) {
             $.each(itens, function(index, item) {
-              (item._id == itemID) && (item.qte = ko.observable(qte));
+              if (item._id == itemID) {
+                item.qte = ko.observable(qte);
+                vm.pedido()._itens.add( item._id, item );
+              }
             });
           });
         });
