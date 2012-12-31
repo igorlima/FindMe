@@ -57,10 +57,10 @@
       return "R$ " + parseFloat(h.price).toFixed(2);
     };
     vm.total = ko.computed(function() {
-        var total = 0;
-        for (var i=0; i < vm.itens().length; i++)
-            total += vm.itens()[i].qte() * vm.itens()[i].price;
-        return "R$ " + parseFloat(total).toFixed(2);
+      var total = 0;
+      for (var i=0; i < vm.itens().length; i++)
+        total += vm.itens()[i].qte() * vm.itens()[i].price;
+      return "R$ " + parseFloat(total).toFixed(2);
     });
     ko.applyBindings(vm);
   };
