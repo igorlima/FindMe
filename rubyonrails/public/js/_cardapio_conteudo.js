@@ -68,7 +68,10 @@
   //Local Storage
   !function () {
     Lanche.storage = new Lawnchair( function(storage) {
-      storage.get('cardapioItems', function(itens) {
+      storage.get( ['cardapioItems', 'pedido'], function(args) {
+        var itens = args[0];
+        var pedido = args[1];
+        
         itens && (Item.data = itens.data);
       });
     });
