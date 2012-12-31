@@ -1,15 +1,16 @@
 ;(function(window, $, ko, vm, P) {
   var Lanche = window.Lanche;
-  var cardapios = null;
 
   var Cardapio = Lanche.Cardapio = function(){};
+  Cardapio.data = null;
+
   Cardapio.load = function() {
     vm.title('Cardápio');
     vm.url_voltar('#home');
     vm.showBtnVoltar(true);
     vm.showMap(false);
 
-    if (!cardapios) 
+    if (!Cardapio.data) 
       loadCardapioFromServer();
     else 
       createHtml();
@@ -18,7 +19,8 @@
 
   var loadCardapioFromServer = function() {
     $.getJSON('/cardapios.json', function(data) {
-      cardapios = data;
+      Cardapio.data = data;
+      Lanche.storage.save({key: 'cardapios', data: data});
       createHtml();
     });
   };
@@ -31,7 +33,7 @@
   };
 
   var applyBindings = function() {
-    vm.cardapios = cardapios;
+    vm.cardapios = Cardapio.data;
     vm.selecionarCardapio = function(c, event) {
       vm.cardapio(c);
       window.location.href = event.currentTarget.href;
@@ -45,11 +47,14 @@
       Lanche.spinner.start();
       head
       .js(
+        "js/lawnchair-0.6.1.min.js",
         "js/jaylist.min.js",
         "js/_pedido.js",
         "js/_cardapio_conteudo.js",
         function() {
-          Cardapio.Item.load();
+          Lanche.storage = new Lawnchair( function() {
+            Cardapio.Item.load();
+          });
         }
       );
     }).enter(Lanche.Util.clearPanel);

@@ -52,10 +52,13 @@
       .on('click', function(e) { e.stopPropagation(); Lanche.Pedido.load(); });
       head
       .js(
+        "js/lawnchair-0.6.1.min.js",
         "js/jaylist.min.js",
         "js/_pedido.js",
         function() {
-          Lanche.Pedido.load();
+          Lanche.storage = new Lawnchair( function() {
+            Lanche.Pedido.load();
+          });
         }
       );
     }).enter(Lanche.Util.clearPanel);
@@ -85,11 +88,14 @@
       Lanche.spinner.start();
       head
       .js(
+        "js/lawnchair-0.6.1.min.js",
         "js/ratchet-slider.js",
         "js/fingerblast.js",
         "js/_promocao.js",
         function() {
-          Lanche.Promocao.load();
+          Lanche.storage = new Lawnchair( function() {
+            Lanche.Promocao.load();
+          });
         }
       );
     }).enter(Lanche.Util.clearPanel);
@@ -101,7 +107,14 @@
         "js/lawnchair-0.6.1.min.js",
         "js/_cardapio.js",
         function() {
-          Lanche.Cardapio.load();
+          Lanche.storage = new Lawnchair( function(storage) {
+
+            storage.get('cardapios', function(cardapios) {
+              cardapios && (Lanche.Cardapio.data = cardapios.data);
+              Lanche.Cardapio.load();
+            });
+
+          });
         }
       );
     }).enter(Lanche.Util.clearPanel);

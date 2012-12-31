@@ -92,7 +92,15 @@
         });
 
         Path.map("#thanks").to(function() {
-          alert("Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência");
+          head.js( "js/lawnchair-0.6.1.min.js", function() {
+
+            Lanche.storage = new Lawnchair( function(storage) {
+              storage.remove('pedido', function() {
+                alert("Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência");
+              });
+            });
+
+          });
         });
 
         Path.root("#home");
