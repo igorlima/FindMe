@@ -1,8 +1,9 @@
 ;(function(window, $, ko, vm, P) {
-  var hash_itens = {};
   var id_cardapio = null;
 
   var Item = window.Lanche.Cardapio.Item = function(){};
+  Item.data = {};
+
   Item.load = function() {
     id_cardapio = vm.cardapio()._id;
     vm.title( vm.cardapio().description );
@@ -11,7 +12,7 @@
     vm.showBtnVoltar(true);
     vm.showMap(false);
 
-    if (!hash_itens[id_cardapio])
+    if (!Item.data[id_cardapio])
       loadCardapioConteudoFromServer();
     else
       createHtml();
@@ -20,12 +21,16 @@
 
   var loadCardapioConteudoFromServer = function() {
     $.getJSON( vm.cardapio().json , function(data) {
-      hash_itens[id_cardapio] = data;
-      hash_itens[id_cardapio].forEach( function(item) {
-        item.qte = ko.observable(0);
+
+      Item.data[id_cardapio] = data;
+      Lanche.storage.get( 'cardapioItems', function(itens) {
+        var itens = itens ? itens.data : {};
+        itens[id_cardapio] = data;
+        Lanche.storage.save({key: 'cardapioItems', data: itens}, function() {
+          createHtml();
+        });
       });
 
-      createHtml();
     });
   };
 
@@ -37,7 +42,11 @@
   };
 
   var applyBindings = function() {
-    vm.itens = ko.observableArray(hash_itens[id_cardapio]);
+    Item.data[id_cardapio].forEach( function(item) {
+      item.qte = item.qte || ko.observable(0);
+    });
+
+    vm.itens = ko.observableArray(Item.data[id_cardapio]);
     vm.moreItem = function(h) {
       vm.pedido().add(h);
     };

@@ -52,8 +52,13 @@
         "js/_pedido.js",
         "js/_cardapio_conteudo.js",
         function() {
-          Lanche.storage = new Lawnchair( function() {
-            Cardapio.Item.load();
+          Lanche.storage = new Lawnchair( function(storage) {
+
+            storage.get('cardapioItems', function(itens) {
+              itens && (Cardapio.Item.data = itens.data);
+              Cardapio.Item.load();
+            });
+
           });
         }
       );
