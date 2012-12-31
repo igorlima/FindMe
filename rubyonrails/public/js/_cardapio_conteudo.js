@@ -65,4 +65,13 @@
     ko.applyBindings(vm);
   };
 
+  //Local Storage
+  !function () {
+    Lanche.storage = new Lawnchair( function(storage) {
+      storage.get('cardapioItems', function(itens) {
+        itens && (Item.data = itens.data);
+      });
+    });
+  }();
+
 })(window, Zepto, ko, Lanche.viewModel, Path);

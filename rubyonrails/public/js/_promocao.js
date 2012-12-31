@@ -21,4 +21,11 @@
     ko.applyBindings(viewModel);
   };
   
+  //Local Storage
+  !function () {
+    Lanche.storage = new Lawnchair( function(storage) {
+      
+    });
+  }();
+
 })(window.Lanche, FingerBlast, Zepto, ko, Lanche.viewModel);

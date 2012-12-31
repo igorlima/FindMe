@@ -27,15 +27,24 @@
       this._itens.add( item._id, item );
 
     item.qte( item.qte()+1 );
+    Pedido.saveItem(item);
   };
 
   Pedido.fn.remove = function(item) {
     if( !this._itens.hasKey(item._id) ) return;
 
     item.qte( item.qte()-1 );
-    if (item.qte() <= 0)
-      this._itens.remove(item._id);
+    (item.qte() <= 0) && this._itens.remove(item._id);
 
+    Pedido.saveItem(item);
+  };
+
+  Pedido.saveItem = function(item) {
+    Lanche.storage.get( 'pedido', function(pedido) {
+      var pedido = pedido ? pedido.data : {};
+      pedido[item._id] = item.qte();
+      Lanche.storage.save({key: 'pedido', data: pedido});
+    });
   };
 
   Pedido.load = function() {
@@ -126,7 +135,7 @@
     P.listen();
   }();
 
-  // Inicializacao
+  // Inicializacao e LocalStorage
   !function () {
     vm.pedido = ko.observable( new Pedido({}) );
   }();

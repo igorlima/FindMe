@@ -55,10 +55,10 @@
         "js/lawnchair-0.6.1.min.js",
         "js/jaylist.min.js",
         "js/_pedido.js",
+        "js/_cardapio.js",
+        "js/_cardapio_conteudo.js",
         function() {
-          Lanche.storage = new Lawnchair( function() {
-            Lanche.Pedido.load();
-          });
+          Lanche.Pedido.load();
         }
       );
     }).enter(Lanche.Util.clearPanel);
@@ -93,9 +93,7 @@
         "js/fingerblast.js",
         "js/_promocao.js",
         function() {
-          Lanche.storage = new Lawnchair( function() {
-            Lanche.Promocao.load();
-          });
+          Lanche.Promocao.load();
         }
       );
     }).enter(Lanche.Util.clearPanel);
@@ -107,14 +105,7 @@
         "js/lawnchair-0.6.1.min.js",
         "js/_cardapio.js",
         function() {
-          Lanche.storage = new Lawnchair( function(storage) {
-
-            storage.get('cardapios', function(cardapios) {
-              cardapios && (Lanche.Cardapio.data = cardapios.data);
-              Lanche.Cardapio.load();
-            });
-
-          });
+          Lanche.Cardapio.load();
         }
       );
     }).enter(Lanche.Util.clearPanel);

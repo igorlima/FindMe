@@ -52,14 +52,7 @@
         "js/_pedido.js",
         "js/_cardapio_conteudo.js",
         function() {
-          Lanche.storage = new Lawnchair( function(storage) {
-
-            storage.get('cardapioItems', function(itens) {
-              itens && (Cardapio.Item.data = itens.data);
-              Cardapio.Item.load();
-            });
-
-          });
+          Cardapio.Item.load();
         }
       );
     }).enter(Lanche.Util.clearPanel);
@@ -70,6 +63,15 @@
   // Observable
   !function () {
     vm.cardapio = ko.observable(null);
+  }();
+
+  //Local Storage
+  !function () {
+    Lanche.storage = new Lawnchair( function(storage) {
+      storage.get('cardapios', function(cardapios) {
+        cardapios && (Lanche.Cardapio.data = cardapios.data);
+      });
+    });
   }();
   
 })(window, Zepto, ko, Lanche.viewModel, Path);
