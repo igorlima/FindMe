@@ -71,49 +71,48 @@
 
   <!-- Include the compiled Ratchet JS -->
   <script>
+    var Lanche = window.Lanche = window.Lanche || function() {};
+    Lanche.minify = location.hostname == 'localhost' ? '' : '.min';
+
     head
     .js(
-      {spin:  "js/spin.min.js"},
-      "js/path.min.js",
-      "js/zepto.min.js",
-      "js/knockout-2.2.0.js",
-      "js/_user_data.js",
+      {spin:  'js/spin.min.js'},
+      'js/path.min.js',
+      'js/zepto.min.js',
+      'js/knockout-2.2.0.js',
+      'js/_user_data'+Lanche.minify+'.js',
       function() {
-        var Lanche = window.Lanche = window.Lanche || function() {};
-        Lanche.minify = location.hostname == 'localhost' ? '' : '.min';
-        
         //ViewModel
         var LancheViewModel = function () {};
         Lanche.viewModel = new LancheViewModel();
 
         //Routes
-        Path.map("#home").to(function() {
+        Path.map('#home').to(function() {
           head.js('js/_home'+Lanche.minify+'.js', function() {
             Lanche.Index.load();
           });
         });
 
-        Path.map("#thanks").to(function() {
-          head.js( "js/lawnchair-0.6.1.min.js", function() {
+        Path.map('#thanks').to(function() {
+          head.js( 'js/lawnchair-0.6.1.min.js', function() {
 
             Lanche.storage = new Lawnchair( function(storage) {
               storage.remove('pedido', function() {
-                alert("Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência");
+                alert('Seu pedido foi registrado com sucesso. Você pode acompanhar seu pedido pelo site. Muito obrigado pela preferência');
               });
             });
 
           });
         });
 
-        Path.root("#home");
+        Path.root('#home');
         Path.listen();
 
         location.hash = 'home';
       }
     )
 
-    .ready("spin", function() {
-      var Lanche = window.Lanche = window.Lanche || function() {};
+    .ready('spin', function() {
       var target = document.getElementsByTagName('body')[0];
       var spinner = Lanche.spinner = new Spinner({});
       spinner.start = function() {
