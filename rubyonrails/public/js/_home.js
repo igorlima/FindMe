@@ -89,8 +89,8 @@
       head
       .js(
         "js/lawnchair-0.6.1.min.js",
-        "js/ratchet-slider.js",
-        "js/fingerblast.js",
+        "js/ratchet-slider.min.js",
+        "js/fingerblast.min.js",
         "js/_promocao.js",
         function() {
           Lanche.Promocao.load();

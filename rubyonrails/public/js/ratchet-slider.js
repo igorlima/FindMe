@@ -20,7 +20,7 @@ Slider.scan = function () {
     for (; target && target !== document; target = target.parentNode) {
       for (i = sliders.length; i--;) { if (sliders[i] === target) return target; }
     }
-  }
+  };
 
   var getScroll = function () {
     var translate3d = slider.style.webkitTransform.match(/translate3d\(([^,]*)/);
@@ -33,7 +33,7 @@ Slider.scan = function () {
     slideNumber += offset;
     slideNumber = Math.min(slideNumber, 0);
     slideNumber = Math.max(-($(slider).children().length - 1), slideNumber);
-  }
+  };
 
   var onTouchStart = function (e) {
     slider = getSlider(e.target);
