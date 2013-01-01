@@ -8,7 +8,7 @@
     viewModel.showMap(false);
 
     Lanche.spinner.start();
-    $('#phone-app').load( 'partials/promocao.html', function(){
+    $('#phone-app').load( 'partials/promocao.html', function() {
       new FingerBlast( $('.slider')[0] );
       Lanche.Slider.scan();
       applyBindings();
