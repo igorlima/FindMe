@@ -18,7 +18,8 @@ class User
       uid:       uid,
       name:      name,
       firstName: first_name,
-      image:     image
+      image:     image,
+      email:     email
     }
   end
 

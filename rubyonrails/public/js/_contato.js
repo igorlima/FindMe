@@ -16,7 +16,8 @@
 
   var applyBindings = function() {
     vm.contato = ko.observable({
-      name: Lanche.User.data.name
+      name:  Lanche.User.data.name,
+      email: Lanche.User.data.email
     });
     vm.sendMessage = function() {
       Lanche.spinner.start();
