@@ -1,0 +1,14 @@
+juicer merge _cardapio.js -m yui_compressor -i -f
+juicer merge _cardapio_conteudo.js -m yui_compressor -i -f
+juicer merge _compra.js -m yui_compressor -i -f
+juicer merge _contato.js -m yui_compressor -i -f
+juicer merge _home.js -m yui_compressor -i -f
+juicer merge _local.js -m yui_compressor -i -f
+juicer merge _localInfo.js -m yui_compressor -i -f
+juicer merge _map.js -m yui_compressor -i -f
+juicer merge _pedido.js -m yui_compressor -i -f
+juicer merge _perfil.js -m yui_compressor -i -f
+juicer merge _perfil_mensagens.js -m yui_compressor -i -f
+juicer merge _perfil_pedidos.js -m yui_compressor -i -f
+juicer merge _promocao.js -m yui_compressor -i -f
+juicer merge _user_data.js -m yui_compressor -i -f

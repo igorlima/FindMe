@@ -43,14 +43,14 @@
 
   // Routes
   !function () {
-    P.map("#cardapio/conteudo").to(function(){
+    P.map('#cardapio/conteudo').to(function(){
       Lanche.spinner.start();
       head
       .js(
-        "js/lawnchair-0.6.1.min.js",
-        "js/jaylist.min.js",
-        "js/_pedido.js",
-        "js/_cardapio_conteudo.js",
+        'js/lawnchair-0.6.1.min.js',
+        'js/jaylist.min.js',
+        'js/_pedido'+Lanche.minify+'.js',
+        'js/_cardapio_conteudo'+Lanche.minify+'.js',
         function() {
           Cardapio.Item.load();
         }

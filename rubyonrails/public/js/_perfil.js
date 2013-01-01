@@ -23,22 +23,22 @@
 
   // Routes
   !function () {
-    P.map("#perfil/pedidos").to(function(){
+    P.map('#perfil/pedidos').to(function(){
       Lanche.spinner.start();
       head
       .js(
-        "js/_perfil_pedidos.js",
+        'js/_perfil_pedidos'+Lanche.minify+'.js',
         function() {
           Perfil.Ordens.load();
         }
       );
     }).enter(Lanche.Util.clearPanel);
 
-    P.map("#perfil/mensagens").to(function(){
+    P.map('#perfil/mensagens').to(function(){
       Lanche.spinner.start();
       head
       .js(
-        "js/_perfil_mensagens.js",
+        'js/_perfil_mensagens'+Lanche.minify+'.js',
         function() {
           Perfil.Mensagens.load();
         }

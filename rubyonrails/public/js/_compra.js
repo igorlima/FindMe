@@ -8,7 +8,7 @@
     vm.showMap(false);
 
     Lanche.spinner.start();
-    $('#phone-app').load( "partials/compra.html", function() {
+    $('#phone-app').load( 'partials/compra.html', function() {
       applyBindings();
       vm.configuration().online_fee && Lanche.spinner.stop();
     });
@@ -23,9 +23,9 @@
     });
     Lanche.User.loadLastAddress( function(address) {
       var compra = vm.compra();
-      compra.address.street   = address.street ? address.street : "";
-      compra.address.number   = address.number ? address.number : "";
-      compra.address.district = address.district ? address.district : "";
+      compra.address.street   = address.street ? address.street : '';
+      compra.address.number   = address.number ? address.number : '';
+      compra.address.district = address.district ? address.district : '';
       vm.compra(compra);
     });
 
@@ -36,14 +36,14 @@
       return vm.configuration().delivery_fee ? parseFloat(vm.configuration().delivery_fee) : 0.00;
     });
     vm.strOnlineFee = ko.computed(function() {
-      return "R$ " + vm.onlineFee().toFixed(2);
+      return 'R$ ' + vm.onlineFee().toFixed(2);
     });
     vm.strDeliveryFee = ko.computed(function() {
-      return "R$ " + vm.deliveryFee().toFixed(2);
+      return 'R$ ' + vm.deliveryFee().toFixed(2);
     });
     vm.strTotalPedido = ko.computed(function() {
       var total = vm.totalPedido() + vm.deliveryFee() + vm.onlineFee();
-      return "R$ " + total.toFixed(2);
+      return 'R$ ' + total.toFixed(2);
     });
     vm.checkout = function() {
       
@@ -73,7 +73,7 @@
   // Observable
   !function () {
     vm.configuration = ko.observable({});
-    $.getJSON( "/configuration", function(data) {
+    $.getJSON( '/configuration', function(data) {
       vm.configuration(data);
       Lanche.spinner.stop();
     });

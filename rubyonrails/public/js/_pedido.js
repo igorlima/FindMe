@@ -106,7 +106,7 @@
 
     vm.subTotalItemPedido = function(i) {
       if (!i) return '';
-      return "R$ " + parseFloat( i.qte() * i.price ).toFixed(2);
+      return 'R$ ' + parseFloat( i.qte() * i.price ).toFixed(2);
     };
 
     vm.totalPedido = ko.computed(function() {
@@ -117,7 +117,7 @@
     });
 
     vm.strTotalPedido = ko.computed(function() {
-      return "R$ " + vm.totalPedido().toFixed(2);
+      return 'R$ ' + vm.totalPedido().toFixed(2);
     });
 
     ko.applyBindingsToDescendants(vm, $('.popover')[0]);
@@ -125,9 +125,9 @@
 
   // Routes
   !function () {
-    P.map("#compra").to(function(){
+    P.map('#compra').to(function(){
       Lanche.spinner.start();
-      head.js("js/_compra.js", function() {
+      head.js('js/_compra'+Lanche.minify+'.js', function() {
         Lanche.Compra.load();
       });
     }).enter(Lanche.Util.clearPanel);

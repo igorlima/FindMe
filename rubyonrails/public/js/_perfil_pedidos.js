@@ -1,29 +1,29 @@
 ;(function(Perfil, $, ko, vm) {
 
   var STATUS = {
-    "PENDING": {
-      name: "Pendente",
-      style: "count"
+    'PENDING': {
+      name: 'Pendente',
+      style: 'count'
     },
-    "PAID": {
-      name: "Pago",
-      style: "count"
+    'PAID': {
+      name: 'Pago',
+      style: 'count'
     },
-    "DOING": {
-      name: "Preparando pedido",
-      style: "count-main"
+    'DOING': {
+      name: 'Preparando pedido',
+      style: 'count-main'
     },
-    "DONE": {
-      name: "Pedido preparado",
-      style: "count-positive"
+    'DONE': {
+      name: 'Pedido preparado',
+      style: 'count-positive'
     },
-    "DELIVERED": {
-      name: "Pedido entregue",
-      style: "count"
+    'DELIVERED': {
+      name: 'Pedido entregue',
+      style: 'count'
     },
-    "REFUNDED": {
-      name: "Pedido reembolsado",
-      style: "count"
+    'REFUNDED': {
+      name: 'Pedido reembolsado',
+      style: 'count'
     }
   };
 

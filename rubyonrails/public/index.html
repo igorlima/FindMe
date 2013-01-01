@@ -79,14 +79,16 @@
       "js/knockout-2.2.0.js",
       "js/_user_data.js",
       function() {
-        //ViewModel
         var Lanche = window.Lanche = window.Lanche || function() {};
+        var Lanche.minify = location.hostname == 'localhost' ? '' : '.min';
+        
+        //ViewModel
         var LancheViewModel = function () {};
         Lanche.viewModel = new LancheViewModel();
 
         //Routes
         Path.map("#home").to(function() {
-          head.js("js/_home.js", function() {
+          head.js('js/_home'+Lanche.minify+'.js', function() {
             Lanche.Index.load();
           });
         });

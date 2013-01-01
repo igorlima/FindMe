@@ -48,7 +48,7 @@
       //Adicionando um Marker com a localização
       L.marker(e.latlng)
       .addTo(map)
-      .bindPopup("Você está em um raio de " + radius + " metros desse ponto")
+      .bindPopup('Você está em um raio de ' + radius + ' metros desse ponto')
       .openPopup()
       .on('click', function(e){
         var latlng = e.target.getLatLng();
@@ -64,7 +64,7 @@
     map.on('locationerror', function onLocationError(e) {
       L.marker([-21.244722,-45.000429])
       .addTo(map)
-      .bindPopup("Nossa loja")
+      .bindPopup('Nossa loja')
       .openPopup();
 
       map.setView([-21.244722,-45.000429], 15);

@@ -10,21 +10,21 @@
   Local.datas = [];
 
   var styleFeaturePoint = {
-    "color": "#dd0000",
-    "weight": 4,
-    "opacity": 0.80
+    'color': '#dd0000',
+    'weight': 4,
+    'opacity': 0.80
   };
 
   var styleFeaturePolygon = {
-    "color": "#f000ff",
-    "weight": 1,
-    "opacity": 0.99
+    'color': '#f000ff',
+    'weight': 1,
+    'opacity': 0.99
   };
 
   var stylePoint = {
     radius: 8,
-    fillColor: "#ff7800",
-    color: "#000",
+    fillColor: '#ff7800',
+    color: '#000',
     weight: 1,
     opacity: 1,
     fillOpacity: 0.8
@@ -62,80 +62,80 @@
   };
 
   Local.evolutio = {
-    "type": "Feature",
-    "properties": {
-      "name": "Evolutio",
-      "popupContent": "Aqui é a Evolutio.",
-      "show_on_map": true
+    'type': 'Feature',
+    'properties': {
+      'name': 'Evolutio',
+      'popupContent': 'Aqui é a Evolutio.',
+      'show_on_map': true
     },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-44.989073, -21.251152]
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [-44.989073, -21.251152]
     }
   };
 
   Local.shopping = {
-    "type": "Feature",
-    "properties": {
-      "name": "Lavras Shopping",
-      "popupContent": "Aqui é o shopping de Lavras.",
-      "show_on_map": true
+    'type': 'Feature',
+    'properties': {
+      'name': 'Lavras Shopping',
+      'popupContent': 'Aqui é o shopping de Lavras.',
+      'show_on_map': true
     },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-44.990285, -21.248087]
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [-44.990285, -21.248087]
     }
   };
 
   Local.casaDoBahia = {
-    "type": "Feature",
-    "properties": {
-      "name": "Residência do Igor (Baiano)",
-      "popupContent": "Aqui é a residência do senhor Baiano.",
-      "show_on_map": true
+    'type': 'Feature',
+    'properties': {
+      'name': 'Residência do Igor (Baiano)',
+      'popupContent': 'Aqui é a residência do senhor Baiano.',
+      'show_on_map': true
     },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-44.991186, -21.247572]
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [-44.991186, -21.247572]
     }
   };
 
   Local.casaDaGleyce = {
-    "type": "Feature",
-    "properties": {
-      "name": "Residência da Gleyce",
-      "popupContent": "Aqui é a residência da querida Gleycinha.",
-      "show_on_map": true
+    'type': 'Feature',
+    'properties': {
+      'name': 'Residência da Gleyce',
+      'popupContent': 'Aqui é a residência da querida Gleycinha.',
+      'show_on_map': true
     },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-44.987082, -21.236952]
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [-44.987082, -21.236952]
     }
   };
 
   Local.lemaf = {
-    "type": "Feature",
-    "properties": {
-      "name": "Leboratório de projetos em manejos florestais",
-      "popupContent": "Aqui é o Lemaf do DCF/UFLA.",
-      "show_on_map": true
+    'type': 'Feature',
+    'properties': {
+      'name': 'Leboratório de projetos em manejos florestais',
+      'popupContent': 'Aqui é o Lemaf do DCF/UFLA.',
+      'show_on_map': true
     },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-44.974208, -21.226194]
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [-44.974208, -21.226194]
     }
   };
 
   Local.ufla = {
-    "type": "Feature",
-    "properties": {
-      "name": "UFLA",
-      "popupContent": "Área total da UFLA.",
-      "show_on_map": true
+    'type': 'Feature',
+    'properties': {
+      'name': 'UFLA',
+      'popupContent': 'Área total da UFLA.',
+      'show_on_map': true
     },
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [[
+    'geometry': {
+      'type': 'Polygon',
+      'coordinates': [[
         [-44.994228, -21.231367],
         [-44.994614, -21.231737],
         [-44.994748, -21.232297],
