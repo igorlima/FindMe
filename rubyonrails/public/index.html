@@ -80,7 +80,7 @@
       "js/_user_data.js",
       function() {
         var Lanche = window.Lanche = window.Lanche || function() {};
-        var Lanche.minify = location.hostname == 'localhost' ? '' : '.min';
+        Lanche.minify = location.hostname == 'localhost' ? '' : '.min';
         
         //ViewModel
         var LancheViewModel = function () {};
