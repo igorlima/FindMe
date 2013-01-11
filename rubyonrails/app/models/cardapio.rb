@@ -10,6 +10,7 @@ class Cardapio
 
   def as_json(options={})
     {
+      "id"          => id,
       "_id"         => _id,
       "url"         => url,
       "description" => description,
