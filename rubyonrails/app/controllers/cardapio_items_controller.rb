@@ -64,7 +64,12 @@ class CardapioItemsController < ApplicationController
     @cardapio_item = cardapio_itens.find(params[:id])
 
     respond_to do |format|
-      if @cardapio_item.update_attributes(params[:cardapio_item])
+      if @cardapio_item.update_attributes(
+                          description: params[:cardapio_item][:description],
+                          ingredients: params[:cardapio_item][:ingredients],
+                          price:       params[:cardapio_item][:price],
+                          order:       params[:cardapio_item][:order]
+                        )
         format.html { redirect_to cardapio_item_path(@cardapio_item, :cardapio => @cardapio.id), notice: 'Cardapio item was successfully updated.' }
         format.json { head :no_content }
       else
