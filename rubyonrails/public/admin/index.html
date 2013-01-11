@@ -39,10 +39,20 @@
   <!-- start: Favicon -->
   <link rel="shortcut icon" href="img/favicon.ico">
   <!-- end: Favicon -->
-  
+  <script src="lib/head.load.min.js"></script>
 </head>
 
 <body>
+  <div id="overlay">
+    <ul>
+      <li class="li1"></li>
+      <li class="li2"></li>
+      <li class="li3"></li>
+      <li class="li4"></li>
+      <li class="li5"></li>
+      <li class="li6"></li>
+    </ul>
+  </div>
   <!-- start: Header -->
   <div class="navbar">
     <div class="navbar-inner">
@@ -138,73 +148,58 @@
   <!--/.fluid-container-->
 
   <!-- start: JavaScript-->
-  <script src="lib/jquery-1.7.2.min.js"></script>
-  <script src="lib/jquery-ui-1.8.21.custom.min.js"></script>
-  <script src="lib/bootstrap.js"></script>
-  <script src="lib/jquery.cookie.js"></script>
-  <script src='lib/fullcalendar.min.js'></script>
-  <script src='lib/jquery.dataTables.min.js'></script>
-  <script src="lib/excanvas.js"></script>
-  <script src="lib/jquery.flot.min.js"></script>
-  <script src="lib/jquery.flot.pie.min.js"></script>
-  <script src="lib/jquery.flot.stack.js"></script>
-  <script src="lib/jquery.flot.resize.min.js"></script>
-  <script src="lib/jquery.chosen.min.js"></script>
-  <script src="lib/jquery.uniform.min.js"></script>
-  <script src="lib/jquery.cleditor.min.js"></script>
-  <script src="lib/jquery.noty.js"></script>
-  <script src="lib/jquery.elfinder.min.js"></script>
-  <script src="lib/jquery.raty.min.js"></script>
-  <script src="lib/jquery.iphone.toggle.js"></script>
-  <script src="lib/jquery.uploadify-3.1.min.js"></script>
-  <script src="lib/jquery.gritter.min.js"></script>
-  <script src="lib/jquery.imagesloaded.js"></script>
-  <script src="lib/jquery.masonry.min.js"></script>
-  <script src="lib/jquery.knob.js"></script>
-  <script src="lib/jquery.sparkline.min.js"></script>
-  <script src="lib/custom.js"></script>
 
-  <script src="lib/angular.min.js"></script>
-  <script src="lib/angular-resource.min.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers/cardapios.js"></script>
-  <script src="js/controllers/cardapios-novo.js"></script>
-  <script src="js/controllers/cardapios-visualizacao.js"></script>
-  <script src="js/controllers/cardapios-edicao.js"></script>
-  <script src="js/controllers/cardapios-itens.js"></script>
-  <script src="js/controllers/cardapios-itens-novo.js"></script>
-  <script src="js/controllers/cardapios-itens-visualizacao.js"></script>
-  <script src="js/controllers/cardapios-itens-edicao.js"></script>
-  <script src="js/controllers/home.js"></script>
-  <script src="js/controllers/mensagens.js"></script>
-  <script src="js/controllers/pedidos.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-
-  <script src="http://igorribeirolima.com.br:9292/faye/client.js"></script>
   <script type="text/javascript">
-  /*
-    var client = new Faye.Client('http://igorribeirolima.com.br:9292/faye', {
-      timeout: 120
-    });
-    client.subscribe('/messages/new', function (message) {
-      var unique_id = $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: message.subject,
-        // (string | mandatory) the text inside the notification
-        text: message.text,
-        // (string | optional) the image to display on the left
-        image: 'http://graph.facebook.com/1081863633/picture?type=square',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: '',
-        // (string | optional) the class name you want to apply to that specific message
-        class_name: 'my-sticky-class'
-      });
-    });
-  */
+    head.js(
+      "lib/jquery-1.7.2.min.js",
+      "lib/jquery-ui-1.8.21.custom.min.js",
+      "lib/bootstrap.js",
+      "lib/jquery.cookie.js",
+      "lib/fullcalendar.min.js",
+      "lib/jquery.dataTables.min.js",
+      "lib/excanvas.js",
+      "lib/jquery.flot.min.js",
+      "lib/jquery.flot.pie.min.js",
+      "lib/jquery.flot.stack.js",
+      "lib/jquery.flot.resize.min.js",
+      "lib/jquery.chosen.min.js",
+      "lib/jquery.uniform.min.js",
+      "lib/jquery.cleditor.min.js",
+      "lib/jquery.noty.js",
+      "lib/jquery.elfinder.min.js",
+      "lib/jquery.raty.min.js",
+      "lib/jquery.iphone.toggle.js",
+      "lib/jquery.uploadify-3.1.min.js",
+      "lib/jquery.gritter.min.js",
+      "lib/jquery.imagesloaded.js",
+      "lib/jquery.masonry.min.js",
+      "lib/jquery.knob.js",
+      "lib/jquery.sparkline.min.js",
+      "lib/custom.js",
+
+      "lib/angular.min.js",
+      "lib/angular-resource.min.js",
+      "http://igorribeirolima.com.br:9292/faye/client.js",
+      "js/app.js",
+      "js/services.js",
+      "js/controllers/cardapios.js",
+      "js/controllers/cardapios-novo.js",
+      "js/controllers/cardapios-visualizacao.js",
+      "js/controllers/cardapios-edicao.js",
+      "js/controllers/cardapios-itens.js",
+      "js/controllers/cardapios-itens-novo.js",
+      "js/controllers/cardapios-itens-visualizacao.js",
+      "js/controllers/cardapios-itens-edicao.js",
+      "js/controllers/home.js",
+      "js/controllers/mensagens.js",
+      "js/controllers/pedidos.js",
+      "js/filters.js",
+      "js/directives.js",
+
+      function() {
+        $("#overlay").delay(1250).fadeOut(500);
+      }
+    );
   </script>
   <!-- end: JavaScript-->
   
